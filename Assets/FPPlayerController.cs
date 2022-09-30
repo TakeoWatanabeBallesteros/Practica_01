@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FPPlayerController : MonoBehaviour
 {
+    //TODO: Salto más dínamico
+    //TODO: Crouch
+    //TODO: Modelo 3D con animaciones y sonidos
+    //TODO: Movimiento más fluido, acelerar y decelerar
+
     float m_Yaw;
     float m_Pitch;
     [SerializeField] float m_YawRotationSpeed;
@@ -17,18 +23,22 @@ public class FPPlayerController : MonoBehaviour
     [SerializeField] bool m_UsePitchInverted;
 
     [SerializeField] CharacterController m_CharacterController;
-    [SerializeField] float m_Speed;
+    [SerializeField] float m_DefaultSpeed;
     [SerializeField] float m_FastSpeedMultiplier = 3f;
+    [SerializeField] private float m_LowSpeedMultiplier = .3f;
+    [SerializeField] float m_CurrentSpeed;
     [SerializeField] KeyCode m_LeftKeyCode;
     [SerializeField] KeyCode m_RightKeyCode;
     [SerializeField] KeyCode m_UpKeyCode;
     [SerializeField] KeyCode m_DownKeyCode;
     [SerializeField] KeyCode m_JumpKeyCode;
     [SerializeField] KeyCode m_RunKeycode = KeyCode.LeftShift;
+    [SerializeField] private KeyCode m_CrouchKeyCode = KeyCode.LeftControl;
 
     [SerializeField] Camera m_Camera;
     [SerializeField] float m_NormalMovementFOV;
     [SerializeField] float m_RunMovementFOV;
+    [SerializeField] private float m_CrouchMovementFOV;
 
     float m_VerticalSpeed = 0.0f;
     [SerializeField] bool m_OnGround = true;
@@ -51,8 +61,7 @@ public class FPPlayerController : MonoBehaviour
         Vector3 l_RightDirection = transform.right;
         Vector3 l_ForwardDirection = transform.forward;
         Vector3 l_Direction = Vector3.zero;
-        float l_Speed = m_Speed;
-
+        
         if(Input.GetKey(m_UpKeyCode))
             l_Direction = l_ForwardDirection;
         if (Input.GetKey(m_DownKeyCode))
@@ -67,14 +76,21 @@ public class FPPlayerController : MonoBehaviour
         float l_FOV = m_NormalMovementFOV;
         if (Input.GetKey(m_RunKeycode))
         {
-            l_Speed = m_Speed * m_FastSpeedMultiplier;
+            m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_DefaultSpeed * m_FastSpeedMultiplier, .05f);
             l_FOV = m_RunMovementFOV;
+        } 
+        else if (Input.GetKey(m_CrouchKeyCode))
+        {
+            m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_DefaultSpeed * m_LowSpeedMultiplier, .05f);
+            l_FOV = m_CrouchMovementFOV;
         }
+        else m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_DefaultSpeed, .05f);
+        
         m_Camera.fieldOfView = Mathf.Lerp(m_Camera.fieldOfView, l_FOV, .05f);
         
 
         l_Direction.Normalize();
-        Vector3 l_Movement = l_Direction * l_Speed * Time.deltaTime;
+        Vector3 l_Movement = l_Direction * m_CurrentSpeed * Time.deltaTime;
 
         //Rotation
         float l_MouseX = Input.GetAxis("Mouse X");
@@ -89,7 +105,7 @@ public class FPPlayerController : MonoBehaviour
 
         m_VerticalSpeed = m_VerticalSpeed + Physics.gravity.y * Time.deltaTime;
         l_Movement.y = m_VerticalSpeed * Time.deltaTime;
-
+        
         var lastPositionY = transform.position.y;
 
         CollisionFlags l_CollisionFlags =  m_CharacterController.Move(l_Movement);
@@ -98,7 +114,7 @@ public class FPPlayerController : MonoBehaviour
         {
             m_VerticalSpeed = 0.0f;
         }
-        //TODO Preguntar al profe si aplicar siempre gravedad es una solucion correcta
+        
         if ((l_CollisionFlags & CollisionFlags.Below)!=0)
         {
             m_VerticalSpeed = 0.0f;
