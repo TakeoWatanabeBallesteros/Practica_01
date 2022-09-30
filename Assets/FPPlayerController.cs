@@ -31,9 +31,11 @@ public class FPPlayerController : MonoBehaviour
     [SerializeField] float m_RunMovementFOV;
 
     float m_VerticalSpeed = 0.0f;
-    bool m_OnGround = true;
+    [SerializeField] bool m_OnGround = true;
 
     [SerializeField] float m_JumpSpeed = 10.0f;
+
+    private float lastVelocityY;
 
     void Start()
     {
@@ -67,7 +69,8 @@ public class FPPlayerController : MonoBehaviour
             l_Speed = m_Speed * m_FastSpeedMultiplier;
             l_FOV = m_RunMovementFOV;
         }
-        m_Camera.fieldOfView = l_FOV;
+        m_Camera.fieldOfView = Mathf.Lerp(m_Camera.fieldOfView, l_FOV, .05f);
+        
 
         l_Direction.Normalize();
         Vector3 l_Movement = l_Direction * l_Speed * Time.deltaTime;
@@ -86,20 +89,30 @@ public class FPPlayerController : MonoBehaviour
         m_VerticalSpeed = m_VerticalSpeed + Physics.gravity.y * Time.deltaTime;
         l_Movement.y = m_VerticalSpeed * Time.deltaTime;
 
+        var lastPositionY = transform.position.y;
+
         CollisionFlags l_CollisionFlags =  m_CharacterController.Move(l_Movement);
 
         if ((l_CollisionFlags & CollisionFlags.Above) != 0 && m_VerticalSpeed > 0.0f)
         {
             m_VerticalSpeed = 0.0f;
         }
+        //TODO Preguntar al profe si aplicar siempre gravedad es una solucion correcta
         if ((l_CollisionFlags & CollisionFlags.Below)!=0)
         {
-            m_VerticalSpeed = 0.0f;
+            //m_VerticalSpeed = 0.0f;
             m_OnGround = true;
         }
         else
         {
             m_OnGround = false;
         }
+
+        lastVelocityY = m_CharacterController.velocity.y;
+    }
+
+    bool OnZenit()
+    {
+        return lastVelocityY >= 0 && m_CharacterController.velocity.y < 0;
     }
 }
