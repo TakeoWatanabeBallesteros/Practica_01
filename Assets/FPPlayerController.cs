@@ -35,8 +35,6 @@ public class FPPlayerController : MonoBehaviour
 
     [SerializeField] float m_JumpSpeed = 10.0f;
 
-    private float lastVelocityY;
-
     void Start()
     {
         m_Yaw = transform.rotation.y;
@@ -59,10 +57,11 @@ public class FPPlayerController : MonoBehaviour
             l_Direction = -l_ForwardDirection;
         if (Input.GetKey(m_RightKeyCode))
             l_Direction += l_RightDirection;
-        if (Input.GetKey(m_LeftKeyCode))
-            l_Direction -= l_RightDirection;
         if (Input.GetKeyDown(m_JumpKeyCode) && m_OnGround)
             m_VerticalSpeed = m_JumpSpeed;
+        if (Input.GetKey(m_LeftKeyCode))
+            l_Direction -= l_RightDirection;
+        
         float l_FOV = m_NormalMovementFOV;
         if (Input.GetKey(m_RunKeycode))
         {
@@ -100,19 +99,13 @@ public class FPPlayerController : MonoBehaviour
         //TODO Preguntar al profe si aplicar siempre gravedad es una solucion correcta
         if ((l_CollisionFlags & CollisionFlags.Below)!=0)
         {
-            //m_VerticalSpeed = 0.0f;
+            m_VerticalSpeed = 0.0f;
             m_OnGround = true;
         }
         else
         {
             m_OnGround = false;
         }
-
-        lastVelocityY = m_CharacterController.velocity.y;
     }
 
-    bool OnZenit()
-    {
-        return lastVelocityY >= 0 && m_CharacterController.velocity.y < 0;
-    }
 }
