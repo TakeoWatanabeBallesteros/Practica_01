@@ -99,7 +99,7 @@ public class FPPlayerController : MonoBehaviour
         //TODO Preguntar al profe si aplicar siempre gravedad es una solucion correcta
         if ((l_CollisionFlags & CollisionFlags.Below)!=0)
         {
-            m_VerticalSpeed = 0.0f;
+            //m_VerticalSpeed = 0.0f;
             m_OnGround = true;
         }
         else
