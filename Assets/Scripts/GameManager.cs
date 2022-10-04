@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     int[] playerKeys;
-    int numberOfTotalKeys;
+    [SerializeField] int numberOfTotalKeys;
+    private void Awake() {
+        if(instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
