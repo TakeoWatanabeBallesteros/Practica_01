@@ -7,21 +7,17 @@ public class DoorDistance : DoorMovement
     bool playerInside;
     [SerializeField] float range;
     [SerializeField] LayerMask whatIsPlayer;
-    BoxCollider col;
-    Collider playerCollider;
-    Vector3 centerP;
-    
+    [SerializeField] BoxCollider col;
+    Collider playerCol;
     new void Start()
     {
         base.Start();
-        playerInside = false;
-        playerCollider = FindObjectOfType<PlayerController>().GetComponent<Collider>();
         col = GetComponent<BoxCollider>();
-        centerP = new Vector3(col.bounds.center.x,col.bounds.center.y,col.bounds.center.z);
+        playerCol = FindObjectOfType<PlayerController>().GetComponent<Collider>();
     }
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(centerP,range);
+        Gizmos.DrawWireSphere(col.bounds.center,range);
     }
 
     void Update()
@@ -30,7 +26,7 @@ public class DoorDistance : DoorMovement
     }
     void CheckIfPlayerInRange()
     {
-        if(Vector3.Distance(centerP, playerCollider.bounds.center) > range)
+        if(Vector2.Distance(new Vector2(col.bounds.center.x,col.bounds.center.z), new Vector2(playerCol.bounds.center.x,playerCol.bounds.center.z)) > range)
         {
             if(playerInside)
             {

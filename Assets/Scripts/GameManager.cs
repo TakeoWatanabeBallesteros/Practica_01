@@ -38,5 +38,10 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Key"+keyNumber.ToString(),1);
         playerKeys[keyNumber] = PlayerPrefs.GetInt("Key"+keyNumber.ToString(),0);
     }
+
+    public int[] ReadKeys()
+    {
+        return playerKeys;
+    }
     
 }
