@@ -69,6 +69,10 @@ public class PlayerController : MonoBehaviour
     [Header("Camera")]
     [Tooltip("Add offset to the position of the camera")]
     [SerializeField]
+    private Transform targetPitch;
+    
+    [Tooltip("Add offset to the position of the camera")]
+    [SerializeField]
     private Vector3 cameraOffset;
     
     [Tooltip("How far in degrees can you move the camera up")]
@@ -198,8 +202,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        _hasAnimator = TryGetComponent(out _animator);
-        
         Move();
         JumpAndGravity();
     }
@@ -213,17 +215,13 @@ public class PlayerController : MonoBehaviour
     private void CameraRotation()
     {
         // Set Camera Root to head position
-        m_PitchController.position = _animator.GetBoneTransform(HumanBodyBones.Head).position + m_PitchController.forward*.13f
-                                                                                                +m_PitchController.up*.05f;
+        m_PitchController.position = targetPitch.position;
         
         // if there is an input
 		if (_input.look.sqrMagnitude >= Threshold)
 		{
-			// Don't multiply mouse input by Time.deltaTime
-			float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-			
-			pitch += _input.look.y * deltaTimeMultiplier;
-			yaw = _input.look.x * deltaTimeMultiplier;
+            pitch += _input.look.y * Time.deltaTime*m_PitchRotationSpeed;
+			yaw += _input.look.x * Time.deltaTime*m_YawRotationSpeed;
 
 			// clamp our pitch rotation
 			pitch = ClampAngle(pitch, bottomClamp, topClamp);
@@ -233,19 +231,18 @@ public class PlayerController : MonoBehaviour
 
             // rotate the player left and right
             // TODO: Rotate the body with IK animation
-			transform.Rotate(Vector3.up * yaw);
-		}
+            transform.rotation = Quaternion.Euler(0.0f, yaw, 0.0f);
+        }
     }
 
     private void OnAnimatorIK(int layerIndex)
     {
         // Neck X axis rotation
         // that means look up & down
-        float headTargetPitch = pitch;
 
         // Only rotate X axis if First Person
         // else also rotate Y axis
-        Quaternion q = Quaternion.Euler(headTargetPitch + cameraAngleOverride,
+        Quaternion q = Quaternion.Euler(pitch,
             0.0f, 0.0f);
         _animator.SetBoneLocalRotation(HumanBodyBones.Head, q);
     }
@@ -268,18 +265,13 @@ public class PlayerController : MonoBehaviour
         float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
         // accelerate or decelerate to target speed
-        if (currentHorizontalSpeed < targetSpeed - speedOffset ||
-            currentHorizontalSpeed > targetSpeed + speedOffset)
-        {
-            // creates curved result rather than a linear one giving a more organic speed change
-            // note T in Lerp is clamped, so we don't need to clamp our speed
-            _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
-                Time.deltaTime * speedChangeRate);
+        // creates curved result rather than a linear one giving a more organic speed change
+        // note T in Lerp is clamped, so we don't need to clamp our speed
+        _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
+            Time.deltaTime * speedChangeRate);
 
-            // round speed to 3 decimal places
-            _speed = Mathf.Round(_speed * 1000f) / 1000f;
-        }
-        else _speed = targetSpeed;
+        // round speed to 3 decimal places
+        _speed = Mathf.Round(_speed * 1000f) / 1000f;
 
         // normalise input direction
         Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
@@ -305,14 +297,10 @@ public class PlayerController : MonoBehaviour
             _animator.SetFloat(_animIDSpeed, _animationBlend);
             _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
         }
-        
-
-
-        if ((collisionFlags & CollisionFlags.Above) != 0 && m_VerticalSpeed > 0.0f)
-        {
-            m_VerticalSpeed = 0.0f;
-        }
-        
+    }
+    
+    private void JumpAndGravity()
+    {
         if ((collisionFlags & CollisionFlags.Below)!=0)
         {
             m_VerticalSpeed = 0.0f;
@@ -324,16 +312,8 @@ public class PlayerController : MonoBehaviour
                 _animator.SetBool(_animIDGrounded, grounded);
             }
         }
-        else
-        {
-            grounded = false;
-        }
-
-        timeOnAir += grounded ? 0 : Time.deltaTime;
-    }
-    
-    private void JumpAndGravity()
-    {
+        else grounded = false;
+        
         if (grounded)
         {
             // reset the fall timeout timer
@@ -392,13 +372,15 @@ public class PlayerController : MonoBehaviour
 
             // if we are not grounded, do not jump
             _input.jump = false;
+            
+            if ((collisionFlags & CollisionFlags.Above) != 0)
+            {
+                _verticalVelocity = 0.0f;
+            }
         }
 
-        // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-        if (_verticalVelocity < _terminalVelocity)
-        {
-            _verticalVelocity += gravity * Time.deltaTime;
-        }
+        _verticalVelocity += gravity * Time.deltaTime;
+        timeOnAir += grounded ? 0 : Time.deltaTime;
     }
 
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
@@ -427,9 +409,4 @@ public class PlayerController : MonoBehaviour
             AudioSource.PlayClipAtPoint(landingAudioClip, transform.TransformPoint(_controller.center), footstepAudioVolume);
         }
     }
-}
-
-public enum TypeOfView{
-    FirstPerson,
-    ThirdPerson
 }

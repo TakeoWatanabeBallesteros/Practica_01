@@ -1600,6 +1600,36 @@ Transform:
   m_Father: {fileID: 4244110142052233888}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &884403849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 884403850}
+  m_Layer: 0
+  m_Name: target_pitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &884403850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884403849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.056, z: 0.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1907738732737391318}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &898241951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3202,14 +3232,15 @@ MonoBehaviour:
   jumpTimeout: 0.5
   fallTimeout: 0.15
   grounded: 1
+  targetPitch: {fileID: 884403850}
   cameraOffset: {x: 0, y: 0, z: 0}
   topClamp: 60
   bottomClamp: -65
   cameraAngleOverride: 0
   lockCameraPosition: 0
   rotateHead: 1
-  m_YawRotationSpeed: 1000
-  m_PitchRotationSpeed: 1000
+  m_YawRotationSpeed: 100
+  m_PitchRotationSpeed: 100
   m_MinPitch: -35
   m_MaxPitch: 75
   m_PitchController: {fileID: 1162411710}
@@ -4866,6 +4897,7 @@ Transform:
   - {fileID: 6360303044526970372}
   - {fileID: 7171329935064489411}
   - {fileID: 864013508589065016}
+  - {fileID: 884403850}
   m_Father: {fileID: 6367521510002492179}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
