@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     int[] playerKeys;
     [SerializeField] int numberOfTotalKeys;
     private void Awake() {
+        InitializeKeys();
         if(instance != null)
         {
             Destroy(gameObject);
@@ -17,11 +18,6 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        InitializeKeys();
     }
 
     void InitializeKeys()

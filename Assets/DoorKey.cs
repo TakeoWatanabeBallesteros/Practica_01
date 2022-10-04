@@ -16,11 +16,14 @@ public class DoorKey : DoorMovement
     bool fadeOut;
     bool interacting;
     bool activated;
+    private PlayerInputs _input;
     
     new void Start()
     {
         base.Start();
         playerCol = FindObjectOfType<PlayerController>().GetComponent<Collider>();
+        _input = GetComponent<PlayerInputs>();
+        CheckKey();
     }
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
@@ -118,6 +121,7 @@ public class DoorKey : DoorMovement
         {
             base.Open();
             background.color = new Color(background.color.r,background.color.g,background.color.b,0);
+            activated = true;
             //desuscribirse del metodo
         }
     }
