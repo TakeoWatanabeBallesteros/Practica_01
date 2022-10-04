@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class DroppedObj : MonoBehaviour
+public class DroppedBase : MonoBehaviour
 {
     void Awake()
     {

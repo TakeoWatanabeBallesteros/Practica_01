@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroppedKey : DroppedObj
+public class DroppedKey : DroppedBase
 {
     [SerializeField] int keyNumber;
     // Start is called before the first frame update
