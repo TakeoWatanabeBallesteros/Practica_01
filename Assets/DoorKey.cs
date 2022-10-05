@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 
@@ -16,13 +17,11 @@ public class DoorKey : DoorMovement
     bool fadeOut;
     bool interacting;
     bool activated;
-    private PlayerInputs _input;
     
     new void Start()
     {
         base.Start();
         playerCol = FindObjectOfType<PlayerController>().GetComponent<Collider>();
-        _input = GetComponent<PlayerInputs>();
         CheckKey();
     }
     private void OnDrawGizmos() {
