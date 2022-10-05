@@ -44,11 +44,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Sprint"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""980e881e-182c-404c-8cbf-3d09fdb48fef"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Hold(duration=0.01,pressPoint=0.05)""
                 },
                 {
                     ""name"": ""ChangeVision"",

@@ -180,7 +180,8 @@ public class PlayerController : MonoBehaviour
 
     private float timeOnAir;
     private float targetSpeed;
-    private Vector2 inputVector;
+    private Vector2 moveVector;
+    private Vector2 lookVector;
     
     private PlayerControls controls;
     private PlayerControls Controls{
@@ -191,12 +192,18 @@ public class PlayerController : MonoBehaviour
     }
     
     void OnEnable() {
+        Controls.Player.Look.Enable();
+        Controls.Player.Look.performed += ctx => lookVector = ctx.ReadValue<Vector2>();
+        Controls.Player.Look.canceled += ctx => lookVector = Vector2.zero;
+        
         Controls.Player.Move.Enable();
-        Controls.Player.Move.performed += ctx => inputVector = ctx.ReadValue<Vector2>();
-        Controls.Player.Move.canceled += ctx => inputVector = Vector2.zero;
+        Controls.Player.Move.performed += ctx => moveVector = ctx.ReadValue<Vector2>();
+        Controls.Player.Move.canceled += ctx => moveVector = Vector2.zero;
         
         // set target speed based on move speed, sprint speed and if sprint is pressed
-        Controls.Player.Sprint.performed += ctx => targetSpeed = _input.sprint ? sprintSpeed : moveSpeed;
+        Controls.Player.Sprint.Enable();
+        Controls.Player.Sprint.performed += ctx => targetSpeed = sprintSpeed;
+        Controls.Player.Sprint.canceled += ctx => targetSpeed = moveSpeed;
         
         Controls.Player.Jump.Enable();
         Controls.Player.Jump.performed += Jump;
@@ -204,12 +211,18 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnDisable() {
+        Controls.Player.Look.Enable();
+        Controls.Player.Look.performed -= ctx => lookVector = ctx.ReadValue<Vector2>();
+        Controls.Player.Look.canceled -= ctx => lookVector = Vector2.zero;
+        
         Controls.Player.Move.Disable();
-        Controls.Player.Move.performed -= ctx => inputVector = ctx.ReadValue<Vector2>();
-        Controls.Player.Move.canceled -= ctx => inputVector = Vector2.zero;
+        Controls.Player.Move.performed -= ctx => moveVector = ctx.ReadValue<Vector2>();
+        Controls.Player.Move.canceled -= ctx => moveVector = Vector2.zero;
         
         // set target speed based on move speed, sprint speed and if sprint is pressed
-        Controls.Player.Sprint.performed -= ctx => targetSpeed = _input.sprint ? sprintSpeed : moveSpeed;
+        Controls.Player.Sprint.Disable();
+        Controls.Player.Sprint.performed -= ctx => targetSpeed = sprintSpeed;
+        Controls.Player.Sprint.canceled -= ctx => targetSpeed = moveSpeed;
 
         Controls.Player.Jump.Disable();
         Controls.Player.Jump.performed -= Jump;
@@ -229,6 +242,8 @@ public class PlayerController : MonoBehaviour
         pitch = m_PitchController.localRotation.x;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        targetSpeed = moveSpeed;
     }
     
     private void AssignAnimationIDs()
@@ -259,17 +274,17 @@ public class PlayerController : MonoBehaviour
         m_PitchController.position = targetPitch.position;
         
         // if there is an input
-		if (_input.look.sqrMagnitude >= Threshold)
+		if (lookVector.sqrMagnitude >= Threshold)
 		{
-            pitch += _input.look.y * Time.deltaTime*m_PitchRotationSpeed;
-			yaw += _input.look.x * Time.deltaTime*m_YawRotationSpeed;
+            pitch += lookVector.y * Time.deltaTime*m_PitchRotationSpeed;
+			yaw += lookVector.x * Time.deltaTime*m_YawRotationSpeed;
 
 			// clamp our pitch rotation
 			pitch = ClampAngle(pitch, bottomClamp, topClamp);
             
             // Update Cinemachine camera target pitch
             m_PitchController.transform.localRotation = Quaternion.Euler(pitch, 0.0f, 0.0f);
-            gun.localRotation = Quaternion.Euler(-pitch, -180f, 0.0f);
+            //gun.localRotation = Quaternion.Euler(-pitch, -180f, 0.0f);
 
             // rotate the player left and right
             // TODO: Rotate the body with IK animation
@@ -294,46 +309,48 @@ public class PlayerController : MonoBehaviour
         // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
         // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-        // if there is no input, set the target speed to 0
-        if (inputVector == Vector2.zero) targetSpeed = 0.0f;
+        // if there is input, and we check if we were pressing sprint (because the sprint event set the targetSpeed before this)
+        // else set the target speed to 0
+        if (moveVector != Vector2.zero && targetSpeed <= moveSpeed) targetSpeed = moveSpeed;
+        else if(moveVector == Vector2.zero && targetSpeed < sprintSpeed) targetSpeed = 0.0f;
 
         // a reference to the players current horizontal velocity
         float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
         float speedOffset = 0.1f;
+        float inputMagnitude = moveVector.magnitude < 1 && moveVector.magnitude != 0 ? moveVector.magnitude : 1f;
 
         // accelerate or decelerate to target speed
         // creates curved result rather than a linear one giving a more organic speed change
         // note T in Lerp is clamped, so we don't need to clamp our speed
-        _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputVector.magnitude,
+        _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
             Time.deltaTime * speedChangeRate);
 
         // round speed to 3 decimal places
         _speed = Mathf.Round(_speed * 1000f) / 1000f;
 
         // normalise input direction
-        Vector3 inputDirection = new Vector3(inputVector.x, 0.0f, inputVector.y).normalized;
+        Vector3 inputDirection = new Vector3(moveVector.x, 0.0f, moveVector.y).normalized;
 
         // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
         // if there is a move input rotate player when the player is moving
-        if (inputVector != Vector2.zero)
+        if (moveVector != Vector2.zero)
         {
             // move
-            inputDirection = transform.right * inputVector.x + transform.forward * inputVector.y;
+            inputDirection = transform.right * moveVector.x + transform.forward * moveVector.y;
         }
-        Debug.Log(inputVector);
         // move the player
         collisionFlags =  m_CharacterController.Move(inputDirection.normalized * (_speed * Time.deltaTime) +
                                                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
         
-        _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * speedChangeRate);
+        _animationBlend = Mathf.Lerp(_animationBlend, _speed, Time.deltaTime * speedChangeRate);
         if (_animationBlend < 0.01f) _animationBlend = 0f;
 
         // update animator if using character
         if (_hasAnimator)
         {
             _animator.SetFloat(_animIDSpeed, _animationBlend);
-            _animator.SetFloat(_animIDMotionSpeed, inputVector.magnitude);
+            _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
         }
     }
     
