@@ -179,6 +179,42 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_JumpSpeed = 10.0f;
 
     private float timeOnAir;
+    private float targetSpeed;
+    private Vector2 inputVector;
+    
+    private PlayerControls controls;
+    private PlayerControls Controls{
+        get{
+            if(controls != null) {return controls;}
+            return controls = new PlayerControls();
+        }
+    }
+    
+    void OnEnable() {
+        Controls.Player.Move.Enable();
+        Controls.Player.Move.performed += ctx => inputVector = ctx.ReadValue<Vector2>();
+        Controls.Player.Move.canceled += ctx => inputVector = Vector2.zero;
+        
+        // set target speed based on move speed, sprint speed and if sprint is pressed
+        Controls.Player.Sprint.performed += ctx => targetSpeed = _input.sprint ? sprintSpeed : moveSpeed;
+        
+        Controls.Player.Jump.Enable();
+        Controls.Player.Jump.performed += Jump;
+        //Controls.Player.Jump.canceled += ctx => OnJumpFinished();
+    }
+
+    void OnDisable() {
+        Controls.Player.Move.Disable();
+        Controls.Player.Move.performed -= ctx => inputVector = ctx.ReadValue<Vector2>();
+        Controls.Player.Move.canceled -= ctx => inputVector = Vector2.zero;
+        
+        // set target speed based on move speed, sprint speed and if sprint is pressed
+        Controls.Player.Sprint.performed -= ctx => targetSpeed = _input.sprint ? sprintSpeed : moveSpeed;
+
+        Controls.Player.Jump.Disable();
+        Controls.Player.Jump.performed -= Jump;
+        //Controls.Player.Jump.canceled -= ctx => OnJumpFinished();
+    }
 
     private void Start()
     {
@@ -208,7 +244,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Move();
-        JumpAndGravity();
+        GroundAndGravity();
     }
 
     private void LateUpdate()
@@ -254,42 +290,38 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Move()
-    {
-        // set target speed based on move speed, sprint speed and if sprint is pressed
-        float targetSpeed = _input.sprint ? sprintSpeed : moveSpeed;
-
+    { 
         // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
         // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
         // if there is no input, set the target speed to 0
-        if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+        if (inputVector == Vector2.zero) targetSpeed = 0.0f;
 
         // a reference to the players current horizontal velocity
         float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
         float speedOffset = 0.1f;
-        float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
         // accelerate or decelerate to target speed
         // creates curved result rather than a linear one giving a more organic speed change
         // note T in Lerp is clamped, so we don't need to clamp our speed
-        _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
+        _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputVector.magnitude,
             Time.deltaTime * speedChangeRate);
 
         // round speed to 3 decimal places
         _speed = Mathf.Round(_speed * 1000f) / 1000f;
 
         // normalise input direction
-        Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+        Vector3 inputDirection = new Vector3(inputVector.x, 0.0f, inputVector.y).normalized;
 
         // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
         // if there is a move input rotate player when the player is moving
-        if (_input.move != Vector2.zero)
+        if (inputVector != Vector2.zero)
         {
             // move
-            inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+            inputDirection = transform.right * inputVector.x + transform.forward * inputVector.y;
         }
-
+        Debug.Log(inputVector);
         // move the player
         collisionFlags =  m_CharacterController.Move(inputDirection.normalized * (_speed * Time.deltaTime) +
                                                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
@@ -301,11 +333,11 @@ public class PlayerController : MonoBehaviour
         if (_hasAnimator)
         {
             _animator.SetFloat(_animIDSpeed, _animationBlend);
-            _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+            _animator.SetFloat(_animIDMotionSpeed, inputVector.magnitude);
         }
     }
     
-    private void JumpAndGravity()
+    private void GroundAndGravity()
     {
         if ((collisionFlags & CollisionFlags.Below)!=0)
         {
@@ -387,6 +419,19 @@ public class PlayerController : MonoBehaviour
 
         _verticalVelocity += gravity * Time.deltaTime;
         timeOnAir += grounded ? 0 : Time.deltaTime;
+    }
+
+    private void Jump(InputAction.CallbackContext ctx)
+    {
+        if (!(_jumpTimeoutDelta <= 0.0f) || !(timeOnAir < .1f)) return;
+        // the square root of H * -2 * G = how much velocity needed to reach desired height
+        _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+        // update animator if using character
+        if (_hasAnimator)
+        {
+            _animator.SetBool(_animIDJump, true);
+        }
     }
 
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
