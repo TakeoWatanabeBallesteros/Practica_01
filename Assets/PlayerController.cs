@@ -95,6 +95,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool rotateHead = true;
     
+    [Header("Guns")]
+    [Tooltip("The transform of the gun, to edit the pitch")]
+    [SerializeField]
+    private Transform gun;
+    
     // camera
     float yaw;
     float pitch;
@@ -228,6 +233,7 @@ public class PlayerController : MonoBehaviour
             
             // Update Cinemachine camera target pitch
             m_PitchController.transform.localRotation = Quaternion.Euler(pitch, 0.0f, 0.0f);
+            gun.localRotation = Quaternion.Euler(-pitch, -180f, 0.0f);
 
             // rotate the player left and right
             // TODO: Rotate the body with IK animation

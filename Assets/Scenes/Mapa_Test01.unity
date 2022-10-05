@@ -7010,7 +7010,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.665, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5006512735011865821}
   - {fileID: 2082239209}
   m_Father: {fileID: 1854497793}
   m_RootOrder: 1
@@ -10501,6 +10500,7 @@ MonoBehaviour:
   cameraAngleOverride: 0
   lockCameraPosition: 0
   rotateHead: 1
+  gun: {fileID: 5006512735011865821}
   m_YawRotationSpeed: 100
   m_PitchRotationSpeed: 100
   m_MinPitch: -35
@@ -10604,7 +10604,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854497792}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fff0960ef4ea6e04eac66b4a7fd2189d, type: 3}
   m_Name: 
@@ -12053,7 +12053,7 @@ Transform:
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 1162411710}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &2082239210
 AudioListener:
@@ -19114,7 +19114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172668987438798}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.5274834, y: -0.59816587, z: 0.3804742}
+  m_LocalPosition: {x: 0.254, y: 1.32, z: 0.52}
   m_LocalScale: {x: 0.050000023, y: 0.050000045, z: 0.05000004}
   m_Children:
   - {fileID: 7047880251880445831}
@@ -19156,8 +19156,8 @@ Transform:
   - {fileID: 82678230}
   - {fileID: 430053806}
   - {fileID: 1995942852}
-  m_Father: {fileID: 1162411710}
-  m_RootOrder: 0
+  m_Father: {fileID: 5355150693704002257}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &5007138151602552622
 GameObject:
@@ -19578,6 +19578,7 @@ Transform:
   - {fileID: 2595315823364349689}
   - {fileID: 1056351819}
   - {fileID: 1590084464}
+  - {fileID: 5006512735011865821}
   m_Father: {fileID: 6357846282666955839}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
