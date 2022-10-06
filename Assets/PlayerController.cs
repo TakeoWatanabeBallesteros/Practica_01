@@ -67,9 +67,13 @@ public class PlayerController : MonoBehaviour
     private CollisionFlags collisionFlags;
 
     [Header("Camera")]
-    [Tooltip("Add offset to the position of the camera")]
+    [Tooltip("The position of the main camera, normally the head")]
     [SerializeField]
     private Transform targetPitch;
+
+    [Tooltip("The camera that shows the gun and player")]
+    [SerializeField] 
+    private Transform gunCamera;
     
     [Tooltip("Add offset to the position of the camera")]
     [SerializeField]
@@ -153,7 +157,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CharacterController m_CharacterController;
 
     [SerializeField] Camera m_Camera;
-    [SerializeField] private Transform gunCamera;
     [SerializeField] float m_NormalMovementFOV;
     [SerializeField] float m_RunMovementFOV;
     [SerializeField] private float m_CrouchMovementFOV;
@@ -254,6 +257,10 @@ public class PlayerController : MonoBehaviour
     {
         // Set Camera Root to head position
         m_PitchController.position = targetPitch.position;
+        
+        // Set Camera Root to head position
+        // gunCamera.position = gun.position + cameraOffset;
+        gunCamera.position = gun.position + gunCamera.right*cameraOffset.x + gunCamera.up*cameraOffset.y + gunCamera.forward*cameraOffset.z;
         
         // if there is an input
 		if (lookVector.sqrMagnitude >= Threshold)
