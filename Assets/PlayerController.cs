@@ -148,35 +148,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_YawRotationSpeed;
     [SerializeField] float m_PitchRotationSpeed;
 
-    [SerializeField] float m_MinPitch;
-    [SerializeField] float m_MaxPitch;
-
     [SerializeField] Transform m_PitchController;
-    [SerializeField] bool m_UseYawInverted;
-    [SerializeField] bool m_UsePitchInverted;
 
     [SerializeField] CharacterController m_CharacterController;
-    [SerializeField] float m_DefaultSpeed;
-    [SerializeField] float m_FastSpeedMultiplier = 3f;
-    [SerializeField] private float m_LowSpeedMultiplier = .3f;
-    [SerializeField] float m_CurrentSpeed;
-    [SerializeField] KeyCode m_LeftKeyCode;
-    [SerializeField] KeyCode m_RightKeyCode;
-    [SerializeField] KeyCode m_UpKeyCode;
-    [SerializeField] KeyCode m_DownKeyCode;
-    [SerializeField] KeyCode m_JumpKeyCode;
-    [SerializeField] KeyCode m_RunKeycode = KeyCode.LeftShift;
-    [SerializeField] private KeyCode m_CrouchKeyCode = KeyCode.LeftControl;
 
     [SerializeField] Camera m_Camera;
+    [SerializeField] private Transform gunCamera;
     [SerializeField] float m_NormalMovementFOV;
     [SerializeField] float m_RunMovementFOV;
     [SerializeField] private float m_CrouchMovementFOV;
 
     float m_VerticalSpeed = 0.0f;
-    [SerializeField] bool m_OnGround = true;
-
-    [SerializeField] float m_JumpSpeed = 10.0f;
 
     private float timeOnAir;
     private float targetSpeed;
@@ -301,7 +283,7 @@ public class PlayerController : MonoBehaviour
         // else also rotate Y axis
         Quaternion q = Quaternion.Euler(pitch,
             0.0f, 0.0f);
-        _animator.SetBoneLocalRotation(HumanBodyBones.Head, q);
+        _animator.SetBoneLocalRotation(HumanBodyBones.Spine, q);
     }
 
     private void Move()
