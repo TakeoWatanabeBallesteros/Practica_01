@@ -17,6 +17,13 @@ public class DoorKey : DoorMovement
     bool fadeOut;
     bool interacting;
     bool activated;
+    private PlayerControls controls;
+    private PlayerControls Controls{
+        get{
+            if(controls != null) {return controls;}
+            return controls = new PlayerControls();
+        }
+    }
     
     new void Start()
     {
@@ -50,7 +57,8 @@ public class DoorKey : DoorMovement
 
             if(!interacting)
             {
-                //suscribirse al metodo
+                Controls.Player.Interact.Enable();
+                Controls.Player.Interact.performed += ctx => CheckKey();
                 interacting = true;
             }
         }
@@ -65,7 +73,8 @@ public class DoorKey : DoorMovement
 
             if(interacting)
             {
-                //desuscribirse del metodo
+                Controls.Player.Interact.Disable();
+                Controls.Player.Interact.performed -= ctx => CheckKey();
                 interacting = false;
             }
         }
@@ -115,13 +124,16 @@ public class DoorKey : DoorMovement
 
     void CheckKey()
     {
+        Debug.Log("A");
         int[] keys = GameManager.instance.ReadKeys();
+        
         if(keys[keyNumber] == 1)
         {
             base.Open();
             background.color = new Color(background.color.r,background.color.g,background.color.b,0);
             activated = true;
-            //desuscribirse del metodo
+            Controls.Player.Interact.Disable();
+            Controls.Player.Interact.performed -= ctx => CheckKey();
         }
     }
 }
