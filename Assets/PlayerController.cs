@@ -300,7 +300,7 @@ public class PlayerController : MonoBehaviour
         // else also rotate Y axis
         Quaternion q = Quaternion.Euler(pitch,
             0.0f, 0.0f);
-        _animator.SetBoneLocalRotation(HumanBodyBones.Spine, q);
+        _animator.SetBoneLocalRotation(HumanBodyBones.Chest, q);
     }
 
     private void Move()
