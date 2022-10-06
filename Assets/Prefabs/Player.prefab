@@ -6835,7 +6835,7 @@ MonoBehaviour:
   footstepAudioVolume: 0.5
   jumpHeight: 1.2
   gravity: -15
-  jumpTimeout: 0.5
+  jumpTimeout: 0.1
   fallTimeout: 0.2
   grounded: 1
   targetPitch: {fileID: 3557554919723590298}
