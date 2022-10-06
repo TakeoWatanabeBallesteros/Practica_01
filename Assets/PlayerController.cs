@@ -79,6 +79,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Vector3 cameraOffset;
     
+    [Tooltip("The position of the gun camera")]
+    [SerializeField]
+    private Transform targetGunCam;
+    
     [Tooltip("How far in degrees can you move the camera up")]
     [SerializeField]
     private float topClamp = 70.0f;
@@ -258,10 +262,6 @@ public class PlayerController : MonoBehaviour
         // Set Camera Root to head position
         m_PitchController.position = targetPitch.position;
         
-        // Set Camera Root to head position
-        // gunCamera.position = gun.position + cameraOffset;
-        gunCamera.position = gun.position + gunCamera.right*cameraOffset.x + gunCamera.up*cameraOffset.y + gunCamera.forward*cameraOffset.z;
-        
         // if there is an input
 		if (lookVector.sqrMagnitude >= Threshold)
 		{
@@ -279,6 +279,16 @@ public class PlayerController : MonoBehaviour
             // TODO: Rotate the body with IK animation
             transform.rotation = Quaternion.Euler(0.0f, yaw, 0.0f);
         }
+        
+        // Set Camera Root to head position
+        //gunCamera = targetGunCam;
+        //gunCamera.position = gun.position + gunCamera.right*cameraOffset.x + gunCamera.up*cameraOffset.y + gunCamera.forward*cameraOffset.z;
+        gunCamera.position = targetGunCam.position;
+        gunCamera.rotation = targetGunCam.rotation;
+        //gunCamera.localRotation = Quaternion.Euler(pitch, 0.0f, 0.0f);
+        //gunCamera.forward = targetGunCam.forward;
+        //gunCamera.right = targetGunCam.right;
+        //gunCamera.up = targetGunCam.up;
     }
 
     private void OnAnimatorIK(int layerIndex)
