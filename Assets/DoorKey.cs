@@ -59,6 +59,7 @@ public class DoorKey : DoorMovement
             {
                 Controls.Player.Interact.Enable();
                 Controls.Player.Interact.performed += ctx => CheckKey();
+                Debug.Log("suscrito");
                 interacting = true;
             }
         }
@@ -75,6 +76,7 @@ public class DoorKey : DoorMovement
             {
                 Controls.Player.Interact.Disable();
                 Controls.Player.Interact.performed -= ctx => CheckKey();
+                Debug.Log("desuscrito");
                 interacting = false;
             }
         }
@@ -134,6 +136,7 @@ public class DoorKey : DoorMovement
             activated = true;
             Controls.Player.Interact.Disable();
             Controls.Player.Interact.performed -= ctx => CheckKey();
+            Debug.Log("desuscrito");
         }
     }
 }
