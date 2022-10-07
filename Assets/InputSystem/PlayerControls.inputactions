@@ -306,6 +306,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Debug",
+            "id": "2bbb1681-bea7-4104-8e72-e63018031db1",
+            "actions": [
+                {
+                    "name": "LockCamera",
+                    "type": "Button",
+                    "id": "a2322369-ad7c-4053-b56a-06e51ebc88a0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7ac70318-4057-4a7d-92d4-a5ff4de050f7",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse;Gamepad;Xbox Controller;PS4 Controller",
+                    "action": "LockCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

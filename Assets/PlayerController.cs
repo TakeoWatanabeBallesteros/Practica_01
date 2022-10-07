@@ -180,7 +180,27 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    bool cameraLocked = false;
+    
     void OnEnable() {
+#if UNITY_EDITOR
+        Controls.Debug.Enable();
+        Controls.Debug.LockCamera.performed += _ =>
+        {
+            cameraLocked = !cameraLocked;
+            if (cameraLocked)
+            {
+                Controls.Player.Look.Disable();
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Controls.Player.Look.Enable();
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            Cursor.visible = cameraLocked;
+        };
+#endif
         Controls.Player.Look.Enable();
         Controls.Player.Look.performed += ctx => lookVector = ctx.ReadValue<Vector2>();
         Controls.Player.Look.canceled += ctx => lookVector = Vector2.zero;
@@ -200,6 +220,24 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnDisable() {
+#if UNITY_EDITOR
+        Controls.Debug.Enable();
+        Controls.Debug.LockCamera.performed -= _ =>
+        {
+            cameraLocked = !cameraLocked;
+            if (cameraLocked)
+            {
+                Controls.Player.Look.Disable();
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Controls.Player.Look.Enable();
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            Cursor.visible = cameraLocked;
+        };
+#endif
         Controls.Player.Look.Enable();
         Controls.Player.Look.performed -= ctx => lookVector = ctx.ReadValue<Vector2>();
         Controls.Player.Look.canceled -= ctx => lookVector = Vector2.zero;
@@ -229,10 +267,11 @@ public class PlayerController : MonoBehaviour
         
         yaw = transform.rotation.y;
         pitch = m_PitchController.localRotation.x;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
 
         targetSpeed = moveSpeed;
+        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = cameraLocked;
     }
     
     private void AssignAnimationIDs()

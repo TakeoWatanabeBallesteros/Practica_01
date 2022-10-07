@@ -319,6 +319,33 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""2bbb1681-bea7-4104-8e72-e63018031db1"",
+            ""actions"": [
+                {
+                    ""name"": ""LockCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2322369-ad7c-4053-b56a-06e51ebc88a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7ac70318-4057-4a7d-92d4-a5ff4de050f7"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse;Gamepad;Xbox Controller;PS4 Controller"",
+                    ""action"": ""LockCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -380,6 +407,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player_ChangeVision = m_Player.FindAction("ChangeVision", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_LockCamera = m_Debug.FindAction("LockCamera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -506,6 +536,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private IDebugActions m_DebugActionsCallbackInterface;
+    private readonly InputAction m_Debug_LockCamera;
+    public struct DebugActions
+    {
+        private @PlayerControls m_Wrapper;
+        public DebugActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LockCamera => m_Wrapper.m_Debug_LockCamera;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void SetCallbacks(IDebugActions instance)
+        {
+            if (m_Wrapper.m_DebugActionsCallbackInterface != null)
+            {
+                @LockCamera.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnLockCamera;
+                @LockCamera.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnLockCamera;
+                @LockCamera.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnLockCamera;
+            }
+            m_Wrapper.m_DebugActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @LockCamera.started += instance.OnLockCamera;
+                @LockCamera.performed += instance.OnLockCamera;
+                @LockCamera.canceled += instance.OnLockCamera;
+            }
+        }
+    }
+    public DebugActions @Debug => new DebugActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -551,5 +614,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnChangeVision(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IDebugActions
+    {
+        void OnLockCamera(InputAction.CallbackContext context);
     }
 }
