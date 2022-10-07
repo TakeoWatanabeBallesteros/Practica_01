@@ -289,14 +289,8 @@ public class PlayerController : MonoBehaviour
         }
         
         // Set Camera Root to head position
-        //gunCamera = targetGunCam;
-        //gunCamera.position = gun.position + gunCamera.right*cameraOffset.x + gunCamera.up*cameraOffset.y + gunCamera.forward*cameraOffset.z;
-        gunCamera.position = targetGunCam.position;
+        gunCamera.position = targetPitch.position;
         gunCamera.rotation = targetGunCam.rotation;
-        //gunCamera.localRotation = Quaternion.Euler(pitch, 0.0f, 0.0f);
-        //gunCamera.forward = targetGunCam.forward;
-        //gunCamera.right = targetGunCam.right;
-        //gunCamera.up = targetGunCam.up;
     }
 
     private void OnAnimatorIK(int layerIndex)
