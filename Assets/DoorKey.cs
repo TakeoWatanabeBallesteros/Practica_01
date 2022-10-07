@@ -17,19 +17,17 @@ public class DoorKey : DoorMovement
     bool fadeOut;
     bool interacting;
     bool activated;
-    private PlayerControls controls;
-    private PlayerControls Controls{
-        get{
-            if(controls != null) {return controls;}
-            return controls = new PlayerControls();
-        }
-    }
+    private PlayerControls _controls;
     
+    private void Awake()
+    {
+        _controls = PlayerInputs.Controls;
+    }
+
     new void Start()
     {
         base.Start();
         playerCol = FindObjectOfType<PlayerController>().GetComponent<Collider>();
-        CheckKey();
     }
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
@@ -57,9 +55,7 @@ public class DoorKey : DoorMovement
 
             if(!interacting)
             {
-                Controls.Player.Interact.Enable();
-                Controls.Player.Interact.performed += ctx => CheckKey();
-                Debug.Log("suscrito");
+                _controls.Player.Interact.performed += CheckKey;
                 interacting = true;
             }
         }
@@ -74,9 +70,7 @@ public class DoorKey : DoorMovement
 
             if(interacting)
             {
-                Controls.Player.Interact.Disable();
-                Controls.Player.Interact.performed -= ctx => CheckKey();
-                Debug.Log("desuscrito");
+                _controls.Player.Interact.performed -= CheckKey;
                 interacting = false;
             }
         }
@@ -84,7 +78,7 @@ public class DoorKey : DoorMovement
 
     bool InRange()
     {
-        return Vector2.Distance(new Vector2(lockCollider.bounds.center.x,lockCollider.bounds.center.z), new Vector2(playerCol.bounds.center.x,playerCol.bounds.center.z)) < range;
+        return Vector3.Distance(lockCollider.transform.position, playerCol.transform.position) < range;
     }
     bool LookingAtLock()
     {
@@ -124,9 +118,9 @@ public class DoorKey : DoorMovement
         background.color = new Color(background.color.r,background.color.g,background.color.b,0);
     }
 
-    void CheckKey()
+    void CheckKey(InputAction.CallbackContext ctx)
     {
-        Debug.Log("A");
+        Debug.Log("Use");
         int[] keys = GameManager.instance.ReadKeys();
         
         if(keys[keyNumber] == 1)
@@ -134,9 +128,7 @@ public class DoorKey : DoorMovement
             base.Open();
             background.color = new Color(background.color.r,background.color.g,background.color.b,0);
             activated = true;
-            Controls.Player.Interact.Disable();
-            Controls.Player.Interact.performed -= ctx => CheckKey();
-            Debug.Log("desuscrito");
+            _controls.Player.Interact.performed -= CheckKey;
         }
     }
 }

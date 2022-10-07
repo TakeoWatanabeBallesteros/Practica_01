@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using StarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -145,8 +144,6 @@ public class PlayerController : MonoBehaviour
 
     private bool IsCurrentDeviceMouse => _playerInput.currentControlScheme == "KeyboardMouse";
 
-    private TypeOfView _typeOfView;
-
     //TODO: Salto más dínamico
     //TODO: Crouch
     //TODO: Modelo 3D con animaciones y sonidos
@@ -172,87 +169,59 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveVector;
     private Vector2 lookVector;
     
-    private PlayerControls controls;
-    private PlayerControls Controls{
-        get{
-            if(controls != null) {return controls;}
-            return controls = new PlayerControls();
-        }
-    }
+    private PlayerControls _controls;
     
     bool cameraLocked = false;
-    
+
+    private void Awake()
+    {
+        _controls = PlayerInputs.Controls;
+    }
+
     void OnEnable() {
 #if UNITY_EDITOR
-        Controls.Debug.Enable();
-        Controls.Debug.LockCamera.performed += _ =>
+        _controls.Debug.LockCamera.performed += _ =>
         {
             cameraLocked = !cameraLocked;
             if (cameraLocked)
             {
-                Controls.Player.Look.Disable();
+                _controls.Player.Look.Disable();
                 Cursor.lockState = CursorLockMode.None;
             }
             else
             {
-                Controls.Player.Look.Enable();
+                _controls.Player.Look.Enable();
                 Cursor.lockState = CursorLockMode.Locked;
             }
             Cursor.visible = cameraLocked;
         };
 #endif
-        Controls.Player.Look.Enable();
-        Controls.Player.Look.performed += ctx => lookVector = ctx.ReadValue<Vector2>();
-        Controls.Player.Look.canceled += ctx => lookVector = Vector2.zero;
+        _controls.Player.Look.performed += ctx => lookVector = ctx.ReadValue<Vector2>();
+        _controls.Player.Look.canceled += ctx => lookVector = Vector2.zero;
         
-        Controls.Player.Move.Enable();
-        Controls.Player.Move.performed += ctx => moveVector = ctx.ReadValue<Vector2>();
-        Controls.Player.Move.canceled += ctx => moveVector = Vector2.zero;
+        _controls.Player.Move.performed += ctx => moveVector = ctx.ReadValue<Vector2>();
+        _controls.Player.Move.canceled += ctx => moveVector = Vector2.zero;
         
         // set target speed based on move speed, sprint speed and if sprint is pressed
-        Controls.Player.Sprint.Enable();
-        Controls.Player.Sprint.performed += ctx => targetSpeed = sprintSpeed;
-        Controls.Player.Sprint.canceled += ctx => targetSpeed = moveSpeed;
+        _controls.Player.Sprint.performed += ctx => targetSpeed = sprintSpeed;
+        _controls.Player.Sprint.canceled += ctx => targetSpeed = moveSpeed;
         
-        Controls.Player.Jump.Enable();
-        Controls.Player.Jump.performed += Jump;
+        _controls.Player.Jump.performed += Jump;
         //Controls.Player.Jump.canceled += ctx => OnJumpFinished();
     }
 
     void OnDisable() {
-#if UNITY_EDITOR
-        Controls.Debug.Enable();
-        Controls.Debug.LockCamera.performed -= _ =>
-        {
-            cameraLocked = !cameraLocked;
-            if (cameraLocked)
-            {
-                Controls.Player.Look.Disable();
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                Controls.Player.Look.Enable();
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            Cursor.visible = cameraLocked;
-        };
-#endif
-        Controls.Player.Look.Enable();
-        Controls.Player.Look.performed -= ctx => lookVector = ctx.ReadValue<Vector2>();
-        Controls.Player.Look.canceled -= ctx => lookVector = Vector2.zero;
+        _controls.Player.Look.performed -= ctx => lookVector = ctx.ReadValue<Vector2>();
+        _controls.Player.Look.canceled -= ctx => lookVector = Vector2.zero;
         
-        Controls.Player.Move.Disable();
-        Controls.Player.Move.performed -= ctx => moveVector = ctx.ReadValue<Vector2>();
-        Controls.Player.Move.canceled -= ctx => moveVector = Vector2.zero;
+        _controls.Player.Move.performed -= ctx => moveVector = ctx.ReadValue<Vector2>();
+        _controls.Player.Move.canceled -= ctx => moveVector = Vector2.zero;
         
         // set target speed based on move speed, sprint speed and if sprint is pressed
-        Controls.Player.Sprint.Disable();
-        Controls.Player.Sprint.performed -= ctx => targetSpeed = sprintSpeed;
-        Controls.Player.Sprint.canceled -= ctx => targetSpeed = moveSpeed;
+        _controls.Player.Sprint.performed -= ctx => targetSpeed = sprintSpeed;
+        _controls.Player.Sprint.canceled -= ctx => targetSpeed = moveSpeed;
 
-        Controls.Player.Jump.Disable();
-        Controls.Player.Jump.performed -= Jump;
+        _controls.Player.Jump.performed -= Jump;
         //Controls.Player.Jump.canceled -= ctx => OnJumpFinished();
     }
 
@@ -425,19 +394,6 @@ public class PlayerController : MonoBehaviour
                 _verticalVelocity = 0f;
             }
 
-            // Jump
-            if (_input.jump && _jumpTimeoutDelta <= 0.0f && timeOnAir < .1f)
-            {
-                // the square root of H * -2 * G = how much velocity needed to reach desired height
-                _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
-
-                // update animator if using character
-                if (_hasAnimator)
-                {
-                    _animator.SetBool(_animIDJump, true);
-                }
-            }
-
             // jump timeout
             if (_jumpTimeoutDelta >= 0.0f)
             {
@@ -463,9 +419,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            // if we are not grounded, do not jump
-            _input.jump = false;
-            
             if ((collisionFlags & CollisionFlags.Above) != 0)
             {
                 _verticalVelocity = 0.0f;

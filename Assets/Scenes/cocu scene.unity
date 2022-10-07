@@ -241,10 +241,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3557554918752446480, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 3557554918752446481, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1027,7 +1023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyNumber: 0
   lockCollider: {fileID: 763014235}
-  range: 4
+  range: 2.2
   background: {fileID: 181180615}
   alphaSpeed: 5
 --- !u!23 &1223054847
