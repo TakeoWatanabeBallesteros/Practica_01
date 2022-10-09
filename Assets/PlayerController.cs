@@ -373,18 +373,19 @@ public class PlayerController : MonoBehaviour
     
     private void GroundAndGravity()
     {
+        // If touching the ground
         if ((collisionFlags & CollisionFlags.Below)!=0)
         {
             m_VerticalSpeed = 0.0f;
             timeOnAir = 0;
             grounded = true;
-            // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetBool(_animIDGrounded, grounded);
-            }
         }
         else grounded = false;
+        // update animator if using character
+        if (_hasAnimator)
+        {
+            _animator.SetBool(_animIDGrounded, grounded);
+        }
         
         if (grounded)
         {
