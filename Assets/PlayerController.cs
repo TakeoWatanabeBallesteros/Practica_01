@@ -102,10 +102,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool rotateHead = true;
     
-    [Header("Guns")]
-    [Tooltip("The transform of the gun, to edit the pitch")]
+    [Header("Weapon")]
+    [Tooltip("The transform of the weapon, to edit the pitch")]
     [SerializeField]
-    private Transform gun;
+    private Transform weaponPosition;
+    [Tooltip("The default position of the weapon")]
+    [SerializeField]
+    private Transform weaponIdlePosition;
+    [Tooltip("The position of the weapon when aiming")]
+    [SerializeField]
+    private Transform weaponAimPosition;
     
     // camera
     float yaw;
@@ -168,7 +174,9 @@ public class PlayerController : MonoBehaviour
     private float targetSpeed;
     private Vector2 moveVector;
     private Vector2 lookVector;
-    
+
+    private bool aiming = false;
+
     private PlayerControls _controls;
     
     bool cameraLocked = false;
@@ -208,6 +216,10 @@ public class PlayerController : MonoBehaviour
         
         _controls.Player.Jump.performed += Jump;
         //Controls.Player.Jump.canceled += ctx => OnJumpFinished();
+        
+        _controls.Player.Aim.performed += Aim;
+        _controls.Player.Aim.canceled += Aim;
+        
     }
 
     void OnDisable() {
@@ -223,6 +235,9 @@ public class PlayerController : MonoBehaviour
 
         _controls.Player.Jump.performed -= Jump;
         //Controls.Player.Jump.canceled -= ctx => OnJumpFinished();
+        
+        _controls.Player.Aim.performed -= Aim;
+        _controls.Player.Aim.canceled -= Aim;
     }
 
     private void Start()
@@ -257,6 +272,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         GroundAndGravity();
+        Aiming();
     }
 
     private void LateUpdate()
@@ -279,7 +295,7 @@ public class PlayerController : MonoBehaviour
 			// clamp our pitch rotation
 			pitch = ClampAngle(pitch, bottomClamp, topClamp);
             
-            // Update Cinemachine camera target pitch
+            // Update camera target pitch
             m_PitchController.transform.localRotation = Quaternion.Euler(pitch, 0.0f, 0.0f);
             //gun.localRotation = Quaternion.Euler(-pitch, -180f, 0.0f);
 
@@ -289,7 +305,7 @@ public class PlayerController : MonoBehaviour
         }
         
         // Set Camera Root to head position
-        gunCamera.position = targetPitch.position;
+        gunCamera.position = targetPitch.position+targetPitch.forward*.05f;
         gunCamera.rotation = targetGunCam.rotation;
     }
 
@@ -343,7 +359,7 @@ public class PlayerController : MonoBehaviour
         // move the player
         collisionFlags =  m_CharacterController.Move(inputDirection.normalized * (_speed * Time.deltaTime) +
                                                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-        
+        transform.position = Vector3.zero;
         _animationBlend = Mathf.Lerp(_animationBlend, _speed, Time.deltaTime * speedChangeRate);
         if (_animationBlend < 0.01f) _animationBlend = 0f;
 
@@ -436,6 +452,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Aim(InputAction.CallbackContext ctx) {aiming = !aiming; }
+
+    private void Aiming()
+    {
+        if (!aiming)
+        {
+            weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponIdlePosition.position, .1f);
+        }
+        else
+        {
+            weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponAimPosition.position, .1f);
+        }
+    }
+    
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
     {
         if (lfAngle < -360f) lfAngle += 360f;

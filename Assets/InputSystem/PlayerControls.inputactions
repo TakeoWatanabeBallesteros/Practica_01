@@ -35,7 +35,7 @@
                     "id": "980e881e-182c-404c-8cbf-3d09fdb48fef",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold(duration=0.01,pressPoint=0.05)"
+                    "interactions": ""
                 },
                 {
                     "name": "ChangeVision",
@@ -57,6 +57,14 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "26d3bb29-d32f-492f-bb27-5ffde1e4d5cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Aim",
+                    "type": "Button",
+                    "id": "54ca290c-edc3-4ec4-b860-5324dfbd09d2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -302,6 +310,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3d50cc86-d2a7-4e95-a907-cff148642712",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb4a57c9-9453-4968-8859-dda2ddbf1d22",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;Xbox Controller;PS4 Controller",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
