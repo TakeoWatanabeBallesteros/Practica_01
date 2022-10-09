@@ -359,7 +359,7 @@ public class PlayerController : MonoBehaviour
         // move the player
         collisionFlags =  m_CharacterController.Move(inputDirection.normalized * (_speed * Time.deltaTime) +
                                                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-        //transform.position = Vector3.zero;
+        
         _animationBlend = Mathf.Lerp(_animationBlend, _speed, Time.deltaTime * speedChangeRate);
         if (_animationBlend < 0.01f) _animationBlend = 0f;
 
