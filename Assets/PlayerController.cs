@@ -72,7 +72,11 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("The camera that shows the gun and player")]
     [SerializeField] 
-    private Transform gunCamera;
+    private Transform gunCameraTransform;
+    
+    [Tooltip("The camera that shows the gun and player")]
+    [SerializeField] 
+    private Camera gunCamera;
     
     [Tooltip("Add offset to the position of the camera")]
     [SerializeField]
@@ -305,8 +309,10 @@ public class PlayerController : MonoBehaviour
         }
         
         // Set Camera Root to head position
-        gunCamera.position = targetPitch.position+targetPitch.forward*.05f;
-        gunCamera.rotation = targetGunCam.rotation;
+        gunCameraTransform.position = targetPitch.position+targetPitch.forward*.05f;
+        
+        //gunCamera.position = targetPitch.position;
+        gunCameraTransform.rotation = targetGunCam.rotation;
     }
 
     private void OnAnimatorIK(int layerIndex)
@@ -442,7 +448,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext ctx)
     {
-        if (!(_jumpTimeoutDelta <= 0.0f) || !(timeOnAir < .1f)) return;
+        if (!(_jumpTimeoutDelta <= 0.0f) || !(timeOnAir < .5f)) return;
         // the square root of H * -2 * G = how much velocity needed to reach desired height
         _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
 
@@ -460,10 +466,12 @@ public class PlayerController : MonoBehaviour
         if (!aiming)
         {
             weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponIdlePosition.position, .1f);
+            gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 75, .1f);
         }
         else
         {
             weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponAimPosition.position, .1f);
+            gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 20, .1f);
         }
     }
     
