@@ -6902,9 +6902,6 @@ MonoBehaviour:
   targetGunCam: {fileID: 3557554919167521573}
   topClamp: 60
   bottomClamp: -65
-  cameraAngleOverride: 0
-  lockCameraPosition: 0
-  rotateHead: 1
   weaponPosition: {fileID: 8368899320417454285}
   weaponIdlePosition: {fileID: 557917781}
   weaponAimPosition: {fileID: 793214131}
@@ -6912,7 +6909,7 @@ MonoBehaviour:
   m_PitchRotationSpeed: 100
   m_PitchController: {fileID: 3557554919452930734}
   m_CharacterController: {fileID: 3557554918752446482}
-  m_Camera: {fileID: 3557554918526811899}
+  mainCamera: {fileID: 3557554918526811899}
   m_NormalMovementFOV: 60
   m_RunMovementFOV: 80
   m_CrouchMovementFOV: 40
