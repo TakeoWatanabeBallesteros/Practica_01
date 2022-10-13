@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7977501041344405160}
   - component: {fileID: 3638214275332312917}
   - component: {fileID: 1661478739870620177}
+  - component: {fileID: 1576990293094737609}
   m_Layer: 0
   m_Name: HostageSteel
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760894752762328925}
   m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: 2.0047882, y: 0, z: -2.4466743}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3020700937392014903}
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1576990293094737609
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760894752762328925}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6075501584746954553, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &6940444558559786224
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +107,7 @@ GameObject:
   - component: {fileID: 8005594977421629493}
   - component: {fileID: 5929718392852570373}
   - component: {fileID: 3402187773515800628}
+  - component: {fileID: 1338765057517176739}
   m_Layer: 0
   m_Name: HostageSteel_Target
   m_TagString: Untagged
@@ -107,7 +123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6940444558559786224}
   m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: 2.0047872, y: 1.4021035, z: -2.4392128}
+  m_LocalPosition: {x: 0, y: 1.4021035, z: 0.0079}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3020700937392014903}
@@ -162,6 +178,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1338765057517176739
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6940444558559786224}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4683349199153069014, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &9004596169793023534
 GameObject:
   m_ObjectHideFlags: 0

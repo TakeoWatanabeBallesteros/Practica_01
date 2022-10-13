@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3633536166663137444}
   - component: {fileID: 6234208032411689205}
   - component: {fileID: 4529527172641276478}
+  - component: {fileID: 8241486300017448363}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_06
   m_TagString: Untagged
@@ -25,11 +26,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97895524386717135}
-  m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: 0.41264862, y: 0.8807163, z: -0.42156982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.38759995, y: -0.1602745, z: -0.008499311}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5215496508633297124}
+  m_Father: {fileID: 8412362152371755745}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6234208032411689205
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8241486300017448363
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97895524386717135}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1700471720771656471, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &356137617558418128
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +107,7 @@ GameObject:
   - component: {fileID: 4748633861621874498}
   - component: {fileID: 8749252776503856353}
   - component: {fileID: 6305268108905376158}
+  - component: {fileID: 7308351172532768719}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_05
   m_TagString: Untagged
@@ -106,11 +122,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356137617558418128}
-  m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: 0.5698685, y: 1.2010695, z: -0.42156982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.23038006, y: 0.16007864, z: -0.00849925}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5215496508633297124}
+  m_Father: {fileID: 8412362152371755745}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8749252776503856353
@@ -162,6 +178,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7308351172532768719
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356137617558418128}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6310204171412825421, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &717263009006846043
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +203,7 @@ GameObject:
   - component: {fileID: 1811124000587096080}
   - component: {fileID: 3271751239653416966}
   - component: {fileID: 8954444512730768197}
+  - component: {fileID: 7203035483719661405}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_07
   m_TagString: Untagged
@@ -187,11 +218,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717263009006846043}
-  m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: 0.2556185, y: 1.2010695, z: -0.42156982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.54463005, y: 0.16007864, z: -0.008499373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5215496508633297124}
+  m_Father: {fileID: 8412362152371755745}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3271751239653416966
@@ -243,6 +274,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7203035483719661405
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717263009006846043}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8370412240252551738, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &1590757423669564891
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +299,7 @@ GameObject:
   - component: {fileID: 2187543871944751266}
   - component: {fileID: 2263630881181970953}
   - component: {fileID: 3679888958551517183}
+  - component: {fileID: 6941394935960251590}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_08
   m_TagString: Untagged
@@ -268,11 +314,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590757423669564891}
-  m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: 0.09845585, y: 0.88071644, z: -0.42156982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.7017927, y: -0.16027439, z: -0.008499433}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5215496508633297124}
+  m_Father: {fileID: 8412362152371755745}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2263630881181970953
@@ -324,6 +370,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6941394935960251590
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590757423669564891}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1439377940149510412, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &2776327611694634702
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +395,7 @@ GameObject:
   - component: {fileID: 8412362152371755745}
   - component: {fileID: 1392044750823678189}
   - component: {fileID: 7285517528121569169}
+  - component: {fileID: 1885000144038846371}
   m_Layer: 0
   m_Name: SpinningPlateRack_Rack
   m_TagString: Untagged
@@ -350,11 +411,19 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2776327611694634702}
   m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: 0.8007633, y: 1.0409745, z: -0.42943192}
+  m_LocalPosition: {x: 0, y: 1.0409745, z: -0.1278}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5914903457422669778}
+  - {fileID: 3045646653459732069}
+  - {fileID: 6768041663888404111}
+  - {fileID: 2498569119546163364}
+  - {fileID: 4748633861621874498}
+  - {fileID: 3633536166663137444}
+  - {fileID: 1811124000587096080}
+  - {fileID: 2187543871944751266}
   m_Father: {fileID: 5215496508633297124}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1392044750823678189
 MeshFilter:
@@ -405,6 +474,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1885000144038846371
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776327611694634702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 936609786738229252, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &3584720091430339582
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +499,7 @@ GameObject:
   - component: {fileID: 6768041663888404111}
   - component: {fileID: 5751047220822154253}
   - component: {fileID: 5275822118953459820}
+  - component: {fileID: 3791384061059392517}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_03
   m_TagString: Untagged
@@ -430,11 +514,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3584720091430339582}
-  m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: 1.1888773, y: 0.879978, z: -0.42156982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.38862872, y: -0.16101283, z: -0.00849901}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5215496508633297124}
+  m_Father: {fileID: 8412362152371755745}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5751047220822154253
@@ -486,6 +570,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3791384061059392517
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3584720091430339582}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3082804081998337684, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &4499721597950530492
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +595,7 @@ GameObject:
   - component: {fileID: 2498569119546163364}
   - component: {fileID: 5944451049192271206}
   - component: {fileID: 4175208233432897920}
+  - component: {fileID: 873210141270701697}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_04
   m_TagString: Untagged
@@ -511,11 +610,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4499721597950530492}
-  m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: 1.0316575, y: 1.2018077, z: -0.42156982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.23140883, y: 0.16081691, z: -0.00849907}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5215496508633297124}
+  m_Father: {fileID: 8412362152371755745}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5944451049192271206
@@ -567,6 +666,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &873210141270701697
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499721597950530492}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1896446760698194681, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &4971665394006847857
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,14 +707,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5914903457422669778}
-  - {fileID: 3045646653459732069}
-  - {fileID: 6768041663888404111}
-  - {fileID: 2498569119546163364}
-  - {fileID: 4748633861621874498}
-  - {fileID: 3633536166663137444}
-  - {fileID: 1811124000587096080}
-  - {fileID: 2187543871944751266}
   - {fileID: 8412362152371755745}
   - {fileID: 5851083186927217307}
   m_Father: {fileID: 0}
@@ -618,6 +723,7 @@ GameObject:
   - component: {fileID: 5851083186927217307}
   - component: {fileID: 5415125699790431017}
   - component: {fileID: 6043040524282242978}
+  - component: {fileID: 1451082184563401937}
   m_Layer: 0
   m_Name: SpinningPlateRack_Stand
   m_TagString: Untagged
@@ -633,11 +739,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5342644082733732083}
   m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: 0.80076283, y: 0.000070393085, z: -0.3014984}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5215496508633297124}
-  m_RootOrder: 9
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5415125699790431017
 MeshFilter:
@@ -688,6 +794,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1451082184563401937
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342644082733732083}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2052895565784887978, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &6315524432627433352
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +819,7 @@ GameObject:
   - component: {fileID: 5914903457422669778}
   - component: {fileID: 6461106909387736963}
   - component: {fileID: 9200304386749892169}
+  - component: {fileID: 3090844506555345690}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_01
   m_TagString: Untagged
@@ -713,11 +834,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6315524432627433352}
-  m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: 1.5030701, y: 0.879978, z: -0.42156982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.70282125, y: -0.16101283, z: -0.008498887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5215496508633297124}
+  m_Father: {fileID: 8412362152371755745}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6461106909387736963
@@ -769,6 +890,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3090844506555345690
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315524432627433352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3287813815926607994, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &6996884242994363269
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,6 +915,7 @@ GameObject:
   - component: {fileID: 3045646653459732069}
   - component: {fileID: 8947399470900574534}
   - component: {fileID: 2773104152246281770}
+  - component: {fileID: 6062933976692113234}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_02
   m_TagString: Untagged
@@ -794,11 +930,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6996884242994363269}
-  m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: 1.3459222, y: 1.2018077, z: -0.42156982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5456736, y: 0.16081691, z: -0.008498948}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5215496508633297124}
+  m_Father: {fileID: 8412362152371755745}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8947399470900574534
@@ -850,3 +986,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6062933976692113234
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6996884242994363269}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1851752893011948072, guid: a7e633fcb127da94aac475491d17cba6, type: 3}

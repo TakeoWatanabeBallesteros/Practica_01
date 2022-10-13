@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3853944580551595759}
   - component: {fileID: 5777679713594879826}
   - component: {fileID: 6170471264629951740}
+  - component: {fileID: 6267412344155652985}
   m_Layer: 0
   m_Name: PlateRack_Plate_06
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568186208165978430}
   m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: -0.37772265, y: 1.1892855, z: -0.25411987}
+  m_LocalPosition: {x: 0.8982, y: 1.1892855, z: 0.0453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4852892132740662251}
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6267412344155652985
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568186208165978430}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2961711641296081376, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &640883382655394053
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +107,7 @@ GameObject:
   - component: {fileID: 9181167733927728805}
   - component: {fileID: 7965796146136967970}
   - component: {fileID: 865194450166469518}
+  - component: {fileID: 6832890500498983497}
   m_Layer: 0
   m_Name: PlateRack_Plate_05
   m_TagString: Untagged
@@ -107,7 +123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640883382655394053}
   m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: -0.7397222, y: 1.1892855, z: -0.25411987}
+  m_LocalPosition: {x: 0.5362004, y: 1.1892855, z: 0.04529953}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4852892132740662251}
@@ -162,6 +178,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6832890500498983497
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640883382655394053}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7724591616903682027, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &646089937952972964
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +203,7 @@ GameObject:
   - component: {fileID: 5525154995245695487}
   - component: {fileID: 7735404081253745770}
   - component: {fileID: 950460133044555710}
+  - component: {fileID: 6217191631711641146}
   m_Layer: 0
   m_Name: PlateRack_Plate_04
   m_TagString: Untagged
@@ -188,7 +219,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646089937952972964}
   m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: -1.1017227, y: 1.1892855, z: -0.25411987}
+  m_LocalPosition: {x: 0.17419988, y: 1.1892855, z: 0.04529953}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4852892132740662251}
@@ -243,6 +274,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6217191631711641146
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646089937952972964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 647534514895418781, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &1391310821706225242
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +299,7 @@ GameObject:
   - component: {fileID: 5362450824013976805}
   - component: {fileID: 3175607917569137640}
   - component: {fileID: 8091219342986298969}
+  - component: {fileID: 8452434383183041464}
   m_Layer: 0
   m_Name: PlateRack_Plate_02
   m_TagString: Untagged
@@ -269,7 +315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391310821706225242}
   m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: -1.8257241, y: 1.1892855, z: -0.25411987}
+  m_LocalPosition: {x: -0.5495, y: 1.1892855, z: 0.0469}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4852892132740662251}
@@ -324,6 +370,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8452434383183041464
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391310821706225242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3880048582342241413, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &3985199471010633323
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +395,7 @@ GameObject:
   - component: {fileID: 4828197841633325042}
   - component: {fileID: 7406491702284175086}
   - component: {fileID: 1777446878245441502}
+  - component: {fileID: 7533497628444937402}
   m_Layer: 0
   m_Name: PlateRack_Plate_03
   m_TagString: Untagged
@@ -350,7 +411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3985199471010633323}
   m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: -1.463724, y: 1.1892855, z: -0.25411987}
+  m_LocalPosition: {x: -0.18780142, y: 1.1892855, z: 0.04529953}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4852892132740662251}
@@ -405,6 +466,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7533497628444937402
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985199471010633323}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7129133508496792610, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &5072165882151025643
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +491,7 @@ GameObject:
   - component: {fileID: 2850764225639450762}
   - component: {fileID: 2312914877087057611}
   - component: {fileID: 6265449679975756540}
+  - component: {fileID: 1437602054718787329}
   m_Layer: 0
   m_Name: PlateRack_Plate_01
   m_TagString: Untagged
@@ -431,7 +507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5072165882151025643}
   m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: -2.1877236, y: 1.1892855, z: -0.25411987}
+  m_LocalPosition: {x: -0.9112, y: 1.1892855, z: 0.0468}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4852892132740662251}
@@ -486,6 +562,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1437602054718787329
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5072165882151025643}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5671516974949985982, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &5278877958124917543
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +587,7 @@ GameObject:
   - component: {fileID: 2233395178924929634}
   - component: {fileID: 7451900883131662841}
   - component: {fileID: 5230531381103070660}
+  - component: {fileID: 7363838805233562285}
   m_Layer: 0
   m_Name: PlateRack_ResetArm
   m_TagString: Untagged
@@ -512,7 +603,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5278877958124917543}
   m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: -1.2759762, y: 1.1849895, z: -0.3335495}
+  m_LocalPosition: {x: 0, y: 1.1849895, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4852892132740662251}
@@ -567,6 +658,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7363838805233562285
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278877958124917543}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5481310863296684928, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &7398763738980151401
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,6 +721,7 @@ GameObject:
   - component: {fileID: 7031390596868773569}
   - component: {fileID: 8730721716252460493}
   - component: {fileID: 7711604531792316629}
+  - component: {fileID: 5567083663695152066}
   m_Layer: 0
   m_Name: PlateRack_Stand
   m_TagString: Untagged
@@ -631,7 +737,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8530531808941898792}
   m_LocalRotation: {x: -6.123235e-17, y: 1, z: 6.123235e-17, w: 0.00000019470718}
-  m_LocalPosition: {x: -1.2782369, y: 0, z: -0.3014984}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4852892132740662251}
@@ -686,3 +792,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5567083663695152066
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530531808941898792}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5906112502994503218, guid: a7e633fcb127da94aac475491d17cba6, type: 3}

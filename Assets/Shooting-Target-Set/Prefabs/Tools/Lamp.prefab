@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 5192388816292326958}
   - component: {fileID: 1352669959087135451}
   - component: {fileID: 9152231869712487299}
+  - component: {fileID: 3376542935315953449}
   m_Layer: 0
   m_Name: HangingLamp
   m_TagString: Untagged
@@ -113,6 +114,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3376542935315953449
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735753372297895442}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5845873181881097364, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
 --- !u!1 &9045683698135060479
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +139,7 @@ GameObject:
   - component: {fileID: 1723492774375565538}
   - component: {fileID: 4280080768580331797}
   - component: {fileID: 4105308277241961092}
+  - component: {fileID: 8924902200423125480}
   m_Layer: 0
   m_Name: HangingLamp_Clamps
   m_TagString: Untagged
@@ -194,3 +210,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8924902200423125480
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9045683698135060479}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1806181828289134379, guid: a7e633fcb127da94aac475491d17cba6, type: 3}

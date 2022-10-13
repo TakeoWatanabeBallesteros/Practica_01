@@ -24,11 +24,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float sprintSpeed = 5.335f;
 
-    [Tooltip("How fast the character turns to face movement direction")]
-    [SerializeField]
-    [Range(0.0f, 0.3f)]
-    private float rotationSmoothTime = 0.12f;
-
     [Tooltip("Acceleration and deceleration")]
     [SerializeField]
     private float speedChangeRate = 10.0f;
@@ -155,7 +150,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_RunMovementFOV;
     [SerializeField] private float m_CrouchMovementFOV;
 
-    float m_VerticalSpeed = 0.0f;
 
     private float timeOnAir;
     private float targetSpeed;
@@ -360,7 +354,7 @@ public class PlayerController : MonoBehaviour
         // If touching the ground
         if ((collisionFlags & CollisionFlags.Below)!=0)
         {
-            m_VerticalSpeed = 0.0f;
+            _verticalVelocity = 0.0f;
             timeOnAir = 0;
             grounded = true;
         }
@@ -481,5 +475,10 @@ public class PlayerController : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(landingAudioClip, transform.TransformPoint(_controller.center), footstepAudioVolume);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        other.GetComponent<Hittable>()?.OnHit();
     }
 }
