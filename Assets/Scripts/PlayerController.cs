@@ -94,18 +94,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float bottomClamp = -30.0f;
 
-    [Tooltip("Additional degrees to override the camera. Useful for fine tuning camera position when locked")]
-    [SerializeField]
-    private float cameraAngleOverride = 0.0f;
 
-    [Tooltip("For locking the camera position on all axis")]
-    [SerializeField]
-    private bool lockCameraPosition = false;
 
-    [Tooltip("Fix or not the neck")]
-    [SerializeField]
-    private bool rotateHead = true;
-    
     [Header("Weapon")]
     [Tooltip("The transform of the weapon, to edit the pitch")]
     [SerializeField]
@@ -124,11 +114,7 @@ public class PlayerController : MonoBehaviour
     // player
     private float _speed;
     private float _animationBlend;
-    private float _targetRotation = 0.0f;
-    private float _fpsRotationVelocity;
-    private float _rotationVelocity;
     private float _verticalVelocity;
-    private float _terminalVelocity = 53.0f;
 
     // timeout deltatime
     private float _jumpTimeoutDelta;
@@ -144,9 +130,6 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInput;
     private Animator _animator;
     private CharacterController _controller;
-    //Change class name and action names
-    private PlayerInputs _input;
-    private GameObject _mainCamera;
 
     private const float Threshold = 0.01f;
 
@@ -167,7 +150,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] CharacterController m_CharacterController;
 
-    [SerializeField] Camera m_Camera;
+    [SerializeField] Camera mainCamera;
     [SerializeField] float m_NormalMovementFOV;
     [SerializeField] float m_RunMovementFOV;
     [SerializeField] private float m_CrouchMovementFOV;
@@ -248,7 +231,6 @@ public class PlayerController : MonoBehaviour
     {
         _hasAnimator = TryGetComponent(out _animator);
         _controller = GetComponent<CharacterController>();
-        _input = GetComponent<PlayerInputs>();
         _playerInput = GetComponent<PlayerInput>();
 
         AssignAnimationIDs();
@@ -291,8 +273,6 @@ public class PlayerController : MonoBehaviour
         m_PitchController.position = targetPitch.position;
         
         // if there is an input
-		if (lookVector.sqrMagnitude >= Threshold)
-		{
             pitch += lookVector.y * Time.deltaTime*m_PitchRotationSpeed;
 			yaw += lookVector.x * Time.deltaTime*m_YawRotationSpeed;
 
@@ -306,7 +286,6 @@ public class PlayerController : MonoBehaviour
             // rotate the player left and right
             // TODO: Rotate the body with IK animation
             transform.rotation = Quaternion.Euler(0.0f, yaw, 0.0f);
-        }
         
         // Set Camera Root to head position
         gunCameraTransform.position = targetPitch.position+targetPitch.forward*.05f;
@@ -339,8 +318,7 @@ public class PlayerController : MonoBehaviour
 
         // a reference to the players current horizontal velocity
         float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
-
-        float speedOffset = 0.1f;
+        
         float inputMagnitude = moveVector.magnitude < 1 && moveVector.magnitude != 0 ? moveVector.magnitude : 1f;
 
         // accelerate or decelerate to target speed
@@ -467,11 +445,14 @@ public class PlayerController : MonoBehaviour
         {
             weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponIdlePosition.position, .1f);
             gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 75, .1f);
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 60, .1f);
         }
         else
         {
             weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponAimPosition.position, .1f);
             gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 20, .1f);
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 20, .1f);
+            _animator.SetFloat(_animIDMotionSpeed, 0);
         }
     }
     
