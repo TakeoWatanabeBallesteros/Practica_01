@@ -19,8 +19,7 @@ public class TexasStarTarget : Hittable
     void Update()
     {
         if (!hit) return;
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(hitAngle), .8f);
-        hit = false;
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(hitAngle), .6f);
     }
 
     public override void OnHit()
