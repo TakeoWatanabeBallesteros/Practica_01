@@ -18759,6 +18759,7 @@ MonoBehaviour:
   pointB: {fileID: 2114057182}
   speed: 1
   secondsStopped: 2
+  player: {fileID: 0}
 --- !u!4 &769066706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 97ef08cc7411beb4b833c8331d89702f, type: 3}
@@ -30739,6 +30740,7 @@ MonoBehaviour:
   pointB: {fileID: 730654341}
   speed: 0.5
   secondsStopped: 2
+  player: {fileID: 0}
 --- !u!4 &1222062112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 97ef08cc7411beb4b833c8331d89702f, type: 3}
@@ -43672,6 +43674,22 @@ PrefabInstance:
     - target: {fileID: 3557554918752446481, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557554918752446483, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
+      propertyPath: moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557554918752446483, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
+      propertyPath: sprintSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557554918752446483, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
+      propertyPath: m_YawRotationSpeed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557554918752446483, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
+      propertyPath: m_PitchRotationSpeed
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}

@@ -1,22 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    static GameManager instance = null;
     int[] playerKeys;
-    [SerializeField] int numberOfTotalKeys;
-    private void Awake() {
-        InitializeKeys();
-        if(instance != null)
+    Transform player;
+    int numberOfTotalKeys;
+    int playerHealth;
+    int playerShield;
+    private void Start() {
+        DontDestroyOnLoad(this.gameObject);
+    }
+    public static GameManager GetGameManager()
+    {
+        if(instance == null)
         {
-            Destroy(gameObject);
+            instance = new GameObject("GameManager").AddComponent<GameManager>();
+            instance.InitializeData();
+            instance.InitializeKeys();
+        }
+
+        return instance;
+    }
+    public static void DestroySingletone()
+    {
+        if (instance != null)
+        {
+            GameObject.Destroy(instance);
         }
         else
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            instance = null;
         }
     }
 
@@ -25,19 +42,33 @@ public class GameManager : MonoBehaviour
         playerKeys = new int[numberOfTotalKeys];
         for (int i = 0; i < numberOfTotalKeys; i++)
         {
-            playerKeys[i] = PlayerPrefs.GetInt("Key"+i.ToString(),0);
+            playerKeys[i] = 0;
         }
     }
 
-    public void GetKey(int keyNumber)
+    public void SetKey(int keyNumber)
     {
-        PlayerPrefs.SetInt("Key"+keyNumber.ToString(),1);
-        playerKeys[keyNumber] = PlayerPrefs.GetInt("Key"+keyNumber.ToString(),0);
+        playerKeys[keyNumber] = 1;
     }
 
-    public int[] ReadKeys()
+    public int GetKey(int keyNumber)
     {
-        return playerKeys;
+        return playerKeys[keyNumber];
+    }
+
+    public Transform GetPlayer()
+    {
+        return player;
+    }
+    public void SetPlayer(Transform _player)
+    {
+        player = _player;
+    }
+
+    void InitializeData()
+    {
+        DataGameController data = Resources.Load<DataGameController>("DataGameController");
+        instance.numberOfTotalKeys = data.numberOfKeys;
     }
     
 }

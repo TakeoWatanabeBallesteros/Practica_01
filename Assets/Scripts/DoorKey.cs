@@ -120,10 +120,7 @@ public class DoorKey : DoorMovement
 
     void CheckKey(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Use");
-        int[] keys = GameManager.instance.ReadKeys();
-        
-        if(keys[keyNumber] == 1)
+        if(GameManager.GetGameManager().GetKey(keyNumber) == 1)
         {
             base.Open();
             background.color = new Color(background.color.r,background.color.g,background.color.b,0);

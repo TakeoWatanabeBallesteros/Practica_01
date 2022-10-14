@@ -14,6 +14,6 @@ public class DroppedKey : DroppedBase
     // Update is called once per frame
     protected override void WhenPicked()
     {
-        GameManager.instance.GetKey(keyNumber);
+        GameManager.GetGameManager().SetKey(keyNumber);
     }
 }
