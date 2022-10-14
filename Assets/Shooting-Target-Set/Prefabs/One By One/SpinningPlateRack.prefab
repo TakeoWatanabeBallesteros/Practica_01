@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6234208032411689205}
   - component: {fileID: 4529527172641276478}
   - component: {fileID: 8241486300017448363}
+  - component: {fileID: 631366774}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_06
   m_TagString: Untagged
@@ -26,12 +27,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97895524386717135}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.38759995, y: -0.1602745, z: -0.008499311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.1722, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8412362152371755745}
-  m_RootOrder: 5
+  m_Father: {fileID: 1570944388918730085}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6234208032411689205
 MeshFilter:
@@ -96,6 +97,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1700471720771656471, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &631366774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97895524386717135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
 --- !u!1 &356137617558418128
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +124,7 @@ GameObject:
   - component: {fileID: 8749252776503856353}
   - component: {fileID: 6305268108905376158}
   - component: {fileID: 7308351172532768719}
+  - component: {fileID: 167226816}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_05
   m_TagString: Untagged
@@ -122,12 +139,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356137617558418128}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.23038006, y: 0.16007864, z: -0.00849925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.1749, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8412362152371755745}
-  m_RootOrder: 4
+  m_Father: {fileID: 9143176399929011690}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8749252776503856353
 MeshFilter:
@@ -192,6 +209,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6310204171412825421, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &167226816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356137617558418128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
 --- !u!1 &717263009006846043
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +236,7 @@ GameObject:
   - component: {fileID: 3271751239653416966}
   - component: {fileID: 8954444512730768197}
   - component: {fileID: 7203035483719661405}
+  - component: {fileID: 1026743403}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_07
   m_TagString: Untagged
@@ -218,12 +251,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717263009006846043}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.54463005, y: 0.16007864, z: -0.008499373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.1736, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8412362152371755745}
-  m_RootOrder: 6
+  m_Father: {fileID: 1754365749417636991}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3271751239653416966
 MeshFilter:
@@ -288,6 +321,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8370412240252551738, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &1026743403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717263009006846043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
 --- !u!1 &1590757423669564891
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +348,7 @@ GameObject:
   - component: {fileID: 2263630881181970953}
   - component: {fileID: 3679888958551517183}
   - component: {fileID: 6941394935960251590}
+  - component: {fileID: 1989719211}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_08
   m_TagString: Untagged
@@ -314,12 +363,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590757423669564891}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7017927, y: -0.16027439, z: -0.008499433}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.1721, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8412362152371755745}
-  m_RootOrder: 7
+  m_Father: {fileID: 2488533374668502666}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2263630881181970953
 MeshFilter:
@@ -384,6 +433,68 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1439377940149510412, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &1989719211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590757423669564891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
+--- !u!1 &2250487474344600721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2488533374668502666}
+  - component: {fileID: 1552304892}
+  m_Layer: 0
+  m_Name: SpinningPlateRack_Plate_08
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2488533374668502666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250487474344600721}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7018, y: 0.0112, z: -0.0085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2187543871944751266}
+  m_Father: {fileID: 8412362152371755745}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1552304892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250487474344600721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 90, y: 0, z: 0}
+  rotateDuration: 1
 --- !u!1 &2776327611694634702
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,14 +525,14 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.0409745, z: -0.1278}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5914903457422669778}
-  - {fileID: 3045646653459732069}
-  - {fileID: 6768041663888404111}
-  - {fileID: 2498569119546163364}
-  - {fileID: 4748633861621874498}
-  - {fileID: 3633536166663137444}
-  - {fileID: 1811124000587096080}
-  - {fileID: 2187543871944751266}
+  - {fileID: 4593534841731245168}
+  - {fileID: 2962728693611152198}
+  - {fileID: 2658446715532029200}
+  - {fileID: 255177469552721222}
+  - {fileID: 9143176399929011690}
+  - {fileID: 1570944388918730085}
+  - {fileID: 1754365749417636991}
+  - {fileID: 2488533374668502666}
   m_Father: {fileID: 5215496508633297124}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -488,6 +599,53 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 936609786738229252, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!1 &3221840548683092009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2658446715532029200}
+  - component: {fileID: 1704117290}
+  m_Layer: 0
+  m_Name: SpinningPlateRack_Plate_03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2658446715532029200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3221840548683092009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3886, y: 0.0111, z: -0.0085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6768041663888404111}
+  m_Father: {fileID: 8412362152371755745}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1704117290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3221840548683092009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 90, y: 0, z: 0}
+  rotateDuration: 1
 --- !u!1 &3584720091430339582
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +658,7 @@ GameObject:
   - component: {fileID: 5751047220822154253}
   - component: {fileID: 5275822118953459820}
   - component: {fileID: 3791384061059392517}
+  - component: {fileID: 892251827}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_03
   m_TagString: Untagged
@@ -514,12 +673,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3584720091430339582}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.38862872, y: -0.16101283, z: -0.00849901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.1731, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8412362152371755745}
-  m_RootOrder: 2
+  m_Father: {fileID: 2658446715532029200}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5751047220822154253
 MeshFilter:
@@ -584,6 +743,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3082804081998337684, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &892251827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3584720091430339582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
 --- !u!1 &4499721597950530492
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,6 +770,7 @@ GameObject:
   - component: {fileID: 5944451049192271206}
   - component: {fileID: 4175208233432897920}
   - component: {fileID: 873210141270701697}
+  - component: {fileID: 1331720909}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_04
   m_TagString: Untagged
@@ -610,12 +785,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4499721597950530492}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.23140883, y: 0.16081691, z: -0.00849907}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.1727, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8412362152371755745}
-  m_RootOrder: 3
+  m_Father: {fileID: 255177469552721222}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5944451049192271206
 MeshFilter:
@@ -680,6 +855,115 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1896446760698194681, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &1331720909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499721597950530492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
+--- !u!1 &4792593317202746705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9143176399929011690}
+  - component: {fileID: 2018256181}
+  m_Layer: 0
+  m_Name: SpinningPlateRack_Plate_05
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9143176399929011690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792593317202746705}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2304, y: -0.0143, z: -0.0085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4748633861621874498}
+  m_Father: {fileID: 8412362152371755745}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2018256181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792593317202746705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: -90, y: 0, z: 0}
+  rotateDuration: 1
+--- !u!1 &4926954789344753651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1754365749417636991}
+  - component: {fileID: 493275959}
+  m_Layer: 0
+  m_Name: SpinningPlateRack_Plate_07
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1754365749417636991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4926954789344753651}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5446, y: -0.0132, z: -0.0085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1811124000587096080}
+  m_Father: {fileID: 8412362152371755745}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &493275959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4926954789344753651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: -90, y: 0, z: 0}
+  rotateDuration: 1
 --- !u!1 &4971665394006847857
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +973,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5215496508633297124}
+  - component: {fileID: 213625454}
   m_Layer: 0
   m_Name: SpinningPlateRack
   m_TagString: Untagged
@@ -712,6 +997,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &213625454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4971665394006847857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8219b31fdde0e4f8deb6464da21c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationBase: {fileID: 8412362152371755745}
+  rotationSpeed: 0.7
 --- !u!1 &5342644082733732083
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +1107,53 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2052895565784887978, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!1 &5592555596234520853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 255177469552721222}
+  - component: {fileID: 1824443811}
+  m_Layer: 0
+  m_Name: SpinningPlateRack_Plate_04
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &255177469552721222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592555596234520853}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2314, y: -0.0127, z: -0.0085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2498569119546163364}
+  m_Father: {fileID: 8412362152371755745}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1824443811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592555596234520853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: -90, y: 0, z: 0}
+  rotateDuration: 1
 --- !u!1 &6315524432627433352
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +1166,7 @@ GameObject:
   - component: {fileID: 6461106909387736963}
   - component: {fileID: 9200304386749892169}
   - component: {fileID: 3090844506555345690}
+  - component: {fileID: 468491114}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_01
   m_TagString: Untagged
@@ -835,10 +1182,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6315524432627433352}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.70282125, y: -0.16101283, z: -0.008498887}
+  m_LocalPosition: {x: 0, y: -0.1717, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8412362152371755745}
+  m_Father: {fileID: 4593534841731245168}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6461106909387736963
@@ -904,6 +1251,68 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3287813815926607994, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &468491114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315524432627433352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
+--- !u!1 &6416075413376301275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2962728693611152198}
+  - component: {fileID: 746549273}
+  m_Layer: 0
+  m_Name: SpinningPlateRack_Plate_02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2962728693611152198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6416075413376301275}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5457, y: -0.0125, z: -0.0085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3045646653459732069}
+  m_Father: {fileID: 8412362152371755745}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &746549273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6416075413376301275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: -90, y: 0, z: 0}
+  rotateDuration: 1
 --- !u!1 &6996884242994363269
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,6 +1325,7 @@ GameObject:
   - component: {fileID: 8947399470900574534}
   - component: {fileID: 2773104152246281770}
   - component: {fileID: 6062933976692113234}
+  - component: {fileID: 1484674554}
   m_Layer: 0
   m_Name: SpinningPlateRack_Plate_02
   m_TagString: Untagged
@@ -930,12 +1340,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6996884242994363269}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5456736, y: 0.16081691, z: -0.008498948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.1732, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8412362152371755745}
-  m_RootOrder: 1
+  m_Father: {fileID: 2962728693611152198}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8947399470900574534
 MeshFilter:
@@ -1000,3 +1410,112 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1851752893011948072, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &1484674554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6996884242994363269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
+--- !u!1 &8330949131714485325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4593534841731245168}
+  - component: {fileID: 1405385430}
+  m_Layer: 0
+  m_Name: SpinningPlateRack_Plate_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4593534841731245168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8330949131714485325}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7028, y: 0.0102, z: -0.0085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5914903457422669778}
+  m_Father: {fileID: 8412362152371755745}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1405385430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8330949131714485325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 90, y: 0, z: 0}
+  rotateDuration: 1
+--- !u!1 &8332273029273308596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1570944388918730085}
+  - component: {fileID: 1819453377}
+  m_Layer: 0
+  m_Name: SpinningPlateRack_Plate_06
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1570944388918730085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8332273029273308596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3876, y: 0.0103, z: -0.0085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3633536166663137444}
+  m_Father: {fileID: 8412362152371755745}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1819453377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8332273029273308596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 90, y: 0, z: 0}
+  rotateDuration: 1

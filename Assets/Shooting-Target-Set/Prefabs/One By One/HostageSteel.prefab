@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 5929718392852570373}
   - component: {fileID: 3402187773515800628}
   - component: {fileID: 1338765057517176739}
+  - component: {fileID: 1073049380}
   m_Layer: 0
   m_Name: HostageSteel_Target
   m_TagString: Untagged
@@ -192,6 +193,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4683349199153069014, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &1073049380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6940444558559786224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
 --- !u!1 &9004596169793023534
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6187669267831135858}
   - component: {fileID: 7898207387374593535}
   - component: {fileID: 419114201213296443}
+  - component: {fileID: 155969042}
   m_Layer: 0
   m_Name: DuelTree_Target_03
   m_TagString: Untagged
@@ -96,6 +97,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6781788157618524620, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &155969042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4044007232029564917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: -270.738, z: 0}
+  rotateDuration: 1
 --- !u!1 &4296626467179705460
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +124,7 @@ GameObject:
   - component: {fileID: 7728540149599399137}
   - component: {fileID: 612885942375695368}
   - component: {fileID: 8367705332051849711}
+  - component: {fileID: 178278810}
   m_Layer: 0
   m_Name: DuelTree_Target_04
   m_TagString: Untagged
@@ -192,6 +209,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7066721071873598391, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &178278810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4296626467179705460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 269.642, z: 0}
+  rotateDuration: 1
 --- !u!1 &5384126417465880803
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +236,7 @@ GameObject:
   - component: {fileID: 7700126220452809897}
   - component: {fileID: 8031710951610134992}
   - component: {fileID: 6644020968191368036}
+  - component: {fileID: 301392301}
   m_Layer: 0
   m_Name: DuelTree_Target_05
   m_TagString: Untagged
@@ -288,6 +321,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5635222206316957576, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &301392301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5384126417465880803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: -270.738, z: 0}
+  rotateDuration: 1
 --- !u!1 &5727535086702810385
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +348,7 @@ GameObject:
   - component: {fileID: 5819281923480117571}
   - component: {fileID: 2721510830708689856}
   - component: {fileID: 4242530936978095192}
+  - component: {fileID: 569978770}
   m_Layer: 0
   m_Name: DuelTree_Target_01
   m_TagString: Untagged
@@ -384,6 +433,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2442922688316699662, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &569978770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5727535086702810385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: -270.738, z: 0}
+  rotateDuration: 1
 --- !u!1 &6733278710555044755
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +460,7 @@ GameObject:
   - component: {fileID: 3034323556264951465}
   - component: {fileID: 1382791962075725383}
   - component: {fileID: 8365273022788197884}
+  - component: {fileID: 1830263214}
   m_Layer: 0
   m_Name: DuelTree_Target_02
   m_TagString: Untagged
@@ -480,6 +545,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -9186488175729951967, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &1830263214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733278710555044755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 269.642, z: 0}
+  rotateDuration: 1
 --- !u!1 &7635434929184092839
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +609,7 @@ GameObject:
   - component: {fileID: 5646085872197746880}
   - component: {fileID: 3166051370549394204}
   - component: {fileID: 1000387048615007778}
+  - component: {fileID: 1971157398}
   m_Layer: 0
   m_Name: DuelTree_Target_06
   m_TagString: Untagged
@@ -613,6 +694,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6158844792805606352, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &1971157398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8079499698906211669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 269.642, z: 0}
+  rotateDuration: 1
 --- !u!1 &8332887831732483453
 GameObject:
   m_ObjectHideFlags: 0
