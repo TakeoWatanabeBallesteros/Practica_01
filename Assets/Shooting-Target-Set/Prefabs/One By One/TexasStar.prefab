@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
-  reset: 0
   hitAngle: {x: -90, y: 0, z: 0}
+  manager: {fileID: 0}
 --- !u!1 &1903175690232600477
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,8 +284,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
-  reset: 0
-  hitAngle: {x: 342.50244, y: 90.992424, z: 269.7016}
+  hitAngle: {x: -17.5, y: 89.995, z: -89.999}
+  manager: {fileID: 0}
 --- !u!1 &5988209815918004811
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,8 +432,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
-  reset: 0
-  hitAngle: {x: 53.997135, y: 269.17044, z: 89.328896}
+  hitAngle: {x: 53.988, y: -88.29, z: 91.384}
+  manager: {fileID: 0}
 --- !u!1 &6554486998601927558
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 1932889290}
   m_Layer: 0
   m_Name: TexasStar
-  m_TagString: Untagged
+  m_TagString: ShootingTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -673,6 +673,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationBase: {fileID: 6198784868391024339}
   rotationSpeed: 0.7
+  hits: 0
+  targets:
+  - {fileID: 1012508582477401461}
+  - {fileID: 8454017162514237770}
+  - {fileID: 6357301139873273122}
+  - {fileID: 8935536261740209500}
+  - {fileID: 1985688636891155734}
+  defaultAngles:
+  - {x: -90, y: 0, z: 0, w: 0}
+  - {x: -20.024, y: -89.742, z: 89.923, w: 0.000043961398}
+  - {x: 53.988, y: -88.29, z: 91.384, w: 0}
+  - {x: 54, y: 89.739, z: -90.211, w: 0}
+  - {x: -17.5, y: 89.995, z: -89.999, w: 3e-45}
 --- !u!1 &7661721321060066085
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,8 +923,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
-  reset: 0
-  hitAngle: {x: 340.00247, y: 270.9475, z: 89.67595}
+  hitAngle: {x: -20.024, y: -89.742, z: 89.923}
+  manager: {fileID: 0}
 --- !u!1 &8935536261740209500
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,5 +970,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
-  reset: 0
-  hitAngle: {x: 55.521244, y: 91.24949, z: 271.32233}
+  hitAngle: {x: 54, y: 89.739, z: -90.211}
+  manager: {fileID: 0}

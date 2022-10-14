@@ -1,18 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
-public class TexasStarTarget : Hittable
+public class PoperTarget : Hittable
 {
-    [SerializeField] public bool hit = false;
+    [SerializeField] private bool hit = false;
     [SerializeField] private Vector3 hitAngle;
-    [SerializeField] private TexasStar manager;
+    private Quaternion defaultAngles;
 
     private void Start()
     {
-        manager = GetComponentInParent<TexasStar>();
+        defaultAngles = transform.localRotation;
     }
 
     // Update is called once per frame
@@ -20,12 +18,16 @@ public class TexasStarTarget : Hittable
     {
         if (!hit) return;
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(hitAngle), .8f);
-        hit = false;
     }
 
     public override void OnHit()
     {
         hit = true;
-        manager.hits++;
+    }
+
+    public void Reset()
+    {
+        hit = false;
+        transform.localRotation = defaultAngles;
     }
 }
