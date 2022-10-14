@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8625139005260746419}
   - component: {fileID: 8643012708566815440}
   - component: {fileID: 3593225609116471184}
+  - component: {fileID: 89985971}
   m_Layer: 0
   m_Name: TexasStar_Plate_05
   m_TagString: Untagged
@@ -26,11 +27,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253996950258739761}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0001, y: 0.1724, z: 0}
+  m_LocalRotation: {x: 7.753754e-24, y: 5.685288e-24, z: -0, w: 1}
+  m_LocalPosition: {x: -0.000099889934, y: 0.17240015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5766713183351217734}
+  m_Father: {fileID: 244240090256702223}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8625139005260746419
@@ -96,6 +97,72 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4167940984807685087, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &89985971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253996950258739761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
+--- !u!1 &447499874348335250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5882471295677334033}
+  - component: {fileID: 7242095264361465596}
+  m_Layer: 0
+  m_Name: TexasStar_Plate_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5882471295677334033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447499874348335250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1835285250340933782}
+  m_Father: {fileID: 4935300492515851100}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7242095264361465596
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447499874348335250}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a41a5efb1ba95b4591a3101c373601e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1012508582477401461
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +172,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4935300492515851100}
-  - component: {fileID: 3221205112699600882}
   m_Layer: 0
   m_Name: TexasStar_Plate_01
   m_TagString: Untagged
@@ -124,25 +190,10 @@ Transform:
   m_LocalPosition: {x: 0.0042, y: 0.5185, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1835285250340933782}
+  - {fileID: 5882471295677334033}
   m_Father: {fileID: 6198784868391024339}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3221205112699600882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012508582477401461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit: 0
-  hitAngle: {x: -90, y: 0, z: 0}
-  rotateDuration: 1
 --- !u!1 &1903175690232600477
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +299,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5766713183351217734}
-  - component: {fileID: 5110068440727786818}
   m_Layer: 0
   m_Name: TexasStar_Plate_05
   m_TagString: Untagged
@@ -267,25 +317,61 @@ Transform:
   m_LocalPosition: {x: 0.495, y: 0.1566, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3821446255439976183}
+  - {fileID: 244240090256702223}
   m_Father: {fileID: 6198784868391024339}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -72.5}
---- !u!114 &5110068440727786818
-MonoBehaviour:
+--- !u!1 &3295879159206945860
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985688636891155734}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 244240090256702223}
+  - component: {fileID: 4097701306982119685}
+  m_Layer: 0
+  m_Name: TexasStar_Plate_05
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &244240090256702223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295879159206945860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3821446255439976183}
+  m_Father: {fileID: 5766713183351217734}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &4097701306982119685
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295879159206945860}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit: 0
-  hitAngle: {x: -17.492, y: 88.263, z: -89.478}
-  rotateDuration: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a41a5efb1ba95b4591a3101c373601e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5988209815918004811
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +482,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7025473240200845802}
-  - component: {fileID: 1639687066686698934}
   m_Layer: 0
   m_Name: TexasStar_Plate_03
   m_TagString: Untagged
@@ -415,25 +500,10 @@ Transform:
   m_LocalPosition: {x: -0.3085, y: -0.4182, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5322982270034650371}
+  - {fileID: 6885144018165448514}
   m_Father: {fileID: 6198784868391024339}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 144}
---- !u!114 &1639687066686698934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6357301139873273122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit: 0
-  hitAngle: {x: 53.975, y: -87.567, z: 91.968}
-  rotateDuration: 1
 --- !u!1 &6554486998601927558
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +516,7 @@ GameObject:
   - component: {fileID: 5418177803103258458}
   - component: {fileID: 806507852975749646}
   - component: {fileID: 9164077102476815702}
+  - component: {fileID: 1573773399}
   m_Layer: 0
   m_Name: TexasStar_Plate_01
   m_TagString: Untagged
@@ -461,10 +532,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6554486998601927558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.174, z: 0}
+  m_LocalPosition: {x: 0, y: 0.17400002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4935300492515851100}
+  m_Father: {fileID: 5882471295677334033}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5418177803103258458
@@ -530,6 +601,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4167940984807685087, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &1573773399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6554486998601927558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
 --- !u!1 &6774775969103258726
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,6 +628,7 @@ GameObject:
   - component: {fileID: 4086711520235373825}
   - component: {fileID: 2113133962969837101}
   - component: {fileID: 496873791417130194}
+  - component: {fileID: 364386538}
   m_Layer: 0
   m_Name: TexasStar_Plate_04
   m_TagString: Untagged
@@ -556,11 +643,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6774775969103258726}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0004, y: 0.1722, z: 0}
+  m_LocalRotation: {x: 1.1384857e-24, y: 3.5038993e-24, z: -0, w: 1}
+  m_LocalPosition: {x: 0.00039979815, y: 0.17220016, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4168046910423189642}
+  m_Father: {fileID: 1940399626289747695}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4086711520235373825
@@ -626,6 +713,72 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4167940984807685087, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &364386538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774775969103258726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
+--- !u!1 &6997672984213130319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1940399626289747695}
+  - component: {fileID: 7822261614947546622}
+  m_Layer: 0
+  m_Name: TexasStar_Plate_04
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1940399626289747695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6997672984213130319}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8869368851795125724}
+  m_Father: {fileID: 4168046910423189642}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7822261614947546622
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6997672984213130319}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a41a5efb1ba95b4591a3101c373601e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7576576989701371251
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +826,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationBase: {fileID: 6198784868391024339}
   rotationSpeed: 0.7
+--- !u!1 &7659102337010962015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6885144018165448514}
+  - component: {fileID: 2283480249396707868}
+  m_Layer: 0
+  m_Name: TexasStar_Plate_03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6885144018165448514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659102337010962015}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5322982270034650371}
+  m_Father: {fileID: 7025473240200845802}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2283480249396707868
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659102337010962015}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a41a5efb1ba95b4591a3101c373601e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7661721321060066085
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,6 +889,7 @@ GameObject:
   - component: {fileID: 7234725882761637529}
   - component: {fileID: 9036027128066785181}
   - component: {fileID: 5471790968883812992}
+  - component: {fileID: 606982017}
   m_Layer: 0
   m_Name: TexasStar_Plate_02
   m_TagString: Untagged
@@ -699,11 +904,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7661721321060066085}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0004, y: 0.1747, z: 0}
+  m_LocalRotation: {x: 8.000038e-24, y: -5.601686e-24, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0004000105, y: 0.17469981, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7089987298134497933}
+  m_Father: {fileID: 3936294514018505033}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7234725882761637529
@@ -769,6 +974,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4167940984807685087, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &606982017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7661721321060066085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
 --- !u!1 &7890847424454079436
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,6 +1001,7 @@ GameObject:
   - component: {fileID: 4377165963305822751}
   - component: {fileID: 6665777502735170041}
   - component: {fileID: 3208475971918987902}
+  - component: {fileID: 445048518}
   m_Layer: 0
   m_Name: TexasStar_Plate_03
   m_TagString: Untagged
@@ -795,11 +1016,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7890847424454079436}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0003, y: 0.1731, z: -0}
+  m_LocalRotation: {x: 1.1384859e-24, y: -3.5038997e-24, z: -0, w: 1}
+  m_LocalPosition: {x: 0.00029986352, y: 0.17309988, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7025473240200845802}
+  m_Father: {fileID: 6885144018165448514}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4377165963305822751
@@ -865,6 +1086,72 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4167940984807685087, guid: a7e633fcb127da94aac475491d17cba6, type: 3}
+--- !u!114 &445048518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890847424454079436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  hitAngle: {x: 0, y: 0, z: 0}
+  rotateDuration: 1
+--- !u!1 &8012972371620250104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3936294514018505033}
+  - component: {fileID: 1921158855780702006}
+  m_Layer: 0
+  m_Name: TexasStar_Plate_02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3936294514018505033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012972371620250104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3749031270468081524}
+  m_Father: {fileID: 7089987298134497933}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1921158855780702006
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012972371620250104}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a41a5efb1ba95b4591a3101c373601e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8454017162514237770
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,7 +1161,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7089987298134497933}
-  - component: {fileID: 3680683043504134863}
   m_Layer: 0
   m_Name: TexasStar_Plate_02
   m_TagString: Untagged
@@ -893,25 +1179,10 @@ Transform:
   m_LocalPosition: {x: -0.492, y: 0.1623, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3749031270468081524}
+  - {fileID: 3936294514018505033}
   m_Father: {fileID: 6198784868391024339}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 70}
---- !u!114 &3680683043504134863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8454017162514237770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit: 0
-  hitAngle: {x: -19.997, y: -88.957, z: 89.643}
-  rotateDuration: 1
 --- !u!1 &8935536261740209500
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +1192,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4168046910423189642}
-  - component: {fileID: 3521904659897924881}
   m_Layer: 0
   m_Name: TexasStar_Plate_04
   m_TagString: Untagged
@@ -940,22 +1210,7 @@ Transform:
   m_LocalPosition: {x: 0.3025, y: -0.4233, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8869368851795125724}
+  - {fileID: 1940399626289747695}
   m_Father: {fileID: 6198784868391024339}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -144}
---- !u!114 &3521904659897924881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8935536261740209500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit: 0
-  hitAngle: {x: 53.992, y: 88.619, z: -91.117}
-  rotateDuration: 1

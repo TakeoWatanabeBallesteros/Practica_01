@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4914474231165611190}
   - component: {fileID: 1876825927821700329}
   - component: {fileID: 974320673}
+  - component: {fileID: 1498710072}
   m_Layer: 0
   m_Name: Popper_Target
   m_TagString: ShootingTarget
@@ -112,6 +113,25 @@ MonoBehaviour:
   hit: 0
   hitAngle: {x: -90, y: 0, z: 0}
   rotateDuration: 1
+--- !u!95 &1498710072
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138489899743402993}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a41a5efb1ba95b4591a3101c373601e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6359373602818125637
 GameObject:
   m_ObjectHideFlags: 0
