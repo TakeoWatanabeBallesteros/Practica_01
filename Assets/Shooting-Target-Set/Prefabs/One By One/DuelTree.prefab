@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7898207387374593535}
   - component: {fileID: 419114201213296443}
   - component: {fileID: 155969042}
+  - component: {fileID: 625705997996747671}
   m_Layer: 0
   m_Name: DuelTree_Target_03
   m_TagString: Untagged
@@ -109,9 +110,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit: 0
-  hitAngle: {x: 0, y: -270.738, z: 0}
-  rotateDuration: 1
+  _animator: {fileID: 625705997996747671}
+--- !u!95 &625705997996747671
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4044007232029564917}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 680bfcd29101df84b88e9443c93569fc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4296626467179705460
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +143,7 @@ GameObject:
   - component: {fileID: 612885942375695368}
   - component: {fileID: 8367705332051849711}
   - component: {fileID: 178278810}
+  - component: {fileID: 5186912056822429155}
   m_Layer: 0
   m_Name: DuelTree_Target_04
   m_TagString: Untagged
@@ -221,9 +240,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit: 0
-  hitAngle: {x: 0, y: 269.642, z: 0}
-  rotateDuration: 1
+  _animator: {fileID: 5186912056822429155}
+--- !u!95 &5186912056822429155
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4296626467179705460}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a5bf63351d060d3468179c60df54ca82, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5384126417465880803
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +273,7 @@ GameObject:
   - component: {fileID: 8031710951610134992}
   - component: {fileID: 6644020968191368036}
   - component: {fileID: 301392301}
+  - component: {fileID: 4279762766303998119}
   m_Layer: 0
   m_Name: DuelTree_Target_05
   m_TagString: Untagged
@@ -333,9 +370,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit: 0
-  hitAngle: {x: 0, y: -270.738, z: 0}
-  rotateDuration: 1
+  _animator: {fileID: 4279762766303998119}
+--- !u!95 &4279762766303998119
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5384126417465880803}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 680bfcd29101df84b88e9443c93569fc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5727535086702810385
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +403,7 @@ GameObject:
   - component: {fileID: 2721510830708689856}
   - component: {fileID: 4242530936978095192}
   - component: {fileID: 569978770}
+  - component: {fileID: 9137227669080243677}
   m_Layer: 0
   m_Name: DuelTree_Target_01
   m_TagString: Untagged
@@ -363,7 +418,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5727535086702810385}
-  m_LocalRotation: {x: -4.573087e-17, y: 0.97388476, z: 4.573087e-17, w: -0.22704305}
+  m_LocalRotation: {x: -4.573087e-17, y: 0.9738848, z: 4.573087e-17, w: -0.227043}
   m_LocalPosition: {x: -0.0018000603, y: 1.3822384, z: 0.009500504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -445,9 +500,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit: 0
-  hitAngle: {x: 0, y: -270.738, z: 0}
-  rotateDuration: 1
+  _animator: {fileID: 9137227669080243677}
+--- !u!95 &9137227669080243677
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5727535086702810385}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 680bfcd29101df84b88e9443c93569fc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6733278710555044755
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +533,7 @@ GameObject:
   - component: {fileID: 1382791962075725383}
   - component: {fileID: 8365273022788197884}
   - component: {fileID: 1830263214}
+  - component: {fileID: 8335749481439123355}
   m_Layer: 0
   m_Name: DuelTree_Target_02
   m_TagString: Untagged
@@ -475,7 +548,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6733278710555044755}
-  m_LocalRotation: {x: -7.353561e-17, y: 0.97388476, z: 7.353561e-17, w: 0.22704291}
+  m_LocalRotation: {x: -7.353561e-17, y: 0.9738848, z: 7.353561e-17, w: 0.2270429}
   m_LocalPosition: {x: 0.0012, y: 1.1622387, z: 0.0116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -557,9 +630,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit: 0
-  hitAngle: {x: 0, y: 269.642, z: 0}
-  rotateDuration: 1
+  _animator: {fileID: 8335749481439123355}
+--- !u!95 &8335749481439123355
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733278710555044755}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a5bf63351d060d3468179c60df54ca82, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7635434929184092839
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +700,7 @@ GameObject:
   - component: {fileID: 3166051370549394204}
   - component: {fileID: 1000387048615007778}
   - component: {fileID: 1971157398}
+  - component: {fileID: 862136402252478605}
   m_Layer: 0
   m_Name: DuelTree_Target_06
   m_TagString: Untagged
@@ -706,9 +797,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit: 0
-  hitAngle: {x: 0, y: 269.642, z: 0}
-  rotateDuration: 1
+  _animator: {fileID: 862136402252478605}
+--- !u!95 &862136402252478605
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8079499698906211669}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a5bf63351d060d3468179c60df54ca82, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8332887831732483453
 GameObject:
   m_ObjectHideFlags: 0

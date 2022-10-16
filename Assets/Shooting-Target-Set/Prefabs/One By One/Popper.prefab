@@ -110,9 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c726f46517819294eb853ce91b12b215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit: 0
-  hitAngle: {x: -90, y: 0, z: 0}
-  rotateDuration: 1
+  _animator: {fileID: 1498710072}
 --- !u!95 &1498710072
 Animator:
   serializedVersion: 3
