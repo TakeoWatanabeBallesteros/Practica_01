@@ -5472,7 +5472,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -6873,9 +6873,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 7074788290359001749}
-  moveSpeed: 2
-  sprintSpeed: 5.335
-  rotationSmoothTime: 0.12
+  moveSpeed: 6
+  sprintSpeed: 8
   speedChangeRate: 10
   landingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
   footstepAudioClips:
@@ -6905,10 +6904,9 @@ MonoBehaviour:
   weaponPosition: {fileID: 8368899320417454285}
   weaponIdlePosition: {fileID: 557917781}
   weaponAimPosition: {fileID: 793214131}
-  m_YawRotationSpeed: 100
-  m_PitchRotationSpeed: 100
+  m_YawRotationSpeed: 500
+  m_PitchRotationSpeed: 500
   m_PitchController: {fileID: 3557554919452930734}
-  m_CharacterController: {fileID: 3557554918752446482}
   mainCamera: {fileID: 3557554918526811899}
   m_NormalMovementFOV: 60
   m_RunMovementFOV: 80

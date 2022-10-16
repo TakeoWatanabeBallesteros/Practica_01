@@ -143,8 +143,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Transform m_PitchController;
 
-    [SerializeField] CharacterController m_CharacterController;
-
     [SerializeField] Camera mainCamera;
     [SerializeField] float m_NormalMovementFOV;
     [SerializeField] float m_RunMovementFOV;
@@ -337,8 +335,8 @@ public class PlayerController : MonoBehaviour
             inputDirection = transform.right * moveVector.x + transform.forward * moveVector.y;
         }
         // move the player
-        collisionFlags =  m_CharacterController.Move(inputDirection.normalized * (_speed * Time.deltaTime) +
-                                                            new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+        collisionFlags =  _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) +
+                                           new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
         
         _animationBlend = Mathf.Lerp(_animationBlend, _speed, Time.deltaTime * speedChangeRate);
         if (_animationBlend < 0.01f) _animationBlend = 0f;

@@ -4,27 +4,23 @@ using UnityEngine;
 
 public class ShootingRangeTarget : Hittable
 {
-    [SerializeField] private Animator _animator;
+    [SerializeField] private Animator animator;
+    private int _hitAnim;
+    private int _resetAnim;
 
     private void Start()
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _hitAnim = Animator.StringToHash("Hit");
+        _resetAnim = Animator.StringToHash("Reset");
     }
 
     public override void OnHit()
     {
+        animator.SetTrigger(_hitAnim);
     }
-    
-    private void Hitted()
-    {
-    }
-    
+
     public void Reset()
     {
+        animator.SetTrigger(_resetAnim);
     }
 }
