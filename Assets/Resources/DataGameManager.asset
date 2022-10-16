@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33ba0bf05090e334e8d38d7af60c8a9b, type: 3}
-  m_Name: DataGameController
+  m_Name: DataGameManager
   m_EditorClassIdentifier: 
   playerMaxHealth: 100
   playerMaxShield: 100
