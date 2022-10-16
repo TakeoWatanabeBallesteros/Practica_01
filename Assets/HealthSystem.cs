@@ -7,7 +7,7 @@ using TMPro;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] float currentHealth;
+    float currentHealth;
     float currentShield;
     float maxHealth;
     float maxShield;

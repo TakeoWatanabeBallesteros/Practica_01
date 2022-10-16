@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     static GameManager instance = null;
-    DataGameController data;
+    DataGameManager data;
     int[] playerKeys;
     Transform player;
     int numberOfTotalKeys;
@@ -93,8 +93,8 @@ public class GameManager : MonoBehaviour
 
     void InitializeData()
     {
-        data = Resources.Load<DataGameController>("DataGameController");
-        instance.numberOfTotalKeys = data.numberOfKeys;
+        data = Resources.Load<DataGameManager>("DataGameManager");
+        numberOfTotalKeys = data.numberOfKeys;
         playerHealth = data.playerMaxHealth;
         playerShield = 0;
     }
