@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     static GameManager instance = null;
+    DataGameController data;
     int[] playerKeys;
     Transform player;
     int numberOfTotalKeys;
-    int playerHealth;
-    int playerShield;
+    float playerHealth;
+    float playerShield;
     private void Start() {
         DontDestroyOnLoad(this.gameObject);
     }
@@ -64,11 +65,57 @@ public class GameManager : MonoBehaviour
     {
         player = _player;
     }
+    public void SetHealth(float health)
+    {
+        playerHealth = health;
+    }
+    public float GetHealth()
+    {
+        return playerHealth;
+    }
+    public void SetShield(float shield)
+    {
+        playerShield = shield;
+    }
+    public float GetShield()
+    {
+        return playerShield;
+    }
+    public float GetMaxHealth()
+    {
+        return data.playerMaxHealth;
+    }
+    public float GetMaxShield()
+    {
+        return data.playerMaxShield;
+    }
+    
 
     void InitializeData()
     {
-        DataGameController data = Resources.Load<DataGameController>("DataGameController");
+        data = Resources.Load<DataGameController>("DataGameController");
         instance.numberOfTotalKeys = data.numberOfKeys;
+        playerHealth = data.playerMaxHealth;
+        playerShield = 0;
+    }
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            FindObjectOfType<HealthSystem>().SaveStats();
+            SceneManager.LoadScene("LVL2");
+        }
+        
+    }
+    public void Respawn()
+    {
+        playerHealth = data.playerMaxHealth;
+        playerShield = 0;
+        StartCoroutine(Die());
+    }
+    IEnumerator Die()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("LVL2");
     }
     
 }
