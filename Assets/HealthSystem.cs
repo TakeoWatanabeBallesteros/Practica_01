@@ -12,12 +12,16 @@ public class HealthSystem : MonoBehaviour
     float maxHealth;
     float maxShield;
     bool isAlive;
-    [SerializeField] TextMeshProUGUI healthTextDisplay;
-    [SerializeField] Image healthImageDisplay;
-    [SerializeField] Image healthImageBackDisplay;
-    [SerializeField] Image shieldImageDisplay;
-    [SerializeField] Image shieldImageBackDisplay;
-    [SerializeField] GameObject maxShieldDisplay;
+
+    //Events
+    public delegate void SetUI(float health,float maxHealth,float shield,float maxShield);
+    public delegate void DamageTaked(float actualHealth,float previousHealth,float actualShield,float previousShield);
+    public delegate void HealthGained(float actualHealth,float previousHealth);
+    public delegate void ShieldGained(float actualShield,float previousShield);
+    public static event SetUI OnSetUI;
+    public static event DamageTaked OnDamageTaked;
+    public static event HealthGained OnHealthGained;
+    public static event ShieldGained OnShieldGained;
 
     void Start()
     {
@@ -28,29 +32,23 @@ public class HealthSystem : MonoBehaviour
         currentShield = GameManager.GetGameManager().GetShield();
         maxHealth = GameManager.GetGameManager().GetMaxHealth();
         maxShield = GameManager.GetGameManager().GetMaxShield();
-        
-        //Update Full Display
-        healthTextDisplay.text = ((int)Mathf.Clamp(currentHealth,1f,maxHealth)).ToString();
-        healthImageDisplay.fillAmount = currentHealth/maxHealth;
-        healthImageBackDisplay.fillAmount = currentHealth/maxHealth;
-        shieldImageDisplay.fillAmount = currentShield/maxShield;
-        shieldImageBackDisplay.fillAmount = currentShield/maxShield;
-        maxShieldDisplay.SetActive(!CanShield());
 
+        //Update UI
+        OnSetUI?.Invoke(currentHealth,maxHealth,currentShield,maxShield);
     }
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.M))
         {
-            TakeDamage(20);
+            TakeDamage(30);
         }
         if(Input.GetKeyDown(KeyCode.B))
         {
-            Heal(10);
+            Heal(20);
         }
         if(Input.GetKeyDown(KeyCode.N))
         {
-            Shield(5);
+            Shield(15);
         }
     }
     public void TakeDamage(int damage)
@@ -65,20 +63,11 @@ public class HealthSystem : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth-damageCounter,0,maxHealth);
 
         //Update UI
-        healthTextDisplay.text = ((int)Mathf.Clamp(currentHealth,1f,maxHealth)).ToString();
-        healthImageDisplay.fillAmount = currentHealth/maxHealth;
-        healthImageBackDisplay.fillAmount = currentHealth/maxHealth;
-        shieldImageDisplay.fillAmount = currentShield/maxShield;
-        shieldImageBackDisplay.fillAmount = currentShield/maxShield;
-        maxShieldDisplay.SetActive(!CanShield());
+        OnDamageTaked?.Invoke(currentHealth,currentHealth+damageCounter,currentShield,currentShield+damageToShield*0.75f);
 
         //Comprobación de posible final de partida
         isAlive = currentHealth > 0;
-        if(!isAlive) 
-        {
-            GameManager.GetGameManager().Respawn(); 
-            healthTextDisplay.text = 0.ToString();
-        }
+        if(!isAlive)GameManager.GetGameManager().Respawn();
     }
     public void SaveStats()
     {
@@ -88,20 +77,16 @@ public class HealthSystem : MonoBehaviour
     public void Heal(float healAmount)
     {
         if(!isAlive) return;
+        //Update UI
+        OnHealthGained?.Invoke(Mathf.Clamp(currentHealth + healAmount,0,maxHealth),currentHealth);
         currentHealth = Mathf.Clamp(currentHealth + healAmount,0,maxHealth);
-
-        healthTextDisplay.text = ((int)Mathf.Clamp(currentHealth,1f,maxHealth)).ToString();
-        healthImageDisplay.fillAmount = currentHealth/maxHealth;
-        healthImageBackDisplay.fillAmount = currentHealth/maxHealth;
     }
     public void Shield(float shieldAmount)
     {
         if(!isAlive) return;
+        //Update UI
+        OnShieldGained?.Invoke(Mathf.Clamp(currentShield + shieldAmount,0,maxShield),currentShield);
         currentShield = Mathf.Clamp(currentShield + shieldAmount,0,maxShield);
-
-        shieldImageDisplay.fillAmount = currentShield/maxShield;
-        shieldImageBackDisplay.fillAmount = currentShield/maxShield;
-        maxShieldDisplay.SetActive(!CanShield());
     }
     public bool CanHeal()
     {

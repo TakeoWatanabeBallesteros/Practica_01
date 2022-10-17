@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DataGameManager
   m_EditorClassIdentifier: 
   playerMaxHealth: 100
-  playerMaxShield: 100
+  playerMaxShield: 50
   numberOfKeys: 4
