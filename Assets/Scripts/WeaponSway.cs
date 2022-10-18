@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class WeaponSway : MonoBehaviour {
@@ -6,12 +7,33 @@ public class WeaponSway : MonoBehaviour {
     [Header("Sway Settings")]
     [SerializeField] private float smooth;
     [SerializeField] private float multiplier;
+    
+    private PlayerControls _controls;
+    private Vector2 lookVector;
+
+    private void Awake()
+    {
+        _controls = PlayerInputs.Controls;
+    }
+
+    private void OnEnable()
+    {
+        
+        _controls.Player.Look.performed += ctx => lookVector = ctx.ReadValue<Vector2>();
+        _controls.Player.Look.canceled += ctx => lookVector = Vector2.zero;
+    }
+
+    private void OnDisable()
+    {
+        _controls.Player.Look.performed -= ctx => lookVector = ctx.ReadValue<Vector2>();
+        _controls.Player.Look.canceled -= ctx => lookVector = Vector2.zero;
+    }
 
     private void Update()
     {
         // get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * multiplier;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * multiplier;
+        float mouseX = lookVector.x * multiplier;
+        float mouseY = lookVector.y * multiplier;
 
         // calculate target rotation
         Quaternion rotationX = Quaternion.AngleAxis(-mouseY, Vector3.right);

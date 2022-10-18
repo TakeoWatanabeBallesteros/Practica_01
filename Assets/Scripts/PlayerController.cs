@@ -282,7 +282,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0.0f, yaw, 0.0f);
         
         // Set Camera Root to head position
-        gunCameraTransform.position = targetPitch.position+targetPitch.forward*.05f;
+        gunCameraTransform.position = targetPitch.position+targetPitch.forward*.02f;
         
         //gunCamera.position = targetPitch.position;
         gunCameraTransform.rotation = targetGunCam.rotation;
@@ -435,7 +435,7 @@ public class PlayerController : MonoBehaviour
 
     private void Aiming()
     {
-        if (!aiming)
+        /*if (!aiming)
         {
             weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponIdlePosition.position, .1f);
             gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 75, .1f);
@@ -447,7 +447,7 @@ public class PlayerController : MonoBehaviour
             gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 20, .1f);
             mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 20, .1f);
             _animator.SetFloat(_animIDMotionSpeed, 0);
-        }
+        }*/
     }
     
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
