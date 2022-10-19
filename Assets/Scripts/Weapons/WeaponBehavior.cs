@@ -42,8 +42,8 @@ public class WeaponBehavior : MonoBehaviour
 
     private void Update() {
         timeSinceLastShot += Time.deltaTime;
-        transform.forward = cam.transform.forward;
         Debug.DrawRay(muzzle.transform.position, transform.forward*1000);
+        Debug.DrawRay(cam.transform.position, cam.transform.forward*1000);
         Aiming();
     }
 
@@ -86,7 +86,7 @@ public class WeaponBehavior : MonoBehaviour
                 BulletBehavior b = bullet.AddComponent<BulletBehavior>();
                 b.damage = weaponData.damage;
                 b.velocity = weaponData.velocity;
-                Instantiate(bullet, muzzle.position, cam.transform.rotation);
+                Instantiate(bullet, cam.transform.position, cam.transform.rotation);
                 weaponData.currentAmmo--;
                 timeSinceLastShot = 0;
                 shooting = true;

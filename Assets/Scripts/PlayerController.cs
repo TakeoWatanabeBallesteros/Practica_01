@@ -254,7 +254,7 @@ public class PlayerController : MonoBehaviour
     private void CameraRotation()
     {
         // Set Camera Root to head position
-        m_PitchController.position = targetPitch.position;
+        //m_PitchController.position = targetPitch.position;
         
         // if there is an input
             pitch += lookVector.y * Time.deltaTime*m_PitchRotationSpeed;
