@@ -12,10 +12,6 @@ using Random = UnityEngine.Random;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player")]
-    [Tooltip("The model of the player")]
-    [SerializeField]
-    private GameObject model;
-    
     [Tooltip("Move speed of the character in m/s")]
     [SerializeField]
     private float moveSpeed = 2.0f;
@@ -61,26 +57,6 @@ public class PlayerController : MonoBehaviour
     private CollisionFlags collisionFlags;
 
     [Header("Camera")]
-    [Tooltip("The position of the main camera, normally the head")]
-    [SerializeField]
-    private Transform targetPitch;
-
-    [Tooltip("The camera that shows the gun and player")]
-    [SerializeField] 
-    private Transform gunCameraTransform;
-    
-    [Tooltip("The camera that shows the gun and player")]
-    [SerializeField] 
-    private Camera gunCamera;
-    
-    [Tooltip("Add offset to the position of the camera")]
-    [SerializeField]
-    private Vector3 cameraOffset;
-    
-    [Tooltip("The position of the gun camera")]
-    [SerializeField]
-    private Transform targetGunCam;
-    
     [Tooltip("How far in degrees can you move the camera up")]
     [SerializeField]
     private float topClamp = 70.0f;
@@ -89,19 +65,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float bottomClamp = -30.0f;
 
-
-
-    [Header("Weapon")]
-    [Tooltip("The transform of the weapon, to edit the pitch")]
-    [SerializeField]
-    private Transform weaponPosition;
-    [Tooltip("The default position of the weapon")]
-    [SerializeField]
-    private Transform weaponIdlePosition;
-    [Tooltip("The position of the weapon when aiming")]
-    [SerializeField]
-    private Transform weaponAimPosition;
-    
     // camera
     float yaw;
     float pitch;
@@ -121,16 +84,11 @@ public class PlayerController : MonoBehaviour
     private int _animIDJump;
     private int _animIDFreeFall;
     private int _animIDMotionSpeed;
-
-    private PlayerInput _playerInput;
+    
     private Animator _animator;
     private CharacterController _controller;
 
-    private const float Threshold = 0.01f;
-
     private bool _hasAnimator;
-
-    private bool IsCurrentDeviceMouse => _playerInput.currentControlScheme == "KeyboardMouse";
 
     //TODO: Salto más dínamico
     //TODO: Crouch
@@ -216,7 +174,6 @@ public class PlayerController : MonoBehaviour
         
         _hasAnimator = TryGetComponent(out _animator);
         _controller = GetComponent<CharacterController>();
-        _playerInput = GetComponent<PlayerInput>();
 
         AssignAnimationIDs();
         

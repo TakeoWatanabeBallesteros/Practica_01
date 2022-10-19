@@ -2519,10 +2519,10 @@ GameObject:
   - component: {fileID: 3557554918752446481}
   - component: {fileID: 3557554918752446486}
   - component: {fileID: 3557554918752446483}
+  - component: {fileID: 3208151296731536448}
   - component: {fileID: 3557554918752446482}
   - component: {fileID: 3557554918752446485}
   - component: {fileID: 3557554918752446484}
-  - component: {fileID: 3208151296731536448}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -2577,7 +2577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2852b751ee20694d9d50ad9b50b11e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 7074788290359001749}
   moveSpeed: 6
   sprintSpeed: 8
   speedChangeRate: 10
@@ -2599,16 +2598,8 @@ MonoBehaviour:
   jumpTimeout: 0.1
   fallTimeout: 0.2
   grounded: 1
-  targetPitch: {fileID: 3557554919723590298}
-  gunCameraTransform: {fileID: 3557554919652106596}
-  gunCamera: {fileID: 3557554919652106595}
-  cameraOffset: {x: -0.16, y: 0.18, z: -0.39}
-  targetGunCam: {fileID: 3557554919167521573}
   topClamp: 60
   bottomClamp: -65
-  weaponPosition: {fileID: 8368899320417454285}
-  weaponIdlePosition: {fileID: 557917781}
-  weaponAimPosition: {fileID: 793214131}
   m_YawRotationSpeed: 500
   m_PitchRotationSpeed: 500
   m_PitchController: {fileID: 3557554919452930734}
@@ -2616,6 +2607,18 @@ MonoBehaviour:
   m_NormalMovementFOV: 60
   m_RunMovementFOV: 80
   m_CrouchMovementFOV: 40
+--- !u!114 &3208151296731536448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557554918752446480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae9b8a85c33b044e9e005be025905ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!143 &3557554918752446482
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2676,18 +2679,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &3208151296731536448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3557554918752446480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aae9b8a85c33b044e9e005be025905ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3557554919167521572
 GameObject:
   m_ObjectHideFlags: 0
