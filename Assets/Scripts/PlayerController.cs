@@ -272,10 +272,10 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0.0f, yaw, 0.0f);
         
         // Set Camera Root to head position
-        gunCameraTransform.position = targetPitch.position;
+        //gunCameraTransform.position = targetPitch.position;
         
         //gunCamera.position = targetPitch.position;
-        gunCameraTransform.transform.localRotation = Quaternion.Euler(pitch, 0.0f, 0.0f);
+        //gunCameraTransform.transform.localRotation = Quaternion.Euler(pitch, 0.0f, 0.0f);
     }
 
     private void OnAnimatorIK(int layerIndex)

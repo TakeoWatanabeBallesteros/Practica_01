@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Debug = UnityEngine.Debug;
 
 public class WeaponBehavior : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private WeaponData weaponData;
-    [SerializeField] private Transform cam;
+    [SerializeField] private Camera cam;
+    [SerializeField] private Transform muzzle;
     
     private PlayerControls _controls;
     private float timeSinceLastShot;
     private bool aiming = false;
+    private bool shooting = false;
 
     private void Awake()
     {
@@ -20,6 +24,7 @@ public class WeaponBehavior : MonoBehaviour
 
     private void OnEnable() {
         _controls.Player.Shoot.performed += Shoot;
+        _controls.Player.Shoot.canceled += StopShooting;
         _controls.Player.Reload.performed += StartReload;
         _controls.Player.Aim.performed += Aim;
         _controls.Player.Aim.canceled += Aim;
@@ -29,6 +34,7 @@ public class WeaponBehavior : MonoBehaviour
     {
         weaponData.reloading = false;
         _controls.Player.Shoot.performed -= Shoot;
+        _controls.Player.Shoot.canceled -= StopShooting;
         _controls.Player.Reload.performed -= StartReload;
         _controls.Player.Aim.performed -= Aim; 
         _controls.Player.Aim.canceled -= Aim;
@@ -36,11 +42,11 @@ public class WeaponBehavior : MonoBehaviour
 
     private void Update() {
         timeSinceLastShot += Time.deltaTime;
-
-        Debug.DrawRay(cam.position, cam.forward*1000);
+        transform.forward = cam.transform.forward;
+        Debug.DrawRay(muzzle.transform.position, transform.forward*1000);
         Aiming();
     }
-    
+
     public void StartReload(InputAction.CallbackContext ctx) {
         if (!weaponData.reloading && this.gameObject.activeSelf)
             StartCoroutine(Reload());
@@ -62,13 +68,36 @@ public class WeaponBehavior : MonoBehaviour
     private void Shoot(InputAction.CallbackContext ctx) {
         if (weaponData.currentAmmo > 0) {
             if (CanShoot()) {
+                switch (weaponData.type)
+                {
+                    case TypeOfWeapon.Rifle:
+                        break;
+                    case TypeOfWeapon.Smg:
+                        break;
+                    case TypeOfWeapon.Pistol:
+                        if(shooting) return;
+                        break;
+                    case TypeOfWeapon.Sniper:
+                        if(shooting) return;
+                        break;
+                }
                 //Instantiate bullet
-
+                GameObject bullet = new GameObject("Bullet");
+                BulletBehavior b = bullet.AddComponent<BulletBehavior>();
+                b.damage = weaponData.damage;
+                b.velocity = weaponData.velocity;
+                Instantiate(bullet, muzzle.position, cam.transform.rotation);
                 weaponData.currentAmmo--;
                 timeSinceLastShot = 0;
+                shooting = true;
                 OnGunShot();
             }
         }
+    }
+
+    private void StopShooting(InputAction.CallbackContext ctx)
+    {
+        shooting = false;
     }
 
     private void OnGunShot() {  }

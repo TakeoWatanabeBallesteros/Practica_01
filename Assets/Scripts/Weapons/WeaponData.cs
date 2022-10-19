@@ -11,7 +11,7 @@ public class WeaponData : ScriptableObject {
     public TypeOfWeapon type;
 
     [Header("Shooting")]
-    public float damage;
+    public int damage;
     public float velocity;
     
     [Header("Reloading")]   
