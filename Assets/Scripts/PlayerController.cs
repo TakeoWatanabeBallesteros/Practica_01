@@ -480,5 +480,6 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         other.GetComponent<Hittable>()?.OnHit();
+        other.GetComponent<IPickable>()?.Pick();
     }
 }
