@@ -408,5 +408,11 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         other.GetComponent<IPickable>()?.Pick();
+        other.GetComponent<Platform>()?.GetOnPlatform(transform);
+        other.GetComponent<DeadZone>()?.Die(GetComponent<HealthSystem>());
+    }
+    private void OnTriggerExit(Collider other) 
+    {
+        other.GetComponent<Platform>()?.GetOffPlatform(transform);
     }
 }
