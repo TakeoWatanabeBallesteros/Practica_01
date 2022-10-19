@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WeaponBehavior : MonoBehaviour
 {
@@ -17,16 +18,18 @@ public class WeaponBehavior : MonoBehaviour
     }
 
     private void OnEnable() {
-        //_controls.shootInput += Shoot;
-        //_controls.reloadInput += StartReload;
+        _controls.Player.Shoot.performed += Shoot;
+        _controls.Player.Reload.performed += StartReload;
     }
 
     private void OnDisable()
     {
         weaponData.reloading = false;
+        _controls.Player.Shoot.performed -= Shoot;
+        _controls.Player.Reload.performed -= StartReload;
     }
 
-    public void StartReload() {
+    public void StartReload(InputAction.CallbackContext ctx) {
         if (!weaponData.reloading && this.gameObject.activeSelf)
             StartCoroutine(Reload());
     }
@@ -43,10 +46,11 @@ public class WeaponBehavior : MonoBehaviour
 
     private bool CanShoot() => !weaponData.reloading && timeSinceLastShot > 1f / (weaponData.fireRate / 60f);
 
-    private void Shoot() {
+    //Check which type if gun
+    private void Shoot(InputAction.CallbackContext ctx) {
         if (weaponData.currentAmmo > 0) {
             if (CanShoot()) {
-                
+                //Instantiate bullet
 
                 weaponData.currentAmmo--;
                 timeSinceLastShot = 0;
