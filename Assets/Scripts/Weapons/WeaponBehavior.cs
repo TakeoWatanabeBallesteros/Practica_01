@@ -10,7 +10,8 @@ public class WeaponBehavior : MonoBehaviour
     [SerializeField] private Transform cam;
     
     private PlayerControls _controls;
-    float timeSinceLastShot;
+    private float timeSinceLastShot;
+    private bool aiming = false;
 
     private void Awake()
     {
@@ -20,6 +21,8 @@ public class WeaponBehavior : MonoBehaviour
     private void OnEnable() {
         _controls.Player.Shoot.performed += Shoot;
         _controls.Player.Reload.performed += StartReload;
+        _controls.Player.Aim.performed += Aim;
+        _controls.Player.Aim.canceled += Aim;
     }
 
     private void OnDisable()
@@ -27,8 +30,17 @@ public class WeaponBehavior : MonoBehaviour
         weaponData.reloading = false;
         _controls.Player.Shoot.performed -= Shoot;
         _controls.Player.Reload.performed -= StartReload;
+        _controls.Player.Aim.performed -= Aim; 
+        _controls.Player.Aim.canceled -= Aim;
     }
 
+    private void Update() {
+        timeSinceLastShot += Time.deltaTime;
+
+        Debug.DrawRay(cam.position, cam.forward*1000);
+        Aiming();
+    }
+    
     public void StartReload(InputAction.CallbackContext ctx) {
         if (!weaponData.reloading && this.gameObject.activeSelf)
             StartCoroutine(Reload());
@@ -59,11 +71,24 @@ public class WeaponBehavior : MonoBehaviour
         }
     }
 
-    private void Update() {
-        timeSinceLastShot += Time.deltaTime;
-
-        Debug.DrawRay(cam.position, cam.forward);
-    }
-
     private void OnGunShot() {  }
+
+    private void Aim(InputAction.CallbackContext ctx) {aiming = !aiming; }
+
+    private void Aiming()
+    {
+        /*if (!aiming)
+        {
+            weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponIdlePosition.position, .1f);
+            gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 75, .1f);
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 60, .1f);
+        }
+        else
+        {
+            weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponAimPosition.position, .1f);
+            gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 20, .1f);
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 20, .1f);
+            _animator.SetFloat(_animIDMotionSpeed, 0);
+        }*/
+    }
 }

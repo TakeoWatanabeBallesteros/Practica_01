@@ -154,8 +154,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveVector;
     private Vector2 lookVector;
 
-    private bool aiming = false;
-
     private PlayerControls _controls;
     
     bool cameraLocked = false;
@@ -195,10 +193,6 @@ public class PlayerController : MonoBehaviour
         
         _controls.Player.Jump.performed += Jump;
         //Controls.Player.Jump.canceled += ctx => OnJumpFinished();
-        
-        _controls.Player.Aim.performed += Aim;
-        _controls.Player.Aim.canceled += Aim;
-        
     }
 
     void OnDisable() {
@@ -214,9 +208,6 @@ public class PlayerController : MonoBehaviour
 
         _controls.Player.Jump.performed -= Jump;
         //Controls.Player.Jump.canceled -= ctx => OnJumpFinished();
-        
-        _controls.Player.Aim.performed -= Aim;
-        _controls.Player.Aim.canceled -= Aim;
     }
 
     private void Start()
@@ -252,7 +243,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         GroundAndGravity();
-        Aiming();
     }
 
     private void LateUpdate()
@@ -282,10 +272,10 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0.0f, yaw, 0.0f);
         
         // Set Camera Root to head position
-        gunCameraTransform.position = targetPitch.position+targetPitch.forward*.02f;
+        gunCameraTransform.position = targetPitch.position;
         
         //gunCamera.position = targetPitch.position;
-        gunCameraTransform.rotation = targetGunCam.rotation;
+        gunCameraTransform.transform.localRotation = Quaternion.Euler(pitch, 0.0f, 0.0f);
     }
 
     private void OnAnimatorIK(int layerIndex)
@@ -430,25 +420,6 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool(_animIDJump, true);
         }
     }
-
-    private void Aim(InputAction.CallbackContext ctx) {aiming = !aiming; }
-
-    private void Aiming()
-    {
-        /*if (!aiming)
-        {
-            weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponIdlePosition.position, .1f);
-            gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 75, .1f);
-            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 60, .1f);
-        }
-        else
-        {
-            weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponAimPosition.position, .1f);
-            gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 20, .1f);
-            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 20, .1f);
-            _animator.SetFloat(_animIDMotionSpeed, 0);
-        }*/
-    }
     
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
     {
@@ -479,7 +450,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<Hittable>()?.OnHit();
         other.GetComponent<IPickable>()?.Pick();
     }
 }
