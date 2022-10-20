@@ -965,6 +965,8 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 20
   smooth: 0.1
+  currentAmmo: 0
+  currentMagAmmo: 0
 --- !u!95 &1730225460
 Animator:
   serializedVersion: 3
@@ -2857,7 +2859,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3557554919452930734}
   m_Layer: 0
-  m_Name: Pitch
+  m_Name: Camera_Rot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3331,6 +3333,8 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 60
   smooth: 0.1
+  currentAmmo: 0
+  currentMagAmmo: 0
 --- !u!1 &3981418768420984953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,6 +4118,8 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 60
   smooth: 0.1
+  currentAmmo: 0
+  currentMagAmmo: 0
 --- !u!1 &5258224883183169702
 GameObject:
   m_ObjectHideFlags: 0
@@ -5039,6 +5045,8 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 20
   smooth: 0.1
+  currentAmmo: 0
+  currentMagAmmo: 0
 --- !u!1 &6699189157208939799
 GameObject:
   m_ObjectHideFlags: 0
@@ -6144,6 +6152,8 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 60
   smooth: 0.1
+  currentAmmo: 0
+  currentMagAmmo: 0
 --- !u!1 &8368273903817388862
 GameObject:
   m_ObjectHideFlags: 0
