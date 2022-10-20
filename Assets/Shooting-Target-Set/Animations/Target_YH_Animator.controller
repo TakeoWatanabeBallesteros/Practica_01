@@ -140,7 +140,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Target_YP_Animator
+  m_Name: Target_YH_Animator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Hit
