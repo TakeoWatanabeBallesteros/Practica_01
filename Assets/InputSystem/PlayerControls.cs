@@ -99,18 +99,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""NextItem"",
-                    ""type"": ""Button"",
+                    ""name"": ""ScrollWeapons"",
+                    ""type"": ""Value"",
                     ""id"": ""9874dc98-70bc-40f8-a160-2b8686502ae5"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""PreviousItem"",
-                    ""type"": ""Button"",
-                    ""id"": ""3f23854b-25cf-43b6-9d2f-f0e04e5c5c38"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -421,22 +413,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d378017d-5403-461d-8bff-cd4e484b7034"",
-                    ""path"": ""<Mouse>/forwardButton"",
+                    ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""NextItem"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2efab1a4-7208-477c-a397-f299f059e04b"",
-                    ""path"": ""<Mouse>/backButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""PreviousItem"",
+                    ""action"": ""ScrollWeapons"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -609,8 +590,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
-        m_Player_NextItem = m_Player.FindAction("NextItem", throwIfNotFound: true);
-        m_Player_PreviousItem = m_Player.FindAction("PreviousItem", throwIfNotFound: true);
+        m_Player_ScrollWeapons = m_Player.FindAction("ScrollWeapons", throwIfNotFound: true);
         m_Player_DropItem = m_Player.FindAction("DropItem", throwIfNotFound: true);
         m_Player_SwitchWeapons = m_Player.FindAction("SwitchWeapons", throwIfNotFound: true);
         // Debug
@@ -675,8 +655,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Reload;
-    private readonly InputAction m_Player_NextItem;
-    private readonly InputAction m_Player_PreviousItem;
+    private readonly InputAction m_Player_ScrollWeapons;
     private readonly InputAction m_Player_DropItem;
     private readonly InputAction m_Player_SwitchWeapons;
     public struct PlayerActions
@@ -693,8 +672,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
-        public InputAction @NextItem => m_Wrapper.m_Player_NextItem;
-        public InputAction @PreviousItem => m_Wrapper.m_Player_PreviousItem;
+        public InputAction @ScrollWeapons => m_Wrapper.m_Player_ScrollWeapons;
         public InputAction @DropItem => m_Wrapper.m_Player_DropItem;
         public InputAction @SwitchWeapons => m_Wrapper.m_Player_SwitchWeapons;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -736,12 +714,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
-                @NextItem.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextItem;
-                @NextItem.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextItem;
-                @NextItem.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextItem;
-                @PreviousItem.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPreviousItem;
-                @PreviousItem.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPreviousItem;
-                @PreviousItem.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPreviousItem;
+                @ScrollWeapons.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScrollWeapons;
+                @ScrollWeapons.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScrollWeapons;
+                @ScrollWeapons.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScrollWeapons;
                 @DropItem.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDropItem;
                 @DropItem.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDropItem;
                 @DropItem.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDropItem;
@@ -782,12 +757,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
-                @NextItem.started += instance.OnNextItem;
-                @NextItem.performed += instance.OnNextItem;
-                @NextItem.canceled += instance.OnNextItem;
-                @PreviousItem.started += instance.OnPreviousItem;
-                @PreviousItem.performed += instance.OnPreviousItem;
-                @PreviousItem.canceled += instance.OnPreviousItem;
+                @ScrollWeapons.started += instance.OnScrollWeapons;
+                @ScrollWeapons.performed += instance.OnScrollWeapons;
+                @ScrollWeapons.canceled += instance.OnScrollWeapons;
                 @DropItem.started += instance.OnDropItem;
                 @DropItem.performed += instance.OnDropItem;
                 @DropItem.canceled += instance.OnDropItem;
@@ -879,8 +851,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
-        void OnNextItem(InputAction.CallbackContext context);
-        void OnPreviousItem(InputAction.CallbackContext context);
+        void OnScrollWeapons(InputAction.CallbackContext context);
         void OnDropItem(InputAction.CallbackContext context);
         void OnSwitchWeapons(InputAction.CallbackContext context);
     }

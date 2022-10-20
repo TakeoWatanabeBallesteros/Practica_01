@@ -1390,7 +1390,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
-  switchTime: 0.5
+  switchTime: 0.2
+  selectedWeaponIndex: 0
 --- !u!1 &3299435564767871614
 GameObject:
   m_ObjectHideFlags: 0

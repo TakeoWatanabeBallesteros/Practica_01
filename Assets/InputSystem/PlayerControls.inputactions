@@ -86,18 +86,10 @@
                     "interactions": ""
                 },
                 {
-                    "name": "NextItem",
-                    "type": "Button",
+                    "name": "ScrollWeapons",
+                    "type": "Value",
                     "id": "9874dc98-70bc-40f8-a160-2b8686502ae5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "PreviousItem",
-                    "type": "Button",
-                    "id": "3f23854b-25cf-43b6-9d2f-f0e04e5c5c38",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 },
@@ -408,22 +400,11 @@
                 {
                     "name": "",
                     "id": "d378017d-5403-461d-8bff-cd4e484b7034",
-                    "path": "<Mouse>/forwardButton",
+                    "path": "<Mouse>/scroll/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "NextItem",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2efab1a4-7208-477c-a397-f299f059e04b",
-                    "path": "<Mouse>/backButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "PreviousItem",
+                    "action": "ScrollWeapons",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
