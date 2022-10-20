@@ -433,7 +433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6090791806703103709
 Transform:
   m_ObjectHideFlags: 0
@@ -1180,7 +1180,6 @@ GameObject:
   m_Component:
   - component: {fileID: 710261177327341395}
   - component: {fileID: 6506505764907237018}
-  - component: {fileID: 9011092581122944592}
   m_Layer: 0
   m_Name: Scope_Camera
   m_TagString: Untagged
@@ -1245,14 +1244,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &9011092581122944592
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2854499368506384719}
-  m_Enabled: 1
 --- !u!1 &3016653478296046672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,13 +2126,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4575399151847094567}
   - component: {fileID: 2710819912445587974}
+  - component: {fileID: 2645595026901970042}
   m_Layer: 0
   m_Name: AWP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4575399151847094567
 Transform:
   m_ObjectHideFlags: 0
@@ -2172,16 +2164,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: a134e653a9152b444addc0a103a08d15, type: 2}
-  recoilBehavior: {fileID: 0}
+  recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 6506505764907237018}
   muzzle: {fileID: 410359829128668492}
   decal: {fileID: 1876298891400211354, guid: 582a0c149845c2f4cb889ffe1487a34f, type: 3}
-  animator: {fileID: 0}
+  animator: {fileID: 2645595026901970042}
   idleFov: 60
   aimFov: 60
   smooth: 0.1
   currentAmmo: 0
   currentMagAmmo: 0
+--- !u!95 &2645595026901970042
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3956524917712933349}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 34ec5e12ff8475d44afe8fe5d5a1c078, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4020206734361631460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2648,7 +2659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: b2dbb5f2d321e604f898e208b03d8382, type: 2}
-  recoilBehavior: {fileID: 0}
+  recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
   muzzle: {fileID: 2038209153482417973}
   decal: {fileID: 1876298891400211354, guid: 582a0c149845c2f4cb889ffe1487a34f, type: 3}
@@ -3205,7 +3216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 72ce59a59130b384bbd1863b93ca92b2, type: 2}
-  recoilBehavior: {fileID: 0}
+  recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
   muzzle: {fileID: 4300095578542030446}
   decal: {fileID: 1876298891400211354, guid: 582a0c149845c2f4cb889ffe1487a34f, type: 3}
@@ -3939,7 +3950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 708aad0fd35d04a4eb38a128963a723f, type: 2}
-  recoilBehavior: {fileID: 0}
+  recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
   muzzle: {fileID: 4871137872540323497}
   decal: {fileID: 1876298891400211354, guid: 582a0c149845c2f4cb889ffe1487a34f, type: 3}
@@ -4316,14 +4327,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8213381e4212d534894c8bff376d0ca6, type: 3}
---- !u!4 &7442288109757106612 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2634079799870728181, guid: 8213381e4212d534894c8bff376d0ca6, type: 3}
-  m_PrefabInstance: {fileID: 4883714016590704193}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1350754706914110945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5870627082197877664, guid: 8213381e4212d534894c8bff376d0ca6, type: 3}
+  m_PrefabInstance: {fileID: 4883714016590704193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7442288109757106612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2634079799870728181, guid: 8213381e4212d534894c8bff376d0ca6, type: 3}
   m_PrefabInstance: {fileID: 4883714016590704193}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5690855428196663191

@@ -96,7 +96,7 @@ public class WeaponBehavior : MonoBehaviour
                     if(shooting) return;
                     break;
                 case TypeOfWeapon.Sniper:
-                    if(shooting) return;
+                    //if(shooting) return;
                     break;
             }
             //Instantiate bullet
@@ -145,6 +145,7 @@ public class WeaponBehavior : MonoBehaviour
 
     private void Aiming()
     {
+        if (weaponData.type == TypeOfWeapon.Sniper)return;
         if (!aiming)
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, idleFov, smooth);
