@@ -433,7 +433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6090791806703103709
 Transform:
   m_ObjectHideFlags: 0
@@ -470,7 +470,7 @@ MonoBehaviour:
   animator: {fileID: 1730225460}
   idleFov: 60
   aimFov: 20
-  smooth: 0.1
+  smooth: 9
   currentAmmo: 0
   currentMagAmmo: 0
 --- !u!95 &1730225460
@@ -1335,6 +1335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4356205909969285809}
   - component: {fileID: 8311372981613092068}
+  - component: {fileID: 4487253048638706752}
   m_Layer: 6
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -1376,6 +1377,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smooth: 8
   multiplier: 4
+--- !u!114 &4487253048638706752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160077637060665405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c998d6c9ec71124db5f82b436d2d553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+  switchTime: 0.5
 --- !u!1 &3299435564767871614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,7 +2149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4575399151847094567
 Transform:
   m_ObjectHideFlags: 0
@@ -2172,7 +2187,7 @@ MonoBehaviour:
   animator: {fileID: 2645595026901970042}
   idleFov: 60
   aimFov: 60
-  smooth: 0.1
+  smooth: 9
   currentAmmo: 0
   currentMagAmmo: 0
 --- !u!95 &2645595026901970042
@@ -2667,7 +2682,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   idleFov: 60
   aimFov: 60
-  smooth: 0.1
+  smooth: 9
   currentAmmo: 0
   currentMagAmmo: 0
 --- !u!1 &5410193815815550827
@@ -3224,7 +3239,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   idleFov: 60
   aimFov: 20
-  smooth: 0.1
+  smooth: 9
   currentAmmo: 0
   currentMagAmmo: 0
 --- !u!1 &7020244976915943911
@@ -3364,8 +3379,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7238721308739683235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.103, z: 0}
+  m_LocalScale: {x: 1, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 3557554918752446481}
   m_RootOrder: 1
@@ -4039,7 +4054,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   idleFov: 60
   aimFov: 60
-  smooth: 0.1
+  smooth: 9
   currentAmmo: 0
   currentMagAmmo: 0
 --- !u!1 &8368273903817388862

@@ -160,11 +160,11 @@ public class WeaponBehavior : MonoBehaviour
         if (weaponData.type == TypeOfWeapon.Sniper)return;
         if (!aiming)
         {
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, idleFov, smooth);
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, idleFov, smooth*Time.deltaTime);
         }
         else
         {
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, aimFov, smooth);
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, aimFov, smooth*Time.deltaTime);
         }
     }
 }
