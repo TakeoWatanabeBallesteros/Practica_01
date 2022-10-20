@@ -28,6 +28,7 @@ public class WeaponBehavior : MonoBehaviour
     private bool shooting = false;
     private int AimingID;
     private int ShootingID;
+    private int onlyOneShoot;
 
     private void Awake()
     {
@@ -43,7 +44,7 @@ public class WeaponBehavior : MonoBehaviour
         _controls.Player.Shoot.canceled += StopShooting;
         _controls.Player.Reload.performed += StartReload;
         _controls.Player.Aim.performed += Aim;
-        _controls.Player.Aim.canceled += Aim;
+        _controls.Player.Aim.canceled += StopAim;
     }
 
     private void OnDisable()
@@ -53,7 +54,7 @@ public class WeaponBehavior : MonoBehaviour
         _controls.Player.Shoot.canceled -= StopShooting;
         _controls.Player.Reload.performed -= StartReload;
         _controls.Player.Aim.performed -= Aim; 
-        _controls.Player.Aim.canceled -= Aim;
+        _controls.Player.Aim.canceled -= StopAim;
     }
 
     private void Update() {
@@ -93,10 +94,10 @@ public class WeaponBehavior : MonoBehaviour
                 case TypeOfWeapon.Smg:
                     break;
                 case TypeOfWeapon.Pistol:
-                    if(shooting) return;
+                    if(onlyOneShoot == 1) return;
                     break;
                 case TypeOfWeapon.Sniper:
-                    //if(shooting) return;
+                    if(onlyOneShoot == 1) return;
                     break;
             }
             //Instantiate bullet
@@ -108,6 +109,7 @@ public class WeaponBehavior : MonoBehaviour
             Instantiate(bullet, cam.transform.position, cam.transform.rotation);
             currentMagAmmo--;
             timeSinceLastShot = 0;
+            onlyOneShoot++;
             OnGunShot();
         }
         else if (!weaponData.reloading && this.gameObject.activeSelf && currentAmmo > 0 && currentMagAmmo == 0)
@@ -116,7 +118,11 @@ public class WeaponBehavior : MonoBehaviour
             shooting = false;
             animator.SetBool(ShootingID, shooting);
         }
-        
+        if(weaponData.type == TypeOfWeapon.Sniper)
+        {
+            aiming = false;
+            animator.SetBool(AimingID, aiming);
+        }
     }
 
     private void StartShooting(InputAction.CallbackContext ctx)
@@ -129,17 +135,23 @@ public class WeaponBehavior : MonoBehaviour
     {
         shooting = false;
         animator.SetBool(ShootingID, shooting);
+        onlyOneShoot = 0;
     }
 
     private void OnGunShot()
     {
-        if(!shooting)recoilBehavior.RecoilFire(weaponData.recoilX, weaponData.recoilY, weaponData.recoilZ);
+        if(!aiming)recoilBehavior.RecoilFire(weaponData.recoilX, weaponData.recoilY, weaponData.recoilZ);
         else recoilBehavior.RecoilFire(weaponData.recoilAimX, weaponData.recoilAimY, weaponData.recoilAimZ);
     }
 
     private void Aim(InputAction.CallbackContext ctx)
     {
-        aiming = !aiming;
+        aiming = true;
+        animator.SetBool(AimingID, aiming);
+    }
+    private void StopAim(InputAction.CallbackContext ctx)
+    {
+        aiming = false;
         animator.SetBool(AimingID, aiming);
     }
 

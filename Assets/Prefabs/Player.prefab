@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 410359829128668492}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2038209153482417973}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4330121835454541303}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Scout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 6090791806703103709}
   - component: {fileID: 11045253239318244}
   - component: {fileID: 1730225460}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AKM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -906,7 +906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4871137872540323497}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1180,7 +1180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 710261177327341395}
   - component: {fileID: 6506505764907237018}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Scope_Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1335,7 +1335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4356205909969285809}
   - component: {fileID: 8311372981613092068}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1654,6 +1654,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3557554919452930734}
+  - {fileID: 7061790329526924996}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1690,10 +1691,10 @@ MonoBehaviour:
   jumpTimeout: 0.1
   fallTimeout: 0.2
   grounded: 1
-  topClamp: 60
-  bottomClamp: -65
-  m_YawRotationSpeed: 500
-  m_PitchRotationSpeed: 500
+  topClamp: 70
+  bottomClamp: -70
+  m_YawRotationSpeed: 300
+  m_PitchRotationSpeed: 300
   m_PitchController: {fileID: 3557554919452930734}
   mainCamera: {fileID: 3557554918526811899}
   m_NormalMovementFOV: 60
@@ -1886,7 +1887,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7875549333168790849}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2127,7 +2128,7 @@ GameObject:
   - component: {fileID: 4575399151847094567}
   - component: {fileID: 2710819912445587974}
   - component: {fileID: 2645595026901970042}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AWP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2283,7 +2284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4300095578542030446}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2623,7 +2624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 76651340979407521}
   - component: {fileID: 6286938734150295416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glock18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3180,7 +3181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7889821040278290782}
   - component: {fileID: 4998666445233607010}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: KrissVector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3316,7 +3317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7422427544328498612}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3337,6 +3338,87 @@ Transform:
   m_Father: {fileID: 4330121835454541303}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7238721308739683235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7061790329526924996}
+  - component: {fileID: 8394734667650874819}
+  - component: {fileID: 8882785961575645951}
+  m_Layer: 9
+  m_Name: Visual_Ref
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7061790329526924996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238721308739683235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3557554918752446481}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8394734667650874819
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238721308739683235}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8882785961575645951
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238721308739683235}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: ce9f49754d630844789def239671a15d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7250965030511781004
 GameObject:
   m_ObjectHideFlags: 0
@@ -3914,7 +3996,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3547235480480762005}
   - component: {fileID: 1138588730921093281}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: USP-S
   m_TagString: Untagged
   m_Icon: {fileID: 0}
