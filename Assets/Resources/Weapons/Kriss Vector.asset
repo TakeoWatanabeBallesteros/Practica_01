@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 1
   damage: 9
   velocity: 375
-  currentAmmo: 150
+  maxAmmo: 200
   magSize: 13
   fireRate: 1100
   reloadTime: 1.1

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Debug = UnityEngine.Debug;
@@ -11,19 +12,30 @@ public class WeaponBehavior : MonoBehaviour
     [SerializeField] private WeaponData weaponData;
     [SerializeField] private Camera cam;
     [SerializeField] private Transform muzzle;
-    
+    [SerializeField] private GameObject decal;
+    [SerializeField] private Animator animator;
+    [SerializeField] private float idleFov;
+    [SerializeField] private float aimFov;
+    [SerializeField] private float smooth;
+    [SerializeField] private int currentAmmo;
+    [SerializeField] private int currentMagAmmo;
+
     private PlayerControls _controls;
     private float timeSinceLastShot;
     private bool aiming = false;
     private bool shooting = false;
+    private int AimingID;
 
     private void Awake()
     {
         _controls = PlayerInputs.Controls;
+        AimingID = Animator.StringToHash("Aim");
+        currentAmmo = weaponData.maxAmmo;
+        currentMagAmmo = weaponData.magSize;
     }
 
     private void OnEnable() {
-        _controls.Player.Shoot.performed += Shoot;
+        _controls.Player.Shoot.performed += StartShooting;
         _controls.Player.Shoot.canceled += StopShooting;
         _controls.Player.Reload.performed += StartReload;
         _controls.Player.Aim.performed += Aim;
@@ -33,7 +45,7 @@ public class WeaponBehavior : MonoBehaviour
     private void OnDisable()
     {
         weaponData.reloading = false;
-        _controls.Player.Shoot.performed -= Shoot;
+        _controls.Player.Shoot.performed -= StartShooting;
         _controls.Player.Shoot.canceled -= StopShooting;
         _controls.Player.Reload.performed -= StartReload;
         _controls.Player.Aim.performed -= Aim; 
@@ -41,6 +53,7 @@ public class WeaponBehavior : MonoBehaviour
     }
 
     private void Update() {
+        if(shooting) Shoot();
         timeSinceLastShot += Time.deltaTime;
         Debug.DrawRay(muzzle.transform.position, transform.forward*1000);
         Debug.DrawRay(cam.transform.position, cam.transform.forward*1000);
@@ -48,7 +61,7 @@ public class WeaponBehavior : MonoBehaviour
     }
 
     public void StartReload(InputAction.CallbackContext ctx) {
-        if (!weaponData.reloading && this.gameObject.activeSelf)
+        if (!weaponData.reloading && this.gameObject.activeSelf && currentAmmo > 0)
             StartCoroutine(Reload());
     }
 
@@ -57,16 +70,18 @@ public class WeaponBehavior : MonoBehaviour
 
         yield return new WaitForSeconds(weaponData.reloadTime);
 
-        weaponData.currentAmmo = weaponData.magSize;
-
+        currentMagAmmo = currentAmmo < weaponData.magSize ? currentAmmo : weaponData.magSize;
+        currentAmmo -= weaponData.magSize;
+        math.clamp(currentAmmo, 0, weaponData.maxAmmo);
+        
         weaponData.reloading = false;
     }
 
     private bool CanShoot() => !weaponData.reloading && timeSinceLastShot > 1f / (weaponData.fireRate / 60f);
 
     //Check which type if gun
-    private void Shoot(InputAction.CallbackContext ctx) {
-        if (weaponData.currentAmmo > 0) {
+    private void Shoot() {
+        if (currentMagAmmo > 0) {
             if (CanShoot()) {
                 switch (weaponData.type)
                 {
@@ -86,13 +101,20 @@ public class WeaponBehavior : MonoBehaviour
                 BulletBehavior b = bullet.AddComponent<BulletBehavior>();
                 b.damage = weaponData.damage;
                 b.velocity = weaponData.velocity;
+                b.decal = decal;
                 Instantiate(bullet, cam.transform.position, cam.transform.rotation);
-                weaponData.currentAmmo--;
+                currentMagAmmo--;
                 timeSinceLastShot = 0;
-                shooting = true;
                 OnGunShot();
             }
         }
+        else if (!weaponData.reloading && this.gameObject.activeSelf && currentAmmo > 0)
+            StartCoroutine(Reload());
+    }
+
+    private void StartShooting(InputAction.CallbackContext ctx)
+    {
+        shooting = true;
     }
 
     private void StopShooting(InputAction.CallbackContext ctx)
@@ -102,22 +124,21 @@ public class WeaponBehavior : MonoBehaviour
 
     private void OnGunShot() {  }
 
-    private void Aim(InputAction.CallbackContext ctx) {aiming = !aiming; }
+    private void Aim(InputAction.CallbackContext ctx)
+    {
+        aiming = !aiming;
+        animator.SetBool(AimingID, aiming);
+    }
 
     private void Aiming()
     {
-        /*if (!aiming)
+        if (!aiming)
         {
-            weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponIdlePosition.position, .1f);
-            gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 75, .1f);
-            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 60, .1f);
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, idleFov, smooth);
         }
         else
         {
-            weaponPosition.position = Vector3.Lerp(weaponPosition.position, weaponAimPosition.position, .1f);
-            gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 20, .1f);
-            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 20, .1f);
-            _animator.SetFloat(_animIDMotionSpeed, 0);
-        }*/
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, aimFov, smooth);
+        }
     }
 }

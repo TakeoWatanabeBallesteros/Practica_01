@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 455b0c9799ded6a46b406cde34e5250e, type: 2}
+  m_Motion: {fileID: 7400000, guid: f3dd333a2c22e8f4ca3482c6ffc51e24, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -128,7 +128,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a20f6f30cd7f73d46905f377c265466f, type: 2}
+  m_Motion: {fileID: 7400000, guid: 4fb48c30622348a40bd78e5db8a62e2a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -140,7 +140,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Target_Y_Animator
+  m_Name: Target_YP_Animator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Hit

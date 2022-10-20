@@ -15,7 +15,7 @@ public class WeaponData : ScriptableObject {
     public float velocity;
     
     [Header("Reloading")]   
-    public int currentAmmo;
+    public int maxAmmo;
     public int magSize;
     [Tooltip("In RPM")] public float fireRate;
     public float reloadTime;
