@@ -53054,6 +53054,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1517584780473847807, guid: b4dae4f3c3b1a6840a9049ab3cc1de6b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 1517584781324772109, guid: b4dae4f3c3b1a6840a9049ab3cc1de6b, type: 3}
       propertyPath: m_Name
       value: ShieldItem
@@ -53159,6 +53163,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1628824274001626401, guid: 00872c4adfa55c940bf7050e35d2a73c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00872c4adfa55c940bf7050e35d2a73c, type: 3}
 --- !u!1001 &2309121630584401746
@@ -53379,5 +53387,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4698631850303433103, guid: 933bfc5363e1794459a736fe614dda4e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 933bfc5363e1794459a736fe614dda4e, type: 3}
