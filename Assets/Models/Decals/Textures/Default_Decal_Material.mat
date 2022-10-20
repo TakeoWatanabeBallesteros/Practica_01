@@ -8,14 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Default_Decal_Material
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
+  m_Shader: {fileID: 4800000, guid: 1b8b444750630ae44927a50c08c1a1e4, type: 3}
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _UnityFogEnable
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses:
   - SHADOWCASTER
   m_SavedProperties:
@@ -85,28 +84,40 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DecalDstBlend: 10
+    - _DecalSrcBlend: 5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _EnvironmentReflections: 1
+    - _FracUVEnable: 0
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 3
+    - _MulAlphaToRGB: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _ProjectionAngleDiscardEnable: 0
+    - _ProjectionAngleDiscardThreshold: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _StencilComp: 0
+    - _StencilRef: 0
+    - _SupportOrthographicCamera: 0
     - _Surface: 1
     - _UVSec: 0
+    - _UnityFogEnable: 1
     - _WorkflowMode: 1
+    - _ZTest: 0
     - _ZWrite: 0
     m_Colors:
+    - _AlphaRemap: {r: 0.7, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

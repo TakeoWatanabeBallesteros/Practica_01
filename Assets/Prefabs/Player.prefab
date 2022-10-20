@@ -466,7 +466,7 @@ MonoBehaviour:
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
   muzzle: {fileID: 7875549333168790849}
-  decal: {fileID: 1876298891400211354, guid: 582a0c149845c2f4cb889ffe1487a34f, type: 3}
+  decal: {fileID: 7708636070130378430, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
   animator: {fileID: 1730225460}
   idleFov: 60
   aimFov: 20
@@ -1844,7 +1844,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3557554919452930733}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.673, z: 0.091}
+  m_LocalPosition: {x: 0, y: 1.673, z: 0.501}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5368561695728594795}
@@ -2249,7 +2249,7 @@ MonoBehaviour:
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 6506505764907237018}
   muzzle: {fileID: 410359829128668492}
-  decal: {fileID: 1876298891400211354, guid: 582a0c149845c2f4cb889ffe1487a34f, type: 3}
+  decal: {fileID: 7708636070130378430, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
   animator: {fileID: 2645595026901970042}
   idleFov: 60
   aimFov: 60
@@ -2711,7 +2711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &76651340979407521
 Transform:
   m_ObjectHideFlags: 0
@@ -2744,7 +2744,7 @@ MonoBehaviour:
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
   muzzle: {fileID: 2038209153482417973}
-  decal: {fileID: 1876298891400211354, guid: 582a0c149845c2f4cb889ffe1487a34f, type: 3}
+  decal: {fileID: 7708636070130378430, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
   animator: {fileID: 0}
   idleFov: 60
   aimFov: 60
@@ -2779,7 +2779,7 @@ Transform:
   m_GameObject: {fileID: 5410193815815550827}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.2381}
-  m_LocalScale: {x: 0.037096657, y: 0.037096657, z: 0.037096657}
+  m_LocalScale: {x: 0.045084465, y: 0.045084465, z: 0.045084465}
   m_Children: []
   m_Father: {fileID: 7442288109757106612}
   m_RootOrder: 0
@@ -3301,7 +3301,7 @@ MonoBehaviour:
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
   muzzle: {fileID: 4300095578542030446}
-  decal: {fileID: 1876298891400211354, guid: 582a0c149845c2f4cb889ffe1487a34f, type: 3}
+  decal: {fileID: 7708636070130378430, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
   animator: {fileID: 0}
   idleFov: 60
   aimFov: 20
@@ -4116,7 +4116,7 @@ MonoBehaviour:
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
   muzzle: {fileID: 4871137872540323497}
-  decal: {fileID: 1876298891400211354, guid: 582a0c149845c2f4cb889ffe1487a34f, type: 3}
+  decal: {fileID: 7708636070130378430, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
   animator: {fileID: 0}
   idleFov: 60
   aimFov: 60
