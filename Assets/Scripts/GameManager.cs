@@ -117,5 +117,13 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("LVL2");
     }
-    
+}
+
+public enum Keys
+{
+    Key1,
+    Key2,
+    Key3,
+    Key4,
+    NumberOfTypes
 }
