@@ -115,7 +115,11 @@ public class GameManager : MonoBehaviour
     IEnumerator Die()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("LVL2");
+        LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
 
