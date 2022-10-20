@@ -20,6 +20,15 @@ public class WeaponData : ScriptableObject {
     [Tooltip("In RPM")] public float fireRate;
     public float reloadTime;
     [HideInInspector] public bool reloading;
+
+    [Header("Recoil")] 
+    public float recoilX;
+    public float recoilY;
+    public float recoilZ;
+    [Space]
+    public float recoilAimX;
+    public float recoilAimY;
+    public float recoilAimZ;
     
 }
 

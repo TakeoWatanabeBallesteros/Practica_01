@@ -10,6 +10,8 @@ public class WeaponBehavior : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private WeaponData weaponData;
+
+    [SerializeField] private RecoilBehavior recoilBehavior;
     [SerializeField] private Camera cam;
     [SerializeField] private Transform muzzle;
     [SerializeField] private GameObject decal;
@@ -25,11 +27,13 @@ public class WeaponBehavior : MonoBehaviour
     private bool aiming = false;
     private bool shooting = false;
     private int AimingID;
+    private int ShootingID;
 
     private void Awake()
     {
         _controls = PlayerInputs.Controls;
         AimingID = Animator.StringToHash("Aim");
+        ShootingID = Animator.StringToHash("Shooting");
         currentAmmo = weaponData.maxAmmo;
         currentMagAmmo = weaponData.magSize;
     }
@@ -77,52 +81,61 @@ public class WeaponBehavior : MonoBehaviour
         weaponData.reloading = false;
     }
 
-    private bool CanShoot() => !weaponData.reloading && timeSinceLastShot > 1f / (weaponData.fireRate / 60f);
+    private bool CanShoot() => !weaponData.reloading && timeSinceLastShot > 1f / (weaponData.fireRate / 60f) && currentMagAmmo > 0;
 
     //Check which type if gun
     private void Shoot() {
-        if (currentMagAmmo > 0) {
-            if (CanShoot()) {
-                switch (weaponData.type)
-                {
-                    case TypeOfWeapon.Rifle:
-                        break;
-                    case TypeOfWeapon.Smg:
-                        break;
-                    case TypeOfWeapon.Pistol:
-                        if(shooting) return;
-                        break;
-                    case TypeOfWeapon.Sniper:
-                        if(shooting) return;
-                        break;
-                }
-                //Instantiate bullet
-                GameObject bullet = new GameObject("Bullet");
-                BulletBehavior b = bullet.AddComponent<BulletBehavior>();
-                b.damage = weaponData.damage;
-                b.velocity = weaponData.velocity;
-                b.decal = decal;
-                Instantiate(bullet, cam.transform.position, cam.transform.rotation);
-                currentMagAmmo--;
-                timeSinceLastShot = 0;
-                OnGunShot();
+        if (CanShoot()) {
+            switch (weaponData.type)
+            {
+                case TypeOfWeapon.Rifle:
+                    break;
+                case TypeOfWeapon.Smg:
+                    break;
+                case TypeOfWeapon.Pistol:
+                    if(shooting) return;
+                    break;
+                case TypeOfWeapon.Sniper:
+                    if(shooting) return;
+                    break;
             }
+            //Instantiate bullet
+            GameObject bullet = new GameObject("Bullet");
+            BulletBehavior b = bullet.AddComponent<BulletBehavior>();
+            b.damage = weaponData.damage;
+            b.velocity = weaponData.velocity;
+            b.decal = decal;
+            Instantiate(bullet, cam.transform.position, cam.transform.rotation);
+            currentMagAmmo--;
+            timeSinceLastShot = 0;
+            OnGunShot();
         }
-        else if (!weaponData.reloading && this.gameObject.activeSelf && currentAmmo > 0)
+        else if (!weaponData.reloading && this.gameObject.activeSelf && currentAmmo > 0 && currentMagAmmo == 0)
+        {
             StartCoroutine(Reload());
+            shooting = false;
+            animator.SetBool(ShootingID, shooting);
+        }
+        
     }
 
     private void StartShooting(InputAction.CallbackContext ctx)
     {
         shooting = true;
+        animator.SetBool(ShootingID, shooting);
     }
 
     private void StopShooting(InputAction.CallbackContext ctx)
     {
         shooting = false;
+        animator.SetBool(ShootingID, shooting);
     }
 
-    private void OnGunShot() {  }
+    private void OnGunShot()
+    {
+        if(!shooting)recoilBehavior.RecoilFire(weaponData.recoilX, weaponData.recoilY, weaponData.recoilZ);
+        else recoilBehavior.RecoilFire(weaponData.recoilAimX, weaponData.recoilAimY, weaponData.recoilAimZ);
+    }
 
     private void Aim(InputAction.CallbackContext ctx)
     {

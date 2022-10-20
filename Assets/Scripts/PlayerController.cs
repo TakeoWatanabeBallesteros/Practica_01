@@ -78,17 +78,7 @@ public class PlayerController : MonoBehaviour
     private float _jumpTimeoutDelta;
     private float _fallTimeoutDelta;
 
-    // animation IDs
-    private int _animIDSpeed;
-    private int _animIDGrounded;
-    private int _animIDJump;
-    private int _animIDFreeFall;
-    private int _animIDMotionSpeed;
-    
-    private Animator _animator;
     private CharacterController _controller;
-
-    private bool _hasAnimator;
 
     //TODO: Salto más dínamico
     //TODO: Crouch
@@ -172,10 +162,7 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.GetGameManager().SetPlayer(transform);
         
-        _hasAnimator = TryGetComponent(out _animator);
         _controller = GetComponent<CharacterController>();
-
-        AssignAnimationIDs();
         
         yaw = transform.rotation.y;
         pitch = m_PitchController.localRotation.x;
@@ -184,15 +171,6 @@ public class PlayerController : MonoBehaviour
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = cameraLocked;
-    }
-    
-    private void AssignAnimationIDs()
-    {
-        _animIDSpeed = Animator.StringToHash("Speed");
-        _animIDGrounded = Animator.StringToHash("Grounded");
-        _animIDJump = Animator.StringToHash("Jump");
-        _animIDFreeFall = Animator.StringToHash("FreeFall");
-        _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
     }
 
     // Update is called once per frame
@@ -233,18 +211,6 @@ public class PlayerController : MonoBehaviour
         
         //gunCamera.position = targetPitch.position;
         //gunCameraTransform.transform.localRotation = Quaternion.Euler(pitch, 0.0f, 0.0f);
-    }
-
-    private void OnAnimatorIK(int layerIndex)
-    {
-        // Neck X axis rotation
-        // that means look up & down
-
-        // Only rotate X axis if First Person
-        // else also rotate Y axis
-        Quaternion q = Quaternion.Euler(pitch,
-            0.0f, 0.0f);
-        _animator.SetBoneLocalRotation(HumanBodyBones.Chest, q);
     }
 
     private void Move()
@@ -288,12 +254,6 @@ public class PlayerController : MonoBehaviour
         _animationBlend = Mathf.Lerp(_animationBlend, _speed, Time.deltaTime * speedChangeRate);
         if (_animationBlend < 0.01f) _animationBlend = 0f;
 
-        // update animator if using character
-        if (_hasAnimator)
-        {
-            _animator.SetFloat(_animIDSpeed, _animationBlend);
-            _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
-        }
     }
     
     private void GroundAndGravity()
@@ -306,23 +266,11 @@ public class PlayerController : MonoBehaviour
             grounded = true;
         }
         else grounded = false;
-        // update animator if using character
-        if (_hasAnimator)
-        {
-            _animator.SetBool(_animIDGrounded, grounded);
-        }
         
         if (grounded)
         {
             // reset the fall timeout timer
             _fallTimeoutDelta = fallTimeout;
-
-            // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetBool(_animIDJump, false);
-                _animator.SetBool(_animIDFreeFall, false);
-            }
 
             // stop our velocity dropping infinitely when grounded
             if (_verticalVelocity < 0.0f)
@@ -348,11 +296,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                // update animator if using character
-                if (_hasAnimator)
-                {
-                    _animator.SetBool(_animIDFreeFall, true);
-                }
             }
 
             if ((collisionFlags & CollisionFlags.Above) != 0)
@@ -370,12 +313,6 @@ public class PlayerController : MonoBehaviour
         if (!(_jumpTimeoutDelta <= 0.0f) || !(timeOnAir < .5f)) return;
         // the square root of H * -2 * G = how much velocity needed to reach desired height
         _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
-
-        // update animator if using character
-        if (_hasAnimator)
-        {
-            _animator.SetBool(_animIDJump, true);
-        }
     }
     
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
