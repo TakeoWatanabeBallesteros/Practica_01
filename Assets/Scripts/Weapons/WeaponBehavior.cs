@@ -10,7 +10,6 @@ public class WeaponBehavior : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private WeaponData weaponData;
-
     [SerializeField] private RecoilBehavior recoilBehavior;
     [SerializeField] private Camera cam;
     [SerializeField] private Transform muzzle;
@@ -19,8 +18,8 @@ public class WeaponBehavior : MonoBehaviour
     [SerializeField] private float idleFov;
     [SerializeField] private float aimFov;
     [SerializeField] private float smooth;
-    [SerializeField] private int currentAmmo;
-    [SerializeField] private int currentMagAmmo;
+    [SerializeField] public int currentAmmo { get; private set; }
+    [SerializeField] public int currentMagAmmo { get; private set; }
 
     private PlayerControls _controls;
     private float timeSinceLastShot;
@@ -29,6 +28,12 @@ public class WeaponBehavior : MonoBehaviour
     private int AimingID;
     private int ShootingID;
     private int onlyOneShoot;
+
+    public delegate void WeaponShoot(int currentMagAmmo);
+    public delegate void WeaponReload(int currentMagAmmo, int currentAmmo);
+    
+    public static event WeaponShoot OnWeaponShoot;
+    public static event WeaponReload OnWeaponReload;
 
     private void Awake()
     {
@@ -72,15 +77,19 @@ public class WeaponBehavior : MonoBehaviour
             StartCoroutine(Reload());
     }
 
-    private IEnumerator Reload() {
+    private IEnumerator Reload()
+    {
+        int cAmmo = currentAmmo;
+        int cMagAmmo = currentMagAmmo;
         weaponData.reloading = true;
 
         yield return new WaitForSeconds(weaponData.reloadTime);
 
-        currentMagAmmo = currentAmmo < weaponData.magSize ? currentAmmo : weaponData.magSize;
-        currentAmmo -= weaponData.magSize;
-        math.clamp(currentAmmo, 0, weaponData.maxAmmo);
+        currentAmmo -= weaponData.magSize - cMagAmmo;
+        currentMagAmmo = cAmmo < weaponData.magSize ? cAmmo : weaponData.magSize;
+        currentAmmo = math.clamp(currentAmmo, 0, weaponData.maxAmmo);
         
+        OnWeaponReload?.Invoke(currentMagAmmo, currentAmmo);
         weaponData.reloading = false;
     }
 
@@ -110,6 +119,7 @@ public class WeaponBehavior : MonoBehaviour
             b.decal = decal;
             Instantiate(bullet, cam.transform.position, cam.transform.rotation);
             currentMagAmmo--;
+            OnWeaponShoot?.Invoke(currentMagAmmo);
             timeSinceLastShot = 0;
             onlyOneShoot++;
             OnGunShot();

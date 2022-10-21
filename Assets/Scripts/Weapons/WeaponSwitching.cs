@@ -18,6 +18,10 @@ public class WeaponSwitching : MonoBehaviour
     private PlayerControls _controls;
     [SerializeField]private int selectedWeaponIndex;
     private float timeSinceLastSwitch;
+    
+    public delegate void WeaponSwitch(int currentMagAmmo, int currentAmmo);
+
+    public static event WeaponSwitch OnWeaponSwitch;
 
     private void Awake() => _controls = PlayerInputs.Controls;
 
@@ -58,6 +62,8 @@ public class WeaponSwitching : MonoBehaviour
         yourWeapons[0] = 1;
 
         selectedWeaponIndex = 0;
+        
+        OnWeaponSwitch?.Invoke(weapons[selectedWeaponIndex].currentMagAmmo, weapons[selectedWeaponIndex].currentAmmo);
     }
 
     private void Select(InputAction.CallbackContext ctx)
@@ -70,6 +76,7 @@ public class WeaponSwitching : MonoBehaviour
             selectedWeaponIndex = index;
 
             timeSinceLastSwitch = 0;
+            OnWeaponSwitch?.Invoke(weapons[index].currentMagAmmo, weapons[index].currentAmmo);
         }
     }
     
@@ -84,6 +91,7 @@ public class WeaponSwitching : MonoBehaviour
             selectedWeaponIndex = index;
 
             timeSinceLastSwitch = 0;
+            OnWeaponSwitch?.Invoke(weapons[index].currentMagAmmo, weapons[index].currentAmmo);
         }
     }
 }

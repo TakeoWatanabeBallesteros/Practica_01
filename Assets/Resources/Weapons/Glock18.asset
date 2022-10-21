@@ -18,7 +18,7 @@ MonoBehaviour:
   velocity: 437
   maxAmmo: 40
   magSize: 17
-  fireRate: 120
+  fireRate: 150
   reloadTime: 1.5
   reloading: 0
   recoilX: -1
