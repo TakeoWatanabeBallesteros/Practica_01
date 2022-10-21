@@ -3313,7 +3313,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2281619184333804751, guid: 8c98f9ae2689e2642943995cba175ed3, type: 3}
       propertyPath: m_Name
-      value: Mujer
+      value: Tools
       objectReference: {fileID: 0}
     - target: {fileID: 5249310133689773198, guid: 8c98f9ae2689e2642943995cba175ed3, type: 3}
       propertyPath: m_RootOrder
@@ -3321,7 +3321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5249310133689773198, guid: 8c98f9ae2689e2642943995cba175ed3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5249310133689773198, guid: 8c98f9ae2689e2642943995cba175ed3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3329,7 +3329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5249310133689773198, guid: 8c98f9ae2689e2642943995cba175ed3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5249310133689773198, guid: 8c98f9ae2689e2642943995cba175ed3, type: 3}
       propertyPath: m_LocalRotation.w

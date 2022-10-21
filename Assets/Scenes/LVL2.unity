@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: e8a50e3b1cce84a439e2740ea9779c08, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -20194,7 +20194,7 @@ Transform:
   - {fileID: 145140831}
   - {fileID: 1510937095}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &804010619 stripped
 Transform:
@@ -43926,19 +43926,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3557554918752446481, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.074337445
+      value: 0.6883546
       objectReference: {fileID: 0}
     - target: {fileID: 3557554918752446481, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3557554918752446481, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.99723315
+      value: -0.72537434
       objectReference: {fileID: 0}
     - target: {fileID: 3557554918752446481, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3557554918752446481, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -43946,7 +43946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3557554918752446481, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -171.474
+      value: -93
       objectReference: {fileID: 0}
     - target: {fileID: 3557554918752446481, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -50478,7 +50478,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2062192451
 GameObject:
@@ -53418,7 +53418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4698631849252846791, guid: 933bfc5363e1794459a736fe614dda4e, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4698631849252846791, guid: 933bfc5363e1794459a736fe614dda4e, type: 3}
       propertyPath: m_LocalPosition.x
