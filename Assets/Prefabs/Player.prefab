@@ -471,8 +471,6 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 20
   smooth: 9
-  currentAmmo: 0
-  currentMagAmmo: 0
 --- !u!95 &1730225460
 Animator:
   serializedVersion: 3
@@ -1742,7 +1740,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1927,7 +1925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3557554919452930733}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.673, z: 0.501}
+  m_LocalPosition: {x: 0, y: 1.572, z: 0.203}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5368561695728594795}
@@ -2032,7 +2030,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -2337,8 +2335,6 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 60
   smooth: 9
-  currentAmmo: 0
-  currentMagAmmo: 0
 --- !u!95 &2645595026901970042
 Animator:
   serializedVersion: 3
@@ -2833,8 +2829,6 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 60
   smooth: 9
-  currentAmmo: 0
-  currentMagAmmo: 0
 --- !u!95 &734297422
 Animator:
   serializedVersion: 3
@@ -3410,8 +3404,6 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 20
   smooth: 9
-  currentAmmo: 0
-  currentMagAmmo: 0
 --- !u!95 &4000325055107037902
 Animator:
   serializedVersion: 3
@@ -3568,8 +3560,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7238721308739683235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.103, z: 0}
-  m_LocalScale: {x: 1, y: 1.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.907, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.9, z: 0.7}
   m_Children: []
   m_Father: {fileID: 3557554918752446481}
   m_RootOrder: 1
@@ -4245,8 +4237,6 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 60
   smooth: 9
-  currentAmmo: 0
-  currentMagAmmo: 0
 --- !u!95 &3298713283752010455
 Animator:
   serializedVersion: 3
