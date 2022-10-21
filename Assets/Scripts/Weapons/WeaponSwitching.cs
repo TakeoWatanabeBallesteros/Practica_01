@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 public class WeaponSwitching : MonoBehaviour
 {
     [Header("References")] 
-    [SerializeField] private Transform[] weapons;
+    [SerializeField] private WeaponBehavior[] weapons;
     private int[] yourWeapons; //sames index as weapons, but 0 = dont have and 1 = you have it
 
     [Header("Settings")] 
@@ -47,12 +47,12 @@ public class WeaponSwitching : MonoBehaviour
 
     private void SetWeapons()
     {
-        weapons = new Transform[transform.childCount];
+        weapons = new WeaponBehavior[transform.childCount];
         yourWeapons = new int[transform.childCount];
 
         for (int i = 0; i < transform.childCount; i++)
         {
-            weapons[i] = transform.GetChild(i);
+            weapons[i] = transform.GetChild(i).GetComponent<WeaponBehavior>();
             yourWeapons[i] = 1;
         }
         yourWeapons[0] = 1;

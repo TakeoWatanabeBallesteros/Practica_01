@@ -4200,6 +4200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3547235480480762005}
   - component: {fileID: 1138588730921093281}
+  - component: {fileID: 3298713283752010455}
   m_Layer: 6
   m_Name: USP-S
   m_TagString: Untagged
@@ -4240,12 +4241,31 @@ MonoBehaviour:
   cam: {fileID: 3557554918526811899}
   muzzle: {fileID: 4871137872540323497}
   decal: {fileID: 7708636070130378430, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
-  animator: {fileID: 0}
+  animator: {fileID: 3298713283752010455}
   idleFov: 60
   aimFov: 60
   smooth: 9
   currentAmmo: 0
   currentMagAmmo: 0
+--- !u!95 &3298713283752010455
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266944564773831401}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 73db51970e312b748bc8ad68281e5ab3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8368273903817388862
 GameObject:
   m_ObjectHideFlags: 0
