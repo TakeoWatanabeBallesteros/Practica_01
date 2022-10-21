@@ -18,6 +18,7 @@ public class WeaponBehavior : MonoBehaviour
     [SerializeField] private float idleFov;
     [SerializeField] private float aimFov;
     [SerializeField] private float smooth;
+    [SerializeField] private AudioClip shootAudio;
     [SerializeField] public int currentAmmo { get; private set; }
     [SerializeField] public int currentMagAmmo { get; private set; }
 
@@ -152,6 +153,7 @@ public class WeaponBehavior : MonoBehaviour
 
     private void OnGunShot()
     {
+        ShootSound();
         if(!aiming)recoilBehavior.RecoilFire(weaponData.recoilX, weaponData.recoilY, weaponData.recoilZ);
         else recoilBehavior.RecoilFire(weaponData.recoilAimX, weaponData.recoilAimY, weaponData.recoilAimZ);
     }
@@ -178,5 +180,10 @@ public class WeaponBehavior : MonoBehaviour
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, aimFov, smooth*Time.deltaTime);
         }
+    }
+
+    public void ShootSound()
+    {
+        AudioSource.PlayClipAtPoint(shootAudio, muzzle.position);
     }
 }
