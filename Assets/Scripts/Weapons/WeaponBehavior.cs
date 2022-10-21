@@ -39,7 +39,9 @@ public class WeaponBehavior : MonoBehaviour
         currentMagAmmo = weaponData.magSize;
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
+        timeSinceLastShot = 100;
         _controls.Player.Shoot.performed += StartShooting;
         _controls.Player.Shoot.canceled += StopShooting;
         _controls.Player.Reload.performed += StartReload;
@@ -118,7 +120,7 @@ public class WeaponBehavior : MonoBehaviour
             shooting = false;
             animator.SetBool(ShootingID, shooting);
         }
-        if(weaponData.type == TypeOfWeapon.Sniper)
+        if(weaponData.type == TypeOfWeapon.Sniper || weaponData.type == TypeOfWeapon.Pistol)
         {
             aiming = false;
             animator.SetBool(AimingID, aiming);
@@ -127,7 +129,7 @@ public class WeaponBehavior : MonoBehaviour
 
     private void StartShooting(InputAction.CallbackContext ctx)
     {
-        shooting = true;
+        shooting = CanShoot();
         animator.SetBool(ShootingID, shooting);
     }
 
@@ -146,7 +148,7 @@ public class WeaponBehavior : MonoBehaviour
 
     private void Aim(InputAction.CallbackContext ctx)
     {
-        aiming = true;
+        aiming = weaponData.type != TypeOfWeapon.Pistol && (weaponData.type != TypeOfWeapon.Sniper || CanShoot());
         animator.SetBool(AimingID, aiming);
     }
     private void StopAim(InputAction.CallbackContext ctx)

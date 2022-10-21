@@ -18,12 +18,12 @@ MonoBehaviour:
   velocity: 887
   maxAmmo: 30
   magSize: 10
-  fireRate: 30
+  fireRate: 45
   reloadTime: 5
   reloading: 0
   recoilX: -10
   recoilY: 0
   recoilZ: 0
-  recoilAimX: -8
+  recoilAimX: -18
   recoilAimY: 0
   recoilAimZ: 0
