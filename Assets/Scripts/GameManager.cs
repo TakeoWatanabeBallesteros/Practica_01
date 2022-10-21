@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,8 @@ public class GameManager : MonoBehaviour
 {
     static GameManager instance = null;
     DataGameManager data;
-    int[] playerKeys;
+    bool[] playerKeys;
     Transform player;
-    int numberOfTotalKeys;
     float playerHealth;
     float playerShield;
     private void Start() {
@@ -40,21 +40,21 @@ public class GameManager : MonoBehaviour
 
     void InitializeKeys()
     {
-        playerKeys = new int[numberOfTotalKeys];
-        for (int i = 0; i < numberOfTotalKeys; i++)
+        playerKeys = new bool[(int)Keys.NumberOfKeys];
+        for (int i = 0; i < (int)Keys.NumberOfKeys; i++)
         {
-            playerKeys[i] = 0;
+            playerKeys[i] = false;
         }
     }
 
-    public void SetKey(int keyNumber)
+    public void SetKey(Keys key)
     {
-        playerKeys[keyNumber] = 1;
+        playerKeys[(int)key] = true;
     }
 
-    public int GetKey(int keyNumber)
+    public bool GetKey(Keys key)
     {
-        return playerKeys[keyNumber];
+        return playerKeys[(int)key];
     }
 
     public Transform GetPlayer()
@@ -94,7 +94,6 @@ public class GameManager : MonoBehaviour
     void InitializeData()
     {
         data = Resources.Load<DataGameManager>("DataGameManager");
-        numberOfTotalKeys = data.numberOfKeys;
         playerHealth = data.playerMaxHealth;
         playerShield = 0;
     }
@@ -104,7 +103,7 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<HealthSystem>().SaveStats();
             SceneManager.LoadScene("LVL2");
         }
-        
+        ////////////////////////////////////////////
     }
     public void Respawn()
     {
@@ -129,5 +128,5 @@ public enum Keys
     Key2,
     Key3,
     Key4,
-    NumberOfTypes
+    NumberOfKeys
 }

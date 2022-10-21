@@ -7,5 +7,4 @@ public class DataGameManager : ScriptableObject
 {
     public int playerMaxHealth;
     public int playerMaxShield;
-    public int numberOfKeys;
 }

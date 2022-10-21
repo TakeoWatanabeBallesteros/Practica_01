@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class KeyPickable : MonoBehaviour,IPickable
 {
-    [SerializeField] int keyNumber;
+    [SerializeField] Keys key;
     public void Pick()
     {
-        GameManager.GetGameManager().SetKey(keyNumber);
+        GameManager.GetGameManager().SetKey(key);
         Destroy(this.gameObject);
     }
 }

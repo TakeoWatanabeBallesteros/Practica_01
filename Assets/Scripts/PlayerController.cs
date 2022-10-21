@@ -347,9 +347,11 @@ public class PlayerController : MonoBehaviour
         other.GetComponent<IPickable>()?.Pick();
         other.GetComponent<Platform>()?.GetOnPlatform(transform);
         other.GetComponent<DeadZone>()?.Die(GetComponent<HealthSystem>());
+        other.GetComponent<Door>()?.Open();
     }
     private void OnTriggerExit(Collider other) 
     {
         other.GetComponent<Platform>()?.GetOffPlatform(transform);
+        other.GetComponent<Door>()?.Close();
     }
 }
