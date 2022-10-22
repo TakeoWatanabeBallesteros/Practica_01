@@ -21,9 +21,9 @@ MonoBehaviour:
   fireRate: 650
   reloadTime: 2.5
   reloading: 0
-  recoilX: -2
+  recoilX: -2.5
   recoilY: 2
   recoilZ: 0.35
-  recoilAimX: -1.5
+  recoilAimX: -2
   recoilAimY: 1
   recoilAimZ: 0.3
