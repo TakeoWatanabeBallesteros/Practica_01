@@ -118,6 +118,8 @@ public class WeaponBehavior : MonoBehaviour
             b.damage = weaponData.damage;
             b.velocity = weaponData.velocity;
             b.decal = decal;
+            RaycastHit hit;
+            if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1000f))
             Instantiate(bullet, cam.transform.position, cam.transform.rotation);
             currentMagAmmo--;
             OnWeaponShoot?.Invoke(currentMagAmmo);

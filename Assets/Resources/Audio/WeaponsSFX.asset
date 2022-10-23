@@ -15,9 +15,9 @@ MonoBehaviour:
   audioGroupType: 2
   sounds:
   - audioType: 1
-    name: 
-    clip: {fileID: 0}
-    volume: 0
+    name: AKM_Shoot
+    clip: {fileID: 8300000, guid: c8c0a4e9083eb8048968af352ea57483, type: 3}
+    volume: 0.5
     pitch: 0
     loop: 0
     source: {fileID: 0}
