@@ -471,6 +471,7 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 20
   smooth: 9
+  shootAudio: {fileID: 8300000, guid: c8c0a4e9083eb8048968af352ea57483, type: 3}
 --- !u!95 &1730225460
 Animator:
   serializedVersion: 3
@@ -2335,6 +2336,7 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 60
   smooth: 9
+  shootAudio: {fileID: 0}
 --- !u!95 &2645595026901970042
 Animator:
   serializedVersion: 3
@@ -2829,6 +2831,7 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 60
   smooth: 9
+  shootAudio: {fileID: 0}
 --- !u!95 &734297422
 Animator:
   serializedVersion: 3
@@ -3404,6 +3407,7 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 20
   smooth: 9
+  shootAudio: {fileID: 0}
 --- !u!95 &4000325055107037902
 Animator:
   serializedVersion: 3
@@ -4237,6 +4241,7 @@ MonoBehaviour:
   idleFov: 60
   aimFov: 60
   smooth: 9
+  shootAudio: {fileID: 0}
 --- !u!95 &3298713283752010455
 Animator:
   serializedVersion: 3
