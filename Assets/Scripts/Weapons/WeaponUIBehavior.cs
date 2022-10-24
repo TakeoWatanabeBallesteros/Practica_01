@@ -20,6 +20,13 @@ public class WeaponUIBehavior : MonoBehaviour
         WeaponBehavior.OnWeaponReload += WeaponReload;
     }
     
+    private void OnDisable()
+    {
+        WeaponSwitching.OnWeaponSwitch -= WeaponChanged;
+        WeaponBehavior.OnWeaponShoot -= WeaponShoot;
+        WeaponBehavior.OnWeaponReload -= WeaponReload;
+    }
+    
     void WeaponChanged(int currentMagAmmo, int currentAmmo, WeaponData data)
     {
         _currentMagAmmo = currentMagAmmo;
