@@ -1796,6 +1796,7 @@ MonoBehaviour:
   - {fileID: 1159300521}
   - {fileID: 569709878}
   reset: 0
+  roundMaxTime: 90
 --- !u!4 &846425605
 Transform:
   m_ObjectHideFlags: 0
