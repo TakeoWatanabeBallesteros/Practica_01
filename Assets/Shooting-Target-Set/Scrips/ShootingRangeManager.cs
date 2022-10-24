@@ -8,8 +8,21 @@ public class ShootingRangeManager : MonoBehaviour
     [SerializeField] private List<ShootingRangeTarget> targets;
     [SerializeField] private bool reset;
     [SerializeField] private float roundMaxTime;
-    private bool isRoundActive;
-    public float roundTime { get; private set; }
+    [SerializeField] private int points;
+    [SerializeField] private bool isRoundActive;
+    [SerializeField] private float roundTime;
+
+    private void OnEnable()
+    {
+        StartButton.OnStartRound += StartRound;
+        ShootingRangeTarget.OnHitPoint += AddPoints;
+    }
+
+    private void OnDisable()
+    {
+        StartButton.OnStartRound -= StartRound;
+        ShootingRangeTarget.OnHitPoint -= AddPoints;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -24,22 +37,26 @@ public class ShootingRangeManager : MonoBehaviour
         if(roundTime >= roundMaxTime) FinishRound();
         
         if(!reset) return;
-        foreach (var x in targets)
-        {
-            x.Reset();
-        }
+        ResetTargets();
 
         reset = false;
     }
 
     private void ResetTargets()
     {
-        
+        Debug.Log("Ap");
+        foreach (var x in targets)
+        {
+            x.Reset();
+        }
     }
 
     private void StartRound()
     {
-        
+        if(isRoundActive) return;
+        reset = true;
+        points = 0;
+        isRoundActive = true;
     }
 
     private void FinishRound()
@@ -47,5 +64,10 @@ public class ShootingRangeManager : MonoBehaviour
         roundTime = 0;
         isRoundActive = false;
         reset = true;
+    }
+
+    private void AddPoints(int points)
+    {
+        this.points += points;
     }
 }
