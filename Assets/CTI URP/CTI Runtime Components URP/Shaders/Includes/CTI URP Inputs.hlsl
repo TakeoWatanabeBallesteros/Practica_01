@@ -174,6 +174,7 @@
     //  This is needed by the Meta pass
         inline void InitializeStandardLitSurfaceData(float2 uv, out SurfaceData outSurfaceData)
         {
+            outSurfaceData = (SurfaceData)0;
             half4 albedoAlpha = SampleAlbedoAlpha(uv, TEXTURE2D_ARGS(_BaseMap, sampler_BaseMap));
             outSurfaceData.alpha = Alpha(albedoAlpha.a, 1, _Cutoff);
             outSurfaceData.albedo = albedoAlpha.rgb;
