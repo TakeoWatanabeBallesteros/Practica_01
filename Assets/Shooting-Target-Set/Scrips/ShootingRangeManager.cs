@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShootingRangeManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class ShootingRangeManager : MonoBehaviour
     [SerializeField] private int points;
     [SerializeField] private bool isRoundActive;
     [SerializeField] private float roundTime;
+    [SerializeField] private TextMeshProUGUI timerUI;
+    [SerializeField] private TextMeshProUGUI pointsUI;
 
     private void OnEnable()
     {
@@ -32,9 +35,13 @@ public class ShootingRangeManager : MonoBehaviour
 
     private void Update()
     {
-        if (isRoundActive) roundTime += Time.deltaTime;
+        if (isRoundActive)
+        {
+            roundTime -= Time.deltaTime;
+            timerUI.text = $"Time: {Math.Round(roundTime)}";
+        }
         
-        if(roundTime >= roundMaxTime) FinishRound();
+        if(roundTime <= 0) FinishRound();
         
         if(!reset) return;
         ResetTargets();
@@ -44,7 +51,6 @@ public class ShootingRangeManager : MonoBehaviour
 
     private void ResetTargets()
     {
-        Debug.Log("Ap");
         foreach (var x in targets)
         {
             x.Reset();
@@ -57,11 +63,15 @@ public class ShootingRangeManager : MonoBehaviour
         reset = true;
         points = 0;
         isRoundActive = true;
+        timerUI.gameObject.SetActive(true);
+        pointsUI.gameObject.SetActive(true);
     }
 
     private void FinishRound()
     {
-        roundTime = 0;
+        timerUI.gameObject.SetActive(false);
+        pointsUI.gameObject.SetActive(false);
+        roundTime = roundMaxTime;
         isRoundActive = false;
         reset = true;
     }
@@ -69,5 +79,6 @@ public class ShootingRangeManager : MonoBehaviour
     private void AddPoints(int points)
     {
         this.points += points;
+        pointsUI.text = $"Points: {this.points}";
     }
 }

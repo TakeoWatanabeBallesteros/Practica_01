@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class HealthSystem : MonoBehaviour, IReset
+public class HealthSystem : MonoBehaviour, IReset, IDamageable
 {
     float currentHealth;
     float currentShield;
@@ -102,5 +102,4 @@ public class HealthSystem : MonoBehaviour, IReset
         currentShield = 0;
         isAlive = true;
     }
-
 }

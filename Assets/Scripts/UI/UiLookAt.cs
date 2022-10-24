@@ -10,5 +10,6 @@ public class UiLookAt : MonoBehaviour
         var direction = transform.position - Camera.main.transform.position;
         var lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = lookRotation;
+        //transform.LookAt(Camera.main.transform.position);
     }
 }

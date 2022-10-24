@@ -21,7 +21,7 @@ public class BulletBehavior : MonoBehaviour
         distance += velocity * Time.deltaTime;
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, distance)){
             hitInfo.transform.GetComponent<Hittable>()?.OnHit();
-            // hitInfo.transform.GetComponent<IDamageable>()?.TakeDamage(gunData.damage);
+            hitInfo.transform.GetComponent<IDamageable>()?.TakeDamage(damage);
             //var d = Instantiate(decal, hitInfo.point + (hitInfo.normal * 0.01f), Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
             var d = Instantiate(decal, hitInfo.point - (hitInfo.normal * 0.001f), Quaternion.FromToRotation(Vector3.forward, hitInfo.normal));
             d.transform.parent = hitInfo.transform;
