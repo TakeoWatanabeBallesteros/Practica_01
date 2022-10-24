@@ -19,7 +19,7 @@ public class WeaponSwitching : MonoBehaviour
     [SerializeField]private int selectedWeaponIndex;
     private float timeSinceLastSwitch;
     
-    public delegate void WeaponSwitch(int currentMagAmmo, int currentAmmo);
+    public delegate void WeaponSwitch(int currentMagAmmo, int maxAmmo, int currentAmmo, string weaponName, Sprite logoWeapon);
 
     public static event WeaponSwitch OnWeaponSwitch;
 
@@ -63,7 +63,7 @@ public class WeaponSwitching : MonoBehaviour
 
         selectedWeaponIndex = 0;
         
-        OnWeaponSwitch?.Invoke(weapons[selectedWeaponIndex].currentMagAmmo, weapons[selectedWeaponIndex].currentAmmo);
+        OnWeaponSwitch?.Invoke(weapons[selectedWeaponIndex].currentMagAmmo, weapons[selectedWeaponIndex].magMaxAmmo, weapons[selectedWeaponIndex].currentAmmo,weapons[selectedWeaponIndex].name,weapons[selectedWeaponIndex].logo);
     }
 
     private void Select(InputAction.CallbackContext ctx)
@@ -76,7 +76,7 @@ public class WeaponSwitching : MonoBehaviour
             selectedWeaponIndex = index;
 
             timeSinceLastSwitch = 0;
-            OnWeaponSwitch?.Invoke(weapons[index].currentMagAmmo, weapons[index].currentAmmo);
+            OnWeaponSwitch?.Invoke(weapons[selectedWeaponIndex].currentMagAmmo, weapons[selectedWeaponIndex].magMaxAmmo, weapons[selectedWeaponIndex].currentAmmo,weapons[selectedWeaponIndex].name,weapons[selectedWeaponIndex].logo);
         }
     }
     
@@ -91,7 +91,7 @@ public class WeaponSwitching : MonoBehaviour
             selectedWeaponIndex = index;
 
             timeSinceLastSwitch = 0;
-            OnWeaponSwitch?.Invoke(weapons[index].currentMagAmmo, weapons[index].currentAmmo);
+            OnWeaponSwitch?.Invoke(weapons[selectedWeaponIndex].currentMagAmmo, weapons[selectedWeaponIndex].magMaxAmmo, weapons[selectedWeaponIndex].currentAmmo,weapons[selectedWeaponIndex].name,weapons[selectedWeaponIndex].logo);
         }
     }
 }

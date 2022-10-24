@@ -20,7 +20,10 @@ public class WeaponBehavior : MonoBehaviour
     [SerializeField] private float smooth;
     [SerializeField] private AudioClip shootAudio;
     [SerializeField] public int currentAmmo { get; private set; }
+    [SerializeField] public int magMaxAmmo { get; private set; }
     [SerializeField] public int currentMagAmmo { get; private set; }
+    [SerializeField] public Sprite logo { get; private set; }
+
 
     private PlayerControls _controls;
     private float timeSinceLastShot;
@@ -30,7 +33,7 @@ public class WeaponBehavior : MonoBehaviour
     private int ShootingID;
     private int onlyOneShoot;
 
-    public delegate void WeaponShoot(int currentMagAmmo);
+    public delegate void WeaponShoot(int currentMagAmmo, int maxMagAmmo);
     public delegate void WeaponReload(int currentMagAmmo, int currentAmmo);
     
     public static event WeaponShoot OnWeaponShoot;
@@ -43,6 +46,8 @@ public class WeaponBehavior : MonoBehaviour
         ShootingID = Animator.StringToHash("Shooting");
         currentAmmo = weaponData.maxAmmo;
         currentMagAmmo = weaponData.magSize;
+        logo = weaponData.logo;
+        magMaxAmmo = weaponData.magSize;
     }
 
     private void OnEnable()
@@ -122,7 +127,7 @@ public class WeaponBehavior : MonoBehaviour
             if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1000f))
             Instantiate(bullet, cam.transform.position, cam.transform.rotation);
             currentMagAmmo--;
-            OnWeaponShoot?.Invoke(currentMagAmmo);
+            OnWeaponShoot?.Invoke(currentMagAmmo,magMaxAmmo);
             timeSinceLastShot = 0;
             onlyOneShoot++;
             OnGunShot();
