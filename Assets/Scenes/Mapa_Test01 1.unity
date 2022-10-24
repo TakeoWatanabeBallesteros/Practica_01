@@ -737,7 +737,7 @@ MonoBehaviour:
   moveSpeed: 3.5
   hearDistance: 15
   sightDistance: 9
-  attackDistance: 6
+  maxAttackDistance: 0
   sightAngle: 60
   headHeight: 3
   rotationSpeed: 40
@@ -3026,14 +3026,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2096416706}
-    - target: {fileID: 1700091578472427844, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 25.436
-      objectReference: {fileID: 0}
-    - target: {fileID: 1700091578472427844, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
-      objectReference: {fileID: 0}
     - target: {fileID: 2024555383062663746, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
       propertyPath: m_RootOrder
       value: 13

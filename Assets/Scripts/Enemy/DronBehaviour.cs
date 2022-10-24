@@ -60,7 +60,6 @@ public class DronBehaviour : MonoBehaviour,IDamageable
                     fsm.RequestStateChange("Attack");
                 else if(SeesPlayer() && !PlayerOnAttackDistance())
                     fsm.RequestStateChange("Chase");
-                Debug.DrawLine(enemyEyes.position, playerHead.position, SeesPlayer() ?Color.green:Color.red);
                     
                 RotateAtSpeed(rotationSpeed);
             }));
