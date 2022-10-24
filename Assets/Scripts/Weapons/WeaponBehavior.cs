@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Debug = UnityEngine.Debug;
 
-public class WeaponBehavior : MonoBehaviour
+public class WeaponBehavior : MonoBehaviour, IReset
 {
     [Header("References")]
     [SerializeField] private WeaponData weaponData;
@@ -199,5 +199,11 @@ public class WeaponBehavior : MonoBehaviour
     public void ShootSound()
     {
         AudioSource.PlayClipAtPoint(shootAudio, muzzle.position);
+    }
+    public void Reset()
+    {
+        currentAmmo = weaponData.maxAmmo;
+        currentMagAmmo = weaponData.magSize;
+        OnWeaponReload?.Invoke(currentMagAmmo, currentAmmo, weaponData);
     }
 }

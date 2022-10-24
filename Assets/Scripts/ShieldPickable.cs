@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldPickable : MonoBehaviour,IPickable
+public class ShieldPickable : MonoBehaviour,IPickable,IReset
 {
     [SerializeField] float shield;
     HealthSystem healthSystem;
+    public bool dontDestroy = false;
     public void Pick()
     {
         if(healthSystem == null) healthSystem = GameManager.GetGameManager().GetPlayer().GetComponent<HealthSystem>();
@@ -13,7 +14,12 @@ public class ShieldPickable : MonoBehaviour,IPickable
         if(healthSystem.CanShield())
         {
             healthSystem.Shield(shield);
-            Destroy(this.gameObject);
+            if(dontDestroy) gameObject.SetActive(false);
+            else Destroy(this.gameObject);
         }
+    }
+    public void Reset()
+    {
+        gameObject.SetActive(true);
     }
 }

@@ -17,4 +17,9 @@ public class Door : MonoBehaviour
     {
         anim.SetBool("character_nearby",false);
     }
+    public void Reset()
+    {
+        anim.SetBool("character_nearby",false);
+        anim.Play("Close");
+    }
 }

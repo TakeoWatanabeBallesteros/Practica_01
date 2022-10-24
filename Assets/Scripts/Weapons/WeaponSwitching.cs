@@ -6,7 +6,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WeaponSwitching : MonoBehaviour
+public class WeaponSwitching : MonoBehaviour, IReset
 {
     [Header("References")] 
     [SerializeField] private WeaponBehavior[] weapons;
@@ -53,14 +53,16 @@ public class WeaponSwitching : MonoBehaviour
     private void SetWeapons()
     {
         weapons = new WeaponBehavior[transform.childCount];
+        List<IReset> weaponsResets =  new List<IReset>();
         yourWeapons = new int[transform.childCount];
 
         for (int i = 0; i < transform.childCount; i++)
         {
             weapons[i] = transform.GetChild(i).GetComponent<WeaponBehavior>();
+            weaponsResets.Add((IReset)weapons[i]);
             yourWeapons[i] = 1;
         }
-        yourWeapons[0] = 1;
+        GameManager.GetGameManager().AddResetables(weaponsResets);
 
         selectedWeaponIndex = 0;
 
@@ -100,5 +102,9 @@ public class WeaponSwitching : MonoBehaviour
     bool CanSwitchWeapon(int indx)
     {
         return indx != selectedWeaponIndex && yourWeapons[indx] == 1 && timeSinceLastSwitch > switchTime;
+    }
+    public void Reset()
+    {
+        SwitchWeapon(0);
     }
 }

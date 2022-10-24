@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class HealthSystem : MonoBehaviour
+public class HealthSystem : MonoBehaviour, IReset
 {
     float currentHealth;
     float currentShield;
@@ -67,7 +67,7 @@ public class HealthSystem : MonoBehaviour
 
         //Comprobación de posible final de partida
         isAlive = currentHealth > 0;
-        if(!isAlive)GameManager.GetGameManager().Respawn();
+        if(!isAlive)GameManager.GetGameManager().Die();
     }
     public void SaveStats()
     {
@@ -96,6 +96,11 @@ public class HealthSystem : MonoBehaviour
     {
         return currentShield < maxShield;
     }
-
+    public void Reset()
+    {
+        currentHealth = maxHealth;
+        currentShield = 0;
+        isAlive = true;
+    }
 
 }

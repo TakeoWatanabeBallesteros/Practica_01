@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class HealthSystemDisplay : MonoBehaviour
+public class HealthSystemDisplay : MonoBehaviour, IReset
 {
     [SerializeField] Color damageColor;
     [SerializeField] Color healColor;
@@ -88,5 +88,14 @@ public class HealthSystemDisplay : MonoBehaviour
             yield return null;
         }
         imageFront.fillAmount = current/max;
+    }
+    public void Reset()
+    {
+        healthTextDisplay.text = maxHealth.ToString();
+        healthImageDisplay.fillAmount = 1;
+        healthImageBackDisplay.fillAmount = 1;
+        shieldImageDisplay.fillAmount = 0;
+        shieldImageBackDisplay.fillAmount = 0;
+        maxShieldDisplay.SetActive(false);
     }
 }

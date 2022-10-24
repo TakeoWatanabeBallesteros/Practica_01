@@ -8,6 +8,6 @@ public class KeyPickable : MonoBehaviour,IPickable
     public void Pick()
     {
         GameManager.GetGameManager().SetKey(key);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

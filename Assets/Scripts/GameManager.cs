@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;   
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class GameManager : MonoBehaviour
     Transform player;
     float playerHealth;
     float playerShield;
+    Vector3 currentCheckpointPos;
+    Quaternion currentCheckpointRot;
+    int checkpointPreference;
+    List<IReset> resetablesList;
     private void Start() {
         DontDestroyOnLoad(this.gameObject);
     }
@@ -22,6 +27,7 @@ public class GameManager : MonoBehaviour
             instance = new GameObject("GameManager").AddComponent<GameManager>();
             instance.InitializeData();
             instance.InitializeKeys();
+            instance.resetablesList = instance.InitializeResetables();
         }
 
         return instance;
@@ -64,6 +70,8 @@ public class GameManager : MonoBehaviour
     public void SetPlayer(Transform _player)
     {
         player = _player;
+        currentCheckpointPos = new Vector3(player.position.x,player.position.y,player.position.z);
+        currentCheckpointRot = new Quaternion(player.rotation.x,player.rotation.y,player.rotation.z,player.rotation.w);
     }
     public void SetHealth(float health)
     {
@@ -97,28 +105,73 @@ public class GameManager : MonoBehaviour
         playerHealth = data.playerMaxHealth;
         playerShield = 0;
     }
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-            FindObjectOfType<HealthSystem>().SaveStats();
-            SceneManager.LoadScene("LVL2");
-        }
-        ////////////////////////////////////////////
-    }
-    public void Respawn()
+    public void Die()
     {
+        StartCoroutine(Respawn());
+    }
+    IEnumerator Respawn()
+    {
+        player.GetComponent<PlayerController>().enabled = false;
+        FindObjectOfType<WeaponSwitching>().enabled = false;
+        FindObjectOfType<WeaponBehavior>().enabled = false;
+        yield return new WaitForSeconds(2f);
+
+        foreach (IReset obj in resetablesList) {
+            obj.Reset();
+        }
+        StartCoroutine(TeleportToCheckpoint());
         playerHealth = data.playerMaxHealth;
         playerShield = 0;
-        StartCoroutine(Die());
+        player.position = GetCheckpointPos();
+        player.rotation = GetCheckpointRot();
     }
-    IEnumerator Die()
+    IEnumerator TeleportToCheckpoint()
     {
-        yield return new WaitForSeconds(2f);
-        LoadScene(SceneManager.GetActiveScene().name);
+        yield return new WaitForFixedUpdate();
+        player.position = GetCheckpointPos();
+        player.rotation = GetCheckpointRot();
+        player.GetComponent<PlayerController>().enabled = true;
+        FindObjectOfType<WeaponSwitching>().enabled = true;
+        FindObjectOfType<WeaponBehavior>().enabled = true;
     }
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+    
+    public void SetCheckpoint(Transform checkpoint, int preference)
+    {
+        currentCheckpointPos = new Vector3(checkpoint.position.x,checkpoint.position.y,checkpoint.position.z);
+        currentCheckpointRot = new Quaternion(checkpoint.rotation.x,checkpoint.rotation.y,checkpoint.rotation.z,checkpoint.rotation.w);
+        checkpointPreference = preference;
+    }
+    public int GetCheckpointPref()
+    {
+        return checkpointPreference;
+    }
+    public Vector3 GetCheckpointPos()
+    {
+        return currentCheckpointPos;
+    }
+    public Quaternion GetCheckpointRot()
+    {
+        return currentCheckpointRot;
+    }
+    public List<IReset> InitializeResetables()
+    {
+        List<IReset> temporal =  new List<IReset>();
+        var resetables = FindObjectsOfType<MonoBehaviour>().OfType<IReset>();
+        foreach (IReset obj in resetables) {
+            temporal.Add(obj);
+        }
+        return temporal;
+    }
+    public void AddResetables(List<IReset> listToAdd)
+    {
+        foreach (var item in listToAdd)
+        {
+            resetablesList.Add(item);
+        }
     }
 }
 
