@@ -7,6 +7,7 @@ public class WeaponData : ScriptableObject {
 
     [Header("Info")]
     public new string name;
+    public Sprite logo;
 
     public TypeOfWeapon type;
 

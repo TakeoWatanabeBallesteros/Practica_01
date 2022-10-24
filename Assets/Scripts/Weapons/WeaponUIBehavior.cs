@@ -5,7 +5,10 @@ using TMPro;
 
 public class WeaponUIBehavior : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI amgAmmAndMag;
+    [SerializeField] TextMeshProUGUI ammoDisplayText;
+    [SerializeField] Image ammoDisplayImage;
+    [SerializeField] Image logoDisplay;
+    [SerializeField] TextMeshProUGUI nameDisplay;
 
     private int _currentMagAmmo;
 
@@ -16,36 +19,29 @@ public class WeaponUIBehavior : MonoBehaviour
         WeaponBehavior.OnWeaponShoot += WeaponShoot;
         WeaponBehavior.OnWeaponReload += WeaponReload;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
-    void WeaponChanged(int currentMagAmmo, int currentAmmo)
+    void WeaponChanged(int currentMagAmmo, int maxMagAmmo, int currentAmmo, string name, Sprite logo)
     {
         _currentMagAmmo = currentMagAmmo;
         _currentAmmo = currentAmmo;
-        amgAmmAndMag.text = _currentMagAmmo + " / " + _currentAmmo;
+        ammoDisplayText.text = _currentMagAmmo + " / " + _currentAmmo;
+        nameDisplay.text = name;
+        logoDisplay.sprite = logo;
+        ammoDisplayImage.fillAmount = (float)currentMagAmmo/maxMagAmmo;
     }
 
-    void WeaponShoot(int currentMagAmmo)
+    void WeaponShoot(int currentMagAmmo, int maxMagAmmo)
     {
         _currentMagAmmo = currentMagAmmo;
-        amgAmmAndMag.text = _currentMagAmmo + " / " + _currentAmmo;
+        ammoDisplayText.text = _currentMagAmmo + " / " + _currentAmmo;
+        ammoDisplayImage.fillAmount = (float)currentMagAmmo/maxMagAmmo;
     }
     
     void WeaponReload(int currentMagAmmo, int currentAmmo)
     {
         _currentMagAmmo = currentMagAmmo;
         _currentAmmo = currentAmmo;
-        amgAmmAndMag.text = _currentMagAmmo + " / " + _currentAmmo;
+        ammoDisplayText.text = _currentMagAmmo + " / " + _currentAmmo;
+        ammoDisplayImage.fillAmount = 1f;
     }
 }
