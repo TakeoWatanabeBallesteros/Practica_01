@@ -20,28 +20,28 @@ public class WeaponUIBehavior : MonoBehaviour
         WeaponBehavior.OnWeaponReload += WeaponReload;
     }
     
-    void WeaponChanged(int currentMagAmmo, int maxMagAmmo, int currentAmmo, string name, Sprite logo)
+    void WeaponChanged(int currentMagAmmo, int currentAmmo, WeaponData data)
     {
         _currentMagAmmo = currentMagAmmo;
         _currentAmmo = currentAmmo;
         ammoDisplayText.text = _currentMagAmmo + " / " + _currentAmmo;
-        nameDisplay.text = name;
-        logoDisplay.sprite = logo;
-        ammoDisplayImage.fillAmount = (float)currentMagAmmo/maxMagAmmo;
+        nameDisplay.text = data.name;
+        logoDisplay.sprite = data.logo;
+        ammoDisplayImage.fillAmount = (float)currentMagAmmo/data.magSize;
     }
 
-    void WeaponShoot(int currentMagAmmo, int maxMagAmmo)
+    void WeaponShoot(int currentMagAmmo, WeaponData data)
     {
         _currentMagAmmo = currentMagAmmo;
         ammoDisplayText.text = _currentMagAmmo + " / " + _currentAmmo;
-        ammoDisplayImage.fillAmount = (float)currentMagAmmo/maxMagAmmo;
+        ammoDisplayImage.fillAmount = (float)currentMagAmmo/data.magSize;
     }
     
-    void WeaponReload(int currentMagAmmo, int currentAmmo)
+    void WeaponReload(int currentMagAmmo, int currentAmmo, WeaponData data)
     {
         _currentMagAmmo = currentMagAmmo;
         _currentAmmo = currentAmmo;
         ammoDisplayText.text = _currentMagAmmo + " / " + _currentAmmo;
-        ammoDisplayImage.fillAmount = 1f;
+        ammoDisplayImage.fillAmount = (float)currentMagAmmo/data.magSize;
     }
 }

@@ -20,9 +20,7 @@ public class WeaponBehavior : MonoBehaviour
     [SerializeField] private float smooth;
     [SerializeField] private AudioClip shootAudio;
     [SerializeField] public int currentAmmo { get; private set; }
-    [SerializeField] public int magMaxAmmo { get; private set; }
     [SerializeField] public int currentMagAmmo { get; private set; }
-    [SerializeField] public Sprite logo { get; private set; }
 
 
     private PlayerControls _controls;
@@ -33,8 +31,8 @@ public class WeaponBehavior : MonoBehaviour
     private int ShootingID;
     private int onlyOneShoot;
 
-    public delegate void WeaponShoot(int currentMagAmmo, int maxMagAmmo);
-    public delegate void WeaponReload(int currentMagAmmo, int currentAmmo);
+    public delegate void WeaponShoot(int currentMagAmmo, WeaponData dataWeapon);
+    public delegate void WeaponReload(int currentMagAmmo, int currentAmmo, WeaponData dataWeapon);
     
     public static event WeaponShoot OnWeaponShoot;
     public static event WeaponReload OnWeaponReload;
@@ -46,8 +44,6 @@ public class WeaponBehavior : MonoBehaviour
         ShootingID = Animator.StringToHash("Shooting");
         currentAmmo = weaponData.maxAmmo;
         currentMagAmmo = weaponData.magSize;
-        logo = weaponData.logo;
-        magMaxAmmo = weaponData.magSize;
     }
 
     private void OnEnable()
@@ -85,17 +81,15 @@ public class WeaponBehavior : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        int cAmmo = currentAmmo;
-        int cMagAmmo = currentMagAmmo;
         weaponData.reloading = true;
 
         yield return new WaitForSeconds(weaponData.reloadTime);
 
-        currentAmmo -= weaponData.magSize - cMagAmmo;
-        currentMagAmmo = cAmmo < weaponData.magSize ? cAmmo : weaponData.magSize;
-        currentAmmo = math.clamp(currentAmmo, 0, weaponData.maxAmmo);
-        
-        OnWeaponReload?.Invoke(currentMagAmmo, currentAmmo);
+        int bulletsToReload = Mathf.Clamp(weaponData.magSize - currentMagAmmo,0,currentAmmo);
+        currentAmmo -= bulletsToReload;
+        currentMagAmmo += bulletsToReload;
+
+        OnWeaponReload?.Invoke(currentMagAmmo, currentAmmo, weaponData);
         weaponData.reloading = false;
     }
 
@@ -127,7 +121,7 @@ public class WeaponBehavior : MonoBehaviour
             if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1000f))
             Instantiate(bullet, cam.transform.position, cam.transform.rotation);
             currentMagAmmo--;
-            OnWeaponShoot?.Invoke(currentMagAmmo,magMaxAmmo);
+            OnWeaponShoot?.Invoke(currentMagAmmo,weaponData);
             timeSinceLastShot = 0;
             onlyOneShoot++;
             OnGunShot();
@@ -187,6 +181,19 @@ public class WeaponBehavior : MonoBehaviour
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, aimFov, smooth*Time.deltaTime);
         }
+    }
+    public WeaponData GetData()
+    {
+        return weaponData;
+    }
+    public bool CanGetAmmo()
+    {
+        return currentAmmo < weaponData.maxAmmo;
+    }
+    public void GetAmmo(int ammoAmount)
+    {
+        currentAmmo = Mathf.Clamp(currentAmmo + ammoAmount,0,weaponData.maxAmmo);
+        OnWeaponReload?.Invoke(currentMagAmmo, currentAmmo, weaponData);
     }
 
     public void ShootSound()

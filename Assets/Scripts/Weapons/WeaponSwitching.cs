@@ -18,8 +18,9 @@ public class WeaponSwitching : MonoBehaviour
     private PlayerControls _controls;
     [SerializeField]private int selectedWeaponIndex;
     private float timeSinceLastSwitch;
+    public static WeaponBehavior currentWeapon;
     
-    public delegate void WeaponSwitch(int currentMagAmmo, int maxAmmo, int currentAmmo, string weaponName, Sprite logoWeapon);
+    public delegate void WeaponSwitch(int currentMagAmmo, int currentAmmo, WeaponData data);
 
     public static event WeaponSwitch OnWeaponSwitch;
 
@@ -62,21 +63,17 @@ public class WeaponSwitching : MonoBehaviour
         yourWeapons[0] = 1;
 
         selectedWeaponIndex = 0;
-        
-        OnWeaponSwitch?.Invoke(weapons[selectedWeaponIndex].currentMagAmmo, weapons[selectedWeaponIndex].magMaxAmmo, weapons[selectedWeaponIndex].currentAmmo,weapons[selectedWeaponIndex].name,weapons[selectedWeaponIndex].logo);
+
+        currentWeapon = weapons[selectedWeaponIndex];
+        OnWeaponSwitch?.Invoke(currentWeapon.currentMagAmmo, currentWeapon.currentAmmo, currentWeapon.GetData());
     }
 
     private void Select(InputAction.CallbackContext ctx)
     {
         int index = (int)ctx.ReadValue<float>()-1;
-        if (yourWeapons[index] == 1 && timeSinceLastSwitch > switchTime)
+        if (CanSwitchWeapon(index))
         {
-            weapons[selectedWeaponIndex].gameObject.SetActive(false);
-            weapons[index].gameObject.SetActive(true);
-            selectedWeaponIndex = index;
-
-            timeSinceLastSwitch = 0;
-            OnWeaponSwitch?.Invoke(weapons[selectedWeaponIndex].currentMagAmmo, weapons[selectedWeaponIndex].magMaxAmmo, weapons[selectedWeaponIndex].currentAmmo,weapons[selectedWeaponIndex].name,weapons[selectedWeaponIndex].logo);
+            SwitchWeapon(index);
         }
     }
     
@@ -84,14 +81,24 @@ public class WeaponSwitching : MonoBehaviour
     {
         int index = ctx.ReadValue<float>() > 0 ? selectedWeaponIndex+1 : selectedWeaponIndex-1;
         index = math.clamp(index, 0, weapons.Length-1);
-        if (index != selectedWeaponIndex && yourWeapons[index] == 1 && timeSinceLastSwitch > switchTime)
+        if (CanSwitchWeapon(index))
         {
-            weapons[selectedWeaponIndex].gameObject.SetActive(false);
-            weapons[index].gameObject.SetActive(true);
-            selectedWeaponIndex = index;
-
-            timeSinceLastSwitch = 0;
-            OnWeaponSwitch?.Invoke(weapons[selectedWeaponIndex].currentMagAmmo, weapons[selectedWeaponIndex].magMaxAmmo, weapons[selectedWeaponIndex].currentAmmo,weapons[selectedWeaponIndex].name,weapons[selectedWeaponIndex].logo);
+            SwitchWeapon(index);
         }
+    }
+    void SwitchWeapon(int indx)
+    {
+        weapons[selectedWeaponIndex].gameObject.SetActive(false);
+        weapons[indx].gameObject.SetActive(true);
+        selectedWeaponIndex = indx;
+
+        timeSinceLastSwitch = 0;
+
+        currentWeapon = weapons[selectedWeaponIndex];
+        OnWeaponSwitch?.Invoke(currentWeapon.currentMagAmmo, currentWeapon.currentAmmo, currentWeapon.GetData());
+    }
+    bool CanSwitchWeapon(int indx)
+    {
+        return indx != selectedWeaponIndex && yourWeapons[indx] == 1 && timeSinceLastSwitch > switchTime;
     }
 }

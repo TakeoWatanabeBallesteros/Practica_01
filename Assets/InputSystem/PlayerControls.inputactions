@@ -473,17 +473,6 @@
                     "action": "SwitchWeapons",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "450027b4-3c18-407a-b2b7-f5b0ec3c331d",
-                    "path": "<Keyboard>/6",
-                    "interactions": "",
-                    "processors": "Scale(factor=6)",
-                    "groups": "",
-                    "action": "SwitchWeapons",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
