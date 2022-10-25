@@ -19,8 +19,12 @@ public class WeaponBehavior : MonoBehaviour, IReset
     [SerializeField] private float aimFov;
     [SerializeField] private float smooth;
     [SerializeField] private AudioClip shootAudio;
-    [SerializeField] public int currentAmmo { get; private set; }
-    [SerializeField] public int currentMagAmmo { get; private set; }
+    [SerializeField] public int currentAmmo { get; private set; } 
+    public int currentMagAmmo { get; private set; }
+    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private TrailRenderer trail;
+    [SerializeField] private ParticleSystem ImpactParticleSystem;
+    [SerializeField] private ParticleSystem muzzleFlash;
 
 
     private PlayerControls _controls;
@@ -69,9 +73,9 @@ public class WeaponBehavior : MonoBehaviour, IReset
     private void Update() {
         if(shooting) Shoot();
         timeSinceLastShot += Time.deltaTime;
-        Debug.DrawRay(muzzle.transform.position, transform.forward*1000);
-        Debug.DrawRay(cam.transform.position, cam.transform.forward*1000);
         Aiming();
+        RaycastHit hit;
+        Debug.DrawLine(cam.transform.position, cam.transform.forward*float.MaxValue, Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, float.MaxValue, _layerMask)? Color.green : Color.red);
     }
 
     public void StartReload(InputAction.CallbackContext ctx) {
@@ -114,14 +118,22 @@ public class WeaponBehavior : MonoBehaviour, IReset
             //Instantiate bullet
             GameObject bullet = new GameObject("Bullet");
             BulletBehavior b = bullet.AddComponent<BulletBehavior>();
+            RaycastHit hit;
+            Vector3 destination =
+                Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, float.MaxValue, _layerMask)
+                    ? hit.point
+                    : cam.transform.forward * 1000;
+            TrailRenderer _trail = Instantiate(trail, muzzle.position, Quaternion.identity);
+            StartCoroutine(SpawnTrail(_trail, hit));
             b.damage = weaponData.damage;
             b.velocity = weaponData.velocity;
             b.decal = decal;
-            RaycastHit hit;
-            if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1000f))
-            Instantiate(bullet, cam.transform.position, cam.transform.rotation);
+            b.destination = destination;
+            b.layerMask = _layerMask;
+            Instantiate(bullet, muzzle.position, Quaternion.identity);
             currentMagAmmo--;
             OnWeaponShoot?.Invoke(currentMagAmmo,weaponData);
+            muzzleFlash.Play();
             timeSinceLastShot = 0;
             onlyOneShoot++;
             OnGunShot();
@@ -205,5 +217,33 @@ public class WeaponBehavior : MonoBehaviour, IReset
         currentAmmo = weaponData.maxAmmo;
         currentMagAmmo = weaponData.magSize;
         OnWeaponReload?.Invoke(currentMagAmmo, currentAmmo, weaponData);
+    }
+    
+    private IEnumerator SpawnTrail(TrailRenderer Trail, RaycastHit HitPoint)
+    {
+        Vector3 point;
+        point = HitPoint.point;
+        if(HitPoint.point == Vector3.zero ) point = cam.transform.forward*1000;
+        
+        Vector3 startPosition = Trail.transform.position;
+        float distance = Vector3.Distance(Trail.transform.position, point);
+        float remainingDistance = distance;
+
+        while (remainingDistance > 0)
+        {
+            Trail.transform.position = Vector3.Lerp(startPosition, point, 1 - (remainingDistance / distance));
+
+            remainingDistance -= 100 * Time.deltaTime;
+
+            yield return null;
+        }
+        Trail.transform.position = point;
+        
+        if(HitPoint.point == Vector3.zero ) yield break;
+        
+        var i = Instantiate(ImpactParticleSystem, HitPoint.point, Quaternion.LookRotation(HitPoint.normal));
+        i.transform.parent = HitPoint.transform;
+
+        Destroy(Trail.gameObject, Trail.time);
     }
 }
