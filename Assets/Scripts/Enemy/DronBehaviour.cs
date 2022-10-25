@@ -21,10 +21,17 @@ public class DronBehaviour : MonoBehaviour,IDamageable
     [SerializeField] private float rotationSpeed;
     [SerializeField] private LayerMask playerLayerMask;
     [SerializeField] private int maxHealth;
-    private int health;
+    [SerializeField] private float damage;
+    [SerializeField] private float bulletSpeed;
+    [SerializeField] private Transform muzzle_1;
+    [SerializeField] private Transform muzzle_2;
+    [SerializeField] private ParticleSystem muzzleFlash_1;
+    [SerializeField] private ParticleSystem muzzleFlash_2;
+    [SerializeField] private BulletBehavior bullet;
+    private float health;
     private StateMachine fsm;
     private bool canBeDamaged = true;
-    [SerializeField]private Material mat;
+    private string lastState;
 
     private void Awake()
     {
@@ -51,17 +58,23 @@ public class DronBehaviour : MonoBehaviour,IDamageable
             },
             onExit: (state) =>
             {
+                lastState = fsm.ActiveState.name;
                 m_NavMeshAgent.isStopped = true;
             }
             ));
         fsm.AddState("Alert", new State(
             onLogic: (state) =>
             {
-                if (state.timer.Elapsed > 5)
+                if (state.timer.Elapsed > 360/rotationSpeed)
                     fsm.RequestStateChange("Patrol");
                     
                 RotateAtSpeed(rotationSpeed);
-            }));
+            },
+            onExit: (state) =>
+            {
+                lastState = fsm.ActiveState.name;
+            }
+            ));
         fsm.AddState("Chase", new State(
             onEnter: (state) =>
             {
@@ -73,14 +86,16 @@ public class DronBehaviour : MonoBehaviour,IDamageable
             },
             onExit: (state) =>
             {
+                lastState = fsm.ActiveState.name;
                 m_NavMeshAgent.isStopped = true;
             }
             ));
-        fsm.AddState("Attack", new State(
-            onLogic: (state) =>
+        fsm.AddState("Attack", new CoState(
+            this,
+            onLogic: Shoot,
+            onExit: (state) =>
             {
-                enemyEyes.LookAt(playerHead);
-                transform.rotation = Quaternion.Euler(0.0f, enemyEyes.rotation.eulerAngles.y, 0.0f);
+                lastState = fsm.ActiveState.name;
             }
             ));
         fsm.AddState("Hit", new State(
@@ -88,15 +103,27 @@ public class DronBehaviour : MonoBehaviour,IDamageable
             {
                 canBeDamaged = false;
             },
+            onLogic: (state) =>
+            {
+                if (lastState == "Patrol")
+                    fsm.RequestStateChange("Alert");
+                else
+                    fsm.RequestStateChange(lastState);
+            },
             onExit: (state) =>
             {
+                lastState = fsm.ActiveState.name;
                 canBeDamaged = true;
             }
             ));
         fsm.AddState("Die", new CoState(
             this,
-            onLogic: Die
-        ));
+            onLogic: Die,
+            onExit: (state) =>
+            {
+                lastState = fsm.ActiveState.name;
+            }
+            ));
         
         fsm.AddTransition(new Transition(
             "Patrol",
@@ -132,11 +159,6 @@ public class DronBehaviour : MonoBehaviour,IDamageable
             "OnHit",
             new Transition("", "Hit", t => (health > 0))
         );
-        fsm.AddTransition(new Transition(
-            "Hit",
-            "Alert",
-            (transition) => health > 0
-        ));
         fsm.AddTriggerTransitionFromAny(
             "OnHit",
             new Transition("", "Die", t => (health <= 0))
@@ -152,6 +174,11 @@ public class DronBehaviour : MonoBehaviour,IDamageable
     void Update()
     {
         fsm.OnLogic();
+        if(fsm.ActiveState.name == "Attack")
+        {
+            transform.rotation = Quaternion.Euler(0.0f, enemyEyes.rotation.eulerAngles.y, 0.0f);
+            enemyEyes.LookAt(playerHead);
+        }
         currentState = fsm.ActiveState.name;
     }
     
@@ -220,13 +247,37 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         m_NavMeshAgent.destination = playerHead.transform.position;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (canBeDamaged)
         {
             health -= damage;
         }
         fsm.Trigger("OnHit");
+    }
+    
+    IEnumerator Shoot(CoState<string, string> state)
+    {
+        // Shoot muzzle_1
+        Vector3 destination = playerHead.position;
+        bullet.destination = destination;
+        bullet.damage = damage;
+        bullet.velocity = bulletSpeed;
+        bullet.layerMask = ~LayerMask.NameToLayer("Player");
+        Instantiate(bullet, muzzle_1.position, Quaternion.identity);
+        muzzleFlash_1.Play();
+        yield return new WaitForSeconds(0.8f);
+        
+        // Shoot muzzle_2
+        destination = playerHead.position;
+        bullet.destination = destination;
+        bullet.damage = damage;
+        bullet.velocity = bulletSpeed;
+        bullet.layerMask = ~LayerMask.NameToLayer("Player");
+        Instantiate(bullet, muzzle_1.position, Quaternion.identity);
+        muzzleFlash_2.Play();
+        
+        yield return new WaitForSeconds(0.8f);
     }
     
     IEnumerator Die(CoState<string, string> state)

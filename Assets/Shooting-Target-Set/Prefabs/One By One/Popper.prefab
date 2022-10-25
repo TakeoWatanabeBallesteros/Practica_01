@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 667556230}
   - component: {fileID: 667556232}
   - component: {fileID: 667556231}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: StrafeFinalPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

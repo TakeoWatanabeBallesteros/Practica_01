@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletBehavior : MonoBehaviour
 {
     public float velocity;
-    public int damage;
+    public float damage;
     public GameObject decal;
     public Vector3 destination;
     public LayerMask layerMask;
@@ -26,9 +26,13 @@ public class BulletBehavior : MonoBehaviour
             hitInfo.transform.GetComponent<Hittable>()?.OnHit();
             hitInfo.transform.GetComponent<IDamageable>()?.TakeDamage(damage);
             //var d = Instantiate(decal, hitInfo.point + (hitInfo.normal * 0.01f), Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
-            var d = Instantiate(decal, hitInfo.point - (hitInfo.normal * 0.001f), Quaternion.FromToRotation(Vector3.forward, hitInfo.normal));
-            d.transform.parent = hitInfo.transform;
-            Destroy(d, 5f);
+            if(decal != null)
+            {
+                var d = Instantiate(decal, hitInfo.point - (hitInfo.normal * 0.001f),
+                    Quaternion.FromToRotation(Vector3.forward, hitInfo.normal));
+                d.transform.parent = hitInfo.transform;
+                Destroy(d, 5f);
+            }
             Destroy(gameObject);
         }
 

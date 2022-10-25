@@ -432,6 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d904edaa3c517647886fc34332f2e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 2007168367545578258, guid: 22fbcb7ad9339f04799dd2703bbe4a07, type: 3}
   weaponData: {fileID: 11400000, guid: 1cdce9791c836174a9d790a33463f1ac, type: 2}
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
@@ -1209,7 +1210,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1335
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: a16ce5811429e57498ae801c2636361e, type: 2}
   m_TargetDisplay: 0
@@ -2352,6 +2353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d904edaa3c517647886fc34332f2e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 2007168367545578258, guid: 22fbcb7ad9339f04799dd2703bbe4a07, type: 3}
   weaponData: {fileID: 11400000, guid: a134e653a9152b444addc0a103a08d15, type: 2}
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 6506505764907237018}
@@ -2854,6 +2856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d904edaa3c517647886fc34332f2e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 2007168367545578258, guid: 22fbcb7ad9339f04799dd2703bbe4a07, type: 3}
   weaponData: {fileID: 11400000, guid: b2dbb5f2d321e604f898e208b03d8382, type: 2}
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
@@ -3436,6 +3439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d904edaa3c517647886fc34332f2e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 2007168367545578258, guid: 22fbcb7ad9339f04799dd2703bbe4a07, type: 3}
   weaponData: {fileID: 11400000, guid: 72ce59a59130b384bbd1863b93ca92b2, type: 2}
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
@@ -4246,6 +4250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d904edaa3c517647886fc34332f2e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 2007168367545578258, guid: 22fbcb7ad9339f04799dd2703bbe4a07, type: 3}
   weaponData: {fileID: 11400000, guid: 708aad0fd35d04a4eb38a128963a723f, type: 2}
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}

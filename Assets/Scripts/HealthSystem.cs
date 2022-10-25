@@ -51,7 +51,7 @@ public class HealthSystem : MonoBehaviour, IReset, IDamageable
             Shield(15);
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if(!isAlive) return;
         
