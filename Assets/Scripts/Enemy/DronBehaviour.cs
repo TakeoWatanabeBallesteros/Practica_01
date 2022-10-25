@@ -14,14 +14,17 @@ public class DronBehaviour : MonoBehaviour,IDamageable
     [SerializeField] private float moveSpeed;
     [SerializeField] private float hearDistance;
     [SerializeField] private float sightDistance;
+    [SerializeField] private float maxChaseDistance;
     [SerializeField] private float maxAttackDistance;
+    [SerializeField] private float minAttackDistance;
     [SerializeField] private float sightAngle;
-    [SerializeField] private float headHeight;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private LayerMask playerLayerMask;
     [SerializeField] private int maxHealth;
     private int health;
     private StateMachine fsm;
+    private bool canBeDamaged = true;
+    [SerializeField]private Material mat;
 
     private void Awake()
     {
@@ -56,10 +59,6 @@ public class DronBehaviour : MonoBehaviour,IDamageable
             {
                 if (state.timer.Elapsed > 5)
                     fsm.RequestStateChange("Patrol");
-                if(SeesPlayer() && PlayerOnAttackDistance())
-                    fsm.RequestStateChange("Attack");
-                else if(SeesPlayer() && !PlayerOnAttackDistance())
-                    fsm.RequestStateChange("Chase");
                     
                 RotateAtSpeed(rotationSpeed);
             }));
@@ -84,14 +83,64 @@ public class DronBehaviour : MonoBehaviour,IDamageable
                 transform.rotation = Quaternion.Euler(0.0f, enemyEyes.rotation.eulerAngles.y, 0.0f);
             }
             ));
-        fsm.AddState("Hit", new State());
-        fsm.AddState("Die", new State());
+        fsm.AddState("Hit", new State(
+            onEnter: (state) =>
+            {
+                canBeDamaged = false;
+            },
+            onExit: (state) =>
+            {
+                canBeDamaged = true;
+            }
+            ));
+        fsm.AddState("Die", new CoState(
+            this,
+            onLogic: Die
+        ));
         
         fsm.AddTransition(new Transition(
             "Patrol",
             "Alert",
             (transition) => HearsPlayer()
         ));
+        fsm.AddTransition(new Transition(
+            "Alert",
+            "Chase",
+            (transition) => SeesPlayer() && !CanStartAttack()
+        ));
+        fsm.AddTransition(new Transition(
+            "Alert",
+            "Attack",
+            (transition) => SeesPlayer() && CanStartAttack()
+        ));
+        fsm.AddTransition(new Transition(
+            "Chase",
+            "Attack",
+            (transition) => CanStartAttack()
+        ));
+        fsm.AddTransition(new Transition(
+            "Chase",
+            "Patrol",
+            (transition) => !CanChase()
+        ));
+        fsm.AddTransition(new Transition(
+            "Attack",
+            "Chase",
+            (transition) => !PlayerOnAttackDistance()
+        ));
+        fsm.AddTriggerTransitionFromAny(
+            "OnHit",
+            new Transition("", "Hit", t => (health > 0))
+        );
+        fsm.AddTransition(new Transition(
+            "Hit",
+            "Alert",
+            (transition) => health > 0
+        ));
+        fsm.AddTriggerTransitionFromAny(
+            "OnHit",
+            new Transition("", "Die", t => (health <= 0))
+        );
         
         fsm.SetStartState("Idle");
         fsm.Init();
@@ -119,16 +168,28 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         m_NavMeshAgent.destination = m_PartolTargets[m_CurrentPatrolTargetId].position;
     }
 
+    bool CanChase()
+    {
+        Vector3 PlayerPos = GameManager.GetGameManager().GetPlayer().transform.position;
+        return Vector3.Distance(PlayerPos, transform.position) <= maxChaseDistance;
+    }
+    
     bool PlayerOnAttackDistance()
     {
         Vector3 PlayerPos = GameManager.GetGameManager().GetPlayer().transform.position;
         return Vector3.Distance(PlayerPos, transform.position) <= maxAttackDistance;
     }
+
+    bool CanStartAttack()
+    {
+        Vector3 PlayerPos = GameManager.GetGameManager().GetPlayer().transform.position;
+        return Vector3.Distance(PlayerPos, transform.position) <= minAttackDistance;
+    }
     
     bool HearsPlayer()
     {
-        Vector3 l_PlayerPosition = playerHead.position;
-        return Vector3.Distance(l_PlayerPosition, enemyEyes.position) <= hearDistance;
+        Vector3 PlayerPos = GameManager.GetGameManager().GetPlayer().transform.position;
+        return Vector3.Distance(PlayerPos, transform.position) <= hearDistance;
     }
     
     bool SeesPlayer()
@@ -161,6 +222,32 @@ public class DronBehaviour : MonoBehaviour,IDamageable
 
     public void TakeDamage(int damage)
     {
+        if (canBeDamaged)
+        {
+            health -= damage;
+        }
+        fsm.Trigger("OnHit");
+    }
+    
+    IEnumerator Die(CoState<string, string> state)
+    {
+        while (state.timer.Elapsed < 1f)
+        {
+            enemyEyes.transform.position += Vector3.down*Time.deltaTime*2.40f/1f;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(2f);
         
+        state.timer.Reset();
+        while (state.timer.Elapsed < 2)
+        {
+            enemyEyes.transform.position += Vector3.down*Time.deltaTime*.70f/2f;
+            yield return null;
+        }
+
+        state.timer.Reset();
+        
+        Destroy(gameObject);
     }
 }

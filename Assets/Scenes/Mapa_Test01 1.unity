@@ -708,6 +708,9 @@ GameObject:
   - component: {fileID: 1852520650}
   - component: {fileID: 1852520649}
   - component: {fileID: 1852520648}
+  - component: {fileID: 1852520653}
+  - component: {fileID: 1852520652}
+  - component: {fileID: 1852520651}
   m_Layer: 0
   m_Name: Enemy_Dron
   m_TagString: Untagged
@@ -737,14 +740,16 @@ MonoBehaviour:
   moveSpeed: 3.5
   hearDistance: 15
   sightDistance: 9
+  maxChaseDistance: 0
   maxAttackDistance: 0
+  minAttackDistance: 0
   sightAngle: 60
-  headHeight: 3
   rotationSpeed: 40
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 1911
-  maxHealth: 100
+  maxHealth: 0
+  mat: {fileID: 0}
 --- !u!195 &1852520649
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -782,6 +787,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1852520651
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852520647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1737861, y: 0.24823236, z: 0.44546604}
+  m_Center: {x: -0.00015932322, y: 2.712664, z: 0.007945061}
+--- !u!65 &1852520652
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852520647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35511357, y: 0.28943157, z: 0.3518262}
+  m_Center: {x: -0.27, y: 2.780633, z: -0.15980315}
+--- !u!65 &1852520653
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852520647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35511357, y: 0.28943157, z: 0.3518262}
+  m_Center: {x: 0.27330667, y: 2.780633, z: -0.15980315}
 --- !u!1 &1901604701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3018,6 +3062,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 177010475805932227, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 305
+      objectReference: {fileID: 0}
+    - target: {fileID: 177010475805932227, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 474
+      objectReference: {fileID: 0}
+    - target: {fileID: 1320596329202463650, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1322282677703994338, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
       propertyPath: player
       value: 
@@ -3026,6 +3082,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2096416706}
+    - target: {fileID: 1946008380764786228, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: m_fontSize
+      value: 52.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946008380764786228, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: m_margin.x
+      value: -246.01965
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946008380764786228, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 52.02
+      objectReference: {fileID: 0}
     - target: {fileID: 2024555383062663746, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -3073,6 +3141,26 @@ PrefabInstance:
     - target: {fileID: 2024555383062663773, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
       propertyPath: m_Name
       value: ShootingGallery
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974174498464935291, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: m_fontSize
+      value: 52.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974174498464935291, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: m_margin.z
+      value: -282.25543
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974174498464935291, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 52.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562289657324579106, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -284
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562289657324579106, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 474
       objectReference: {fileID: 0}
     - target: {fileID: 4117532673961969546, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
       propertyPath: player
