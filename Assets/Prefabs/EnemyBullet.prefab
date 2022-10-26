@@ -49,4 +49,4 @@ MonoBehaviour:
   destination: {x: 0, y: 0, z: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 1303
+    m_Bits: 128

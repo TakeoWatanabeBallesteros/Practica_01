@@ -32,6 +32,7 @@ public class WeaponBehavior : MonoBehaviour, IReset
     private float timeSinceLastShot;
     private bool aiming = false;
     private bool shooting = false;
+    private bool switchingWeapon;
     private int AimingID;
     private int ShootingID;
     private int onlyOneShoot;
@@ -96,7 +97,15 @@ public class WeaponBehavior : MonoBehaviour, IReset
         weaponData.reloading = false;
     }
 
-    private bool CanShoot() => !weaponData.reloading && timeSinceLastShot > 1f / (weaponData.fireRate / 60f) && currentMagAmmo > 0;
+    public IEnumerator Switching()
+    {
+        switchingWeapon = true;
+        yield return new WaitForSeconds(0.35f);
+        switchingWeapon = false;
+        Debug.Log("canShoot");
+    }
+
+    private bool CanShoot() => !weaponData.reloading && timeSinceLastShot > 1f / (weaponData.fireRate / 60f) && currentMagAmmo > 0 && !switchingWeapon;
 
     //Check which type if gun
     private void Shoot() {
@@ -138,7 +147,9 @@ public class WeaponBehavior : MonoBehaviour, IReset
         {
             StartCoroutine(Reload());
             shooting = false;
+            aiming = false;
             animator.SetBool(ShootingID, shooting);
+            animator.SetBool(AimingID, aiming);
         }
         if(weaponData.type == TypeOfWeapon.Sniper || weaponData.type == TypeOfWeapon.Pistol)
         {
@@ -162,7 +173,7 @@ public class WeaponBehavior : MonoBehaviour, IReset
 
     private void OnGunShot()
     {
-        ShootSound();
+        //ShootSound();
         if(!aiming)recoilBehavior.RecoilFire(weaponData.recoilX, weaponData.recoilY, weaponData.recoilZ);
         else recoilBehavior.RecoilFire(weaponData.recoilAimX, weaponData.recoilAimY, weaponData.recoilAimZ);
     }

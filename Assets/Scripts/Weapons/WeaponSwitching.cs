@@ -68,6 +68,7 @@ public class WeaponSwitching : MonoBehaviour, IReset
 
         currentWeapon = weapons[selectedWeaponIndex];
         OnWeaponSwitch?.Invoke(currentWeapon.currentMagAmmo, currentWeapon.currentAmmo, currentWeapon.GetData());
+        StartCoroutine(currentWeapon.Switching());
     }
 
     private void Select(InputAction.CallbackContext ctx)
@@ -93,7 +94,8 @@ public class WeaponSwitching : MonoBehaviour, IReset
         weapons[selectedWeaponIndex].gameObject.SetActive(false);
         weapons[indx].gameObject.SetActive(true);
         selectedWeaponIndex = indx;
-
+        StartCoroutine(weapons[indx].Switching());
+        
         timeSinceLastSwitch = 0;
 
         currentWeapon = weapons[selectedWeaponIndex];
