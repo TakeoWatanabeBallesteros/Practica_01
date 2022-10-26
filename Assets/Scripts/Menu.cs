@@ -11,6 +11,8 @@ public class Menu : MonoBehaviour
     private void Start() {
         sensiblityAmount.text = PlayerPrefs.GetInt("Sense",1000).ToString();
         Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
     public void LoadGame()
     {
@@ -27,7 +29,7 @@ public class Menu : MonoBehaviour
     }
     public void MinusSense()
     {
-        PlayerPrefs.SetInt("Sense",PlayerPrefs.GetInt("Sense",1000) + senseAmount);
+        PlayerPrefs.SetInt("Sense",PlayerPrefs.GetInt("Sense",1000) - senseAmount);
         sensiblityAmount.text = PlayerPrefs.GetInt("Sense",1000).ToString();
     }
 

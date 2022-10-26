@@ -25,7 +25,7 @@ public class GameOver : MonoBehaviour
     void OpenGameOver()
     {
         gameOver.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
     }
     public void OpenMenu()
