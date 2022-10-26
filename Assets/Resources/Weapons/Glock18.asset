@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d9d222d50bf4943b36570889b8c5bd, type: 3}
   m_Name: Glock18
   m_EditorClassIdentifier: Assembly-CSharp::GunData
-  name: Glock18
+  name: Glock-18
   logo: {fileID: 21300000, guid: 814be87595ec6bb4e9162e0c46a146c9, type: 3}
   type: 0
   damage: 14
