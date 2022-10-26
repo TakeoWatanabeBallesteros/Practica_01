@@ -248,6 +248,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1322282677703994338, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2143503319}
+    - target: {fileID: 1335648370069849098, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2143503319}
     - target: {fileID: 2024555383062663746, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -296,10 +304,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootingGallery
       objectReference: {fileID: 0}
-    - target: {fileID: 6131914812862621104, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
+    - target: {fileID: 4117532673961969546, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2143503319}
+    - target: {fileID: 4506358498858717297, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2143503319}
+    - target: {fileID: 4553429226327258915, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2143503319}
+    - target: {fileID: 5314363623858480806, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2143503319}
+    - target: {fileID: 6641032581154246085, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2143503319}
+    - target: {fileID: 7542149029568384299, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2143503319}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
 --- !u!1001 &298176566
@@ -1354,3 +1382,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b3f36e835346747865afbf6cf62acf, type: 3}
+--- !u!4 &2143503319 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3557554918526811897, guid: 42942df873a702c409f4041ad1a9bcda, type: 3}
+  m_PrefabInstance: {fileID: 964175110}
+  m_PrefabAsset: {fileID: 0}
