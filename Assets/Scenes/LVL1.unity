@@ -330,6 +330,17 @@ PrefabInstance:
       objectReference: {fileID: 2143503319}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+--- !u!114 &219125049 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2024555381679560502, guid: d868598ec05d2b4449efc844bec6c2f1, type: 3}
+  m_PrefabInstance: {fileID: 219125048}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f87c264df4ffe4e8d1e7b961475660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &298176566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1049,9 +1060,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1168929970}
-  - component: {fileID: 1168929972}
   - component: {fileID: 1168929971}
-  m_Layer: 0
+  - component: {fileID: 1168929972}
+  m_Layer: 11
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1094,10 +1105,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1168929969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 341957dd233385346ae85ee66a432391, type: 3}
+  m_Script: {fileID: 11500000, guid: e605bd1dc86816b45a274a8b50ad1748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1133587006}
+  shootingRangeManager: {fileID: 219125049}
 --- !u!1001 &1198200013
 PrefabInstance:
   m_ObjectHideFlags: 0

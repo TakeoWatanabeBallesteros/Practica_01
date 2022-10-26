@@ -9,7 +9,7 @@ public class ShootingRangeManager : MonoBehaviour
     [SerializeField] private List<ShootingRangeTarget> targets;
     [SerializeField] private bool reset;
     [SerializeField] private float roundMaxTime;
-    [SerializeField] private int points;
+    public int points { get; private set; }
     [SerializeField] private bool isRoundActive;
     [SerializeField] private float roundTime;
     [SerializeField] private TextMeshProUGUI timerUI;
