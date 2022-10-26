@@ -367,6 +367,7 @@ public class PlayerController : MonoBehaviour
         other.GetComponent<Door>()?.Open();
         other.GetComponent<Checkpoint>()?.SetNewCheckpoint();
         other.GetComponent<TransitionTrigger>()?.Transition();
+        other.GetComponent<YouWin>()?.WinMenu();
     }
     private void OnTriggerExit(Collider other) 
     {

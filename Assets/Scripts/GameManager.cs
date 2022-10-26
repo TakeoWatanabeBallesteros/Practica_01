@@ -135,6 +135,12 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<WeaponSwitching>().enabled = true;
         FindObjectOfType<WeaponBehavior>().enabled = true;
     }
+    public void BlockPlayer()
+    {
+        player.GetComponent<PlayerController>().enabled = false;
+        FindObjectOfType<WeaponSwitching>().enabled = false;
+        FindObjectOfType<WeaponBehavior>().enabled = false;
+    }
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
