@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     Quaternion currentCheckpointRot;
     int checkpointPreference;
     List<IReset> resetablesList;
+    public delegate void Died();
+    public static event Died OnDied;
     private void Start() {
         DontDestroyOnLoad(this.gameObject);
     }
@@ -107,15 +109,13 @@ public class GameManager : MonoBehaviour
     }
     public void Die()
     {
-        StartCoroutine(Respawn());
-    }
-    IEnumerator Respawn()
-    {
+        OnDied?.Invoke();
         player.GetComponent<PlayerController>().enabled = false;
         FindObjectOfType<WeaponSwitching>().enabled = false;
         FindObjectOfType<WeaponBehavior>().enabled = false;
-        yield return new WaitForSeconds(2f);
-
+    }
+    public void ResetGame()
+    {
         foreach (IReset obj in resetablesList) {
             obj.Reset();
         }
