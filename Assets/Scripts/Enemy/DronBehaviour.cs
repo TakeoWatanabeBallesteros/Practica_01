@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class DronBehaviour : MonoBehaviour,IDamageable
 {
     [SerializeField] private string currentState;
+    [SerializeField] private Animator animator;
     [SerializeField] private Transform enemyEyes;
     [SerializeField] private Transform playerHead;
     NavMeshAgent m_NavMeshAgent;
@@ -32,10 +33,12 @@ public class DronBehaviour : MonoBehaviour,IDamageable
     private StateMachine fsm;
     private bool canBeDamaged = true;
     private string lastState;
+    private int hitAnimID;
 
     private void Awake()
     {
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
+        hitAnimID = Animator.StringToHash("Hit");
     }
     
     // Start is called before the first frame update
@@ -105,19 +108,23 @@ public class DronBehaviour : MonoBehaviour,IDamageable
             },
             onLogic: (state) =>
             {
-                if (lastState == "Patrol")
-                    fsm.RequestStateChange("Alert");
-                else
-                    fsm.RequestStateChange(lastState);
+                if (state.timer.Elapsed >= 2.0f)
+                {
+                    fsm.RequestStateChange(lastState == "Patrol" ? "Alert" : lastState);
+                }
             },
             onExit: (state) =>
             {
                 lastState = fsm.ActiveState.name;
-                canBeDamaged = true;
+                StartCoroutine(CanBeAttacked());
             }
             ));
         fsm.AddState("Die", new CoState(
             this,
+            onEnter: (state) =>
+            {
+                canBeDamaged = false;
+            },
             onLogic: Die,
             onExit: (state) =>
             {
@@ -143,7 +150,7 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         fsm.AddTransition(new Transition(
             "Chase",
             "Attack",
-            (transition) => CanStartAttack()
+            (transition) => CanStartAttack() && SeesPlayer()
         ));
         fsm.AddTransition(new Transition(
             "Chase",
@@ -153,7 +160,7 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         fsm.AddTransition(new Transition(
             "Attack",
             "Chase",
-            (transition) => !PlayerOnAttackDistance()
+            (transition) => !PlayerOnAttackDistance()||!SeesPlayer()
         ));
         fsm.AddTriggerTransitionFromAny(
             "OnHit",
@@ -232,17 +239,16 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         l_Direction /= l_Lenght;
 
         Ray l_Ray = new Ray(enemyEyes.position, l_Direction);
-        //if(!)
         return Vector3.Distance(PlayerPos, transform.position) < sightDistance && Vector3.Dot(l_ForwardXZ, l_DirectionPlayerXZ) > Mathf.Cos(sightAngle * Mathf.Deg2Rad / 2.0f) &&
                !Physics.Raycast(l_Ray, l_Lenght, playerLayerMask.value);
     }
     
-    void RotateAtSpeed(float speed)
+    private void RotateAtSpeed(float speed)
     {
         transform.Rotate(Vector3.up, rotationSpeed*Time.deltaTime);
     }
     
-    void MoveTowardsPlayer(float speed)
+    private void MoveTowardsPlayer(float speed)
     {
         m_NavMeshAgent.destination = playerHead.transform.position;
     }
@@ -251,36 +257,41 @@ public class DronBehaviour : MonoBehaviour,IDamageable
     {
         if (canBeDamaged)
         {
+            fsm.Trigger("OnHit");
+            animator.SetTrigger(hitAnimID);
             health -= damage;
         }
-        fsm.Trigger("OnHit");
+        else
+        {
+            health -= damage * 0.6f;
+        }
     }
     
-    IEnumerator Shoot(CoState<string, string> state)
+    private IEnumerator Shoot(CoState<string, string> state)
     {
         // Shoot muzzle_1
         Vector3 destination = playerHead.position;
-        bullet.destination = destination;
-        bullet.damage = damage;
-        bullet.velocity = bulletSpeed;
-        bullet.layerMask = ~LayerMask.NameToLayer("Player");
-        Instantiate(bullet, muzzle_1.position, Quaternion.identity);
+        var b = Instantiate(bullet, muzzle_1.position, Quaternion.identity);
+        b.destination = destination;
+        b.damage = damage;
+        b.velocity = bulletSpeed;
+        b.layerMask = ~LayerMask.NameToLayer("Enemy");
         muzzleFlash_1.Play();
         yield return new WaitForSeconds(0.8f);
         
         // Shoot muzzle_2
         destination = playerHead.position;
-        bullet.destination = destination;
-        bullet.damage = damage;
-        bullet.velocity = bulletSpeed;
-        bullet.layerMask = ~LayerMask.NameToLayer("Player");
-        Instantiate(bullet, muzzle_1.position, Quaternion.identity);
+        var v = Instantiate(bullet, muzzle_1.position, Quaternion.identity);
+        v.destination = destination;
+        v.damage = damage;
+        v.velocity = bulletSpeed;
+        v.layerMask = ~LayerMask.NameToLayer("Enemy");
         muzzleFlash_2.Play();
         
         yield return new WaitForSeconds(0.8f);
     }
     
-    IEnumerator Die(CoState<string, string> state)
+    private IEnumerator Die(CoState<string, string> state)
     {
         while (state.timer.Elapsed < 1f)
         {
@@ -300,5 +311,11 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         state.timer.Reset();
         
         Destroy(gameObject);
+    }
+
+    private IEnumerator CanBeAttacked()
+    {
+        yield return new WaitForSeconds(1.5f);
+        canBeDamaged = true;
     }
 }

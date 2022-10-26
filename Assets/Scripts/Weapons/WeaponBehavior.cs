@@ -120,12 +120,12 @@ public class WeaponBehavior : MonoBehaviour, IReset
                 Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, float.MaxValue, _layerMask)
                     ? hit.point
                     : cam.transform.forward * 1000;
-            bullet.damage = weaponData.damage;
-            bullet.velocity = weaponData.velocity;
-            bullet.decal = decal;
-            bullet.destination = destination;
-            bullet.layerMask = _layerMask;
-            Instantiate(bullet, muzzle.position, Quaternion.identity);
+            var b = Instantiate(bullet, muzzle.position, Quaternion.identity);
+            b.damage = weaponData.damage;
+            b.velocity = weaponData.velocity;
+            b.decal = decal;
+            b.destination = destination;
+            b.layerMask = _layerMask;
             TrailRenderer _trail = Instantiate(trail, muzzle.position, Quaternion.identity);
             StartCoroutine(SpawnTrail(_trail, hit));
             currentMagAmmo--;
