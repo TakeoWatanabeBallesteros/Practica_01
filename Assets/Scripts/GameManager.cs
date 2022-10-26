@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
         player = _player;
         currentCheckpointPos = new Vector3(player.position.x,player.position.y,player.position.z);
         currentCheckpointRot = new Quaternion(player.rotation.x,player.rotation.y,player.rotation.z,player.rotation.w);
+        checkpointPreference = 0;
     }
     public void SetHealth(float health)
     {

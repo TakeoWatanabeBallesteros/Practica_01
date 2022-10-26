@@ -86,8 +86,8 @@ public class PlayerController : MonoBehaviour
     //TODO: Movimiento más fluido, acelerar y decelerar
 
     
-    [SerializeField] float m_YawRotationSpeed;
-    [SerializeField] float m_PitchRotationSpeed;
+    float m_YawRotationSpeed;
+    float m_PitchRotationSpeed;
 
     [SerializeField] Transform m_PitchController;
 
@@ -161,7 +161,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         GameManager.GetGameManager().SetPlayer(transform);
-        
+        m_YawRotationSpeed = PlayerPrefs.GetInt("Sense",1000);
+        m_PitchRotationSpeed = PlayerPrefs.GetInt("Sense",1000);
         _controller = GetComponent<CharacterController>();
         
         yaw = transform.rotation.y;

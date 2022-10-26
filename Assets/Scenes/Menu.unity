@@ -1756,8 +1756,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ebcb54dd66e47478b570138579453a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensiblityAmount: {fileID: 0}
-  senseAmount: 0
+  sensiblityAmount: {fileID: 850216583}
+  senseAmount: 100
 --- !u!1 &1958612530
 GameObject:
   m_ObjectHideFlags: 0
