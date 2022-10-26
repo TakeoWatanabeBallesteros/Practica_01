@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FSM;
 using UnityEngine.AI;
+using UnityEngine.UI;
 public class DronBehaviour : MonoBehaviour,IDamageable
 {
     [SerializeField] private string currentState;
@@ -29,16 +30,23 @@ public class DronBehaviour : MonoBehaviour,IDamageable
     [SerializeField] private ParticleSystem muzzleFlash_1;
     [SerializeField] private ParticleSystem muzzleFlash_2;
     [SerializeField] private BulletBehavior bullet;
+    [SerializeField] private Slider lifeBar;
+    [SerializeField] private ParticleSystem sparks_1;
+    [SerializeField] private ParticleSystem sparks_2;
+    [SerializeField] private ParticleSystem explosion;
+    
     private float health;
     private StateMachine fsm;
     private bool canBeDamaged = true;
     private string lastState;
     private int hitAnimID;
+    private int dieAnimID;
 
     private void Awake()
     {
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
         hitAnimID = Animator.StringToHash("Hit");
+        dieAnimID = Animator.StringToHash("Die");
     }
     
     // Start is called before the first frame update
@@ -104,6 +112,7 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         fsm.AddState("Hit", new State(
             onEnter: (state) =>
             {
+                StartCoroutine(Hit());
                 canBeDamaged = false;
             },
             onLogic: (state) =>
@@ -125,11 +134,7 @@ public class DronBehaviour : MonoBehaviour,IDamageable
             {
                 canBeDamaged = false;
             },
-            onLogic: Die,
-            onExit: (state) =>
-            {
-                lastState = fsm.ActiveState.name;
-            }
+            onLogic: Die
             ));
         
         fsm.AddTransition(new Transition(
@@ -166,8 +171,7 @@ public class DronBehaviour : MonoBehaviour,IDamageable
             "OnHit",
             new Transition("", "Hit", t => (health > 0))
         );
-        fsm.AddTriggerTransitionFromAny(
-            "OnHit",
+        fsm.AddTransitionFromAny(
             new Transition("", "Die", t => (health <= 0))
         );
         
@@ -187,6 +191,7 @@ public class DronBehaviour : MonoBehaviour,IDamageable
             enemyEyes.LookAt(playerHead);
         }
         currentState = fsm.ActiveState.name;
+        lifeBar.transform.forward = -(GameManager.GetGameManager().GetPlayer().transform.position - transform.position).normalized;
     }
     
     private bool PatrolTargetPositionArrived()
@@ -258,13 +263,16 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         if (canBeDamaged)
         {
             fsm.Trigger("OnHit");
-            animator.SetTrigger(hitAnimID);
             health -= damage;
+            if(health > 0) animator.SetTrigger(hitAnimID);
         }
         else
         {
             health -= damage * 0.6f;
         }
+
+        if (!lifeBar.enabled) lifeBar.enabled = true;
+        lifeBar.value = health / 100;
     }
     
     private IEnumerator Shoot(CoState<string, string> state)
@@ -290,27 +298,35 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         
         yield return new WaitForSeconds(0.8f);
     }
+
+    private IEnumerator Hit()
+    {
+        sparks_1.Play();
+
+        yield return new WaitForSeconds(1f);
+        
+        sparks_2.Play();
+    }
     
     private IEnumerator Die(CoState<string, string> state)
     {
-        while (state.timer.Elapsed < 1f)
+        animator.SetTrigger(dieAnimID);
+
+        yield return new WaitForSeconds(1f);
+        
+        explosion.Play();
+
+        yield return new WaitForSeconds(0.5f);
+        
+        state.timer.Reset();
+        while (state.timer.Elapsed < 1.5f)
         {
-            enemyEyes.transform.position += Vector3.down*Time.deltaTime*2.40f/1f;
+            enemyEyes.transform.position += Vector3.down*Time.deltaTime*.70f/1.5f;
             yield return null;
         }
 
-        yield return new WaitForSeconds(2f);
-        
-        state.timer.Reset();
-        while (state.timer.Elapsed < 2)
-        {
-            enemyEyes.transform.position += Vector3.down*Time.deltaTime*.70f/2f;
-            yield return null;
-        }
-
-        state.timer.Reset();
-        
-        Destroy(gameObject);
+        Destroy(gameObject, 3f);
+        yield return new WaitForSeconds(3f);
     }
 
     private IEnumerator CanBeAttacked()

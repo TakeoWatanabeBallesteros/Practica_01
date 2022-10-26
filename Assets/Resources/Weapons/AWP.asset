@@ -15,7 +15,7 @@ MonoBehaviour:
   name: AWP
   logo: {fileID: 21300000, guid: 695ae3f0cab376d4aa726ac4b1a9e8b5, type: 3}
   type: 3
-  damage: 1
+  damage: 100
   velocity: 887
   maxAmmo: 30
   magSize: 10
