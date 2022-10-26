@@ -27,13 +27,14 @@ public class DoorKey : Door
 
     private void Update()
     {
+        player = Camera.main.transform;
         if ((Vector3.Distance(player.position, transform.position) > 1.1f ||
              !(Vector3.Dot(player.forward.normalized, (transform.position - player.position).normalized) > .98f))&& onSee)
         {
             _controls.Player.Interact.performed -= Interact;
-            outline.enabled = false;
             UI.SetActive(false);
             onSee = false;
+            outline.enabled = false;
         }
         else if (!(Vector3.Distance(player.position, transform.position) > 1.1f ||
                    !(Vector3.Dot(player.forward.normalized, (transform.position - player.position).normalized) > .98f))&& !onSee)

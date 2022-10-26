@@ -96,6 +96,6 @@ public class HealthSystemDisplay : MonoBehaviour, IReset
         healthImageBackDisplay.fillAmount = 1;
         shieldImageDisplay.fillAmount = 0;
         shieldImageBackDisplay.fillAmount = 0;
-        maxShieldDisplay.SetActive(false);
+        if(maxShieldDisplay != null)maxShieldDisplay.SetActive(false);
     }
 }

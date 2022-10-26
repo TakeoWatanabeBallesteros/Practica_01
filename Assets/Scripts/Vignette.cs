@@ -63,7 +63,7 @@ public class Vignette : MonoBehaviour, IReset
         vignette.gameObject.SetActive(false);
     }
     public void Reset() {
-        vignette.gameObject.SetActive(false);
+        if(vignette.gameObject != null)vignette.gameObject.SetActive(false);
         StopAllCoroutines();
     }
 }

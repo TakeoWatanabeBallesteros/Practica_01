@@ -119,6 +119,8 @@ public class PlayerController : MonoBehaviour
         _controls = PlayerInputs.Controls;
         WalkingID = Animator.StringToHash("Walking");
         RunningID = Animator.StringToHash("Running");
+        animator.SetBool(WalkingID, false);
+        animator.SetBool(RunningID, false);
     }
 
     void OnEnable() {

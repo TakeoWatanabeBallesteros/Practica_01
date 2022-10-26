@@ -7,7 +7,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class DronBehaviour : MonoBehaviour,IDamageable
+public class DronBehaviour : MonoBehaviour,IDamageable, IReset
 {
     [SerializeField] private string currentState;
     [SerializeField] private Animator animator;
@@ -45,12 +45,15 @@ public class DronBehaviour : MonoBehaviour,IDamageable
     private string lastState;
     private int hitAnimID;
     private int dieAnimID;
+    private Vector3 resetPos;
 
     private void Awake()
     {
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
         hitAnimID = Animator.StringToHash("Hit");
         dieAnimID = Animator.StringToHash("Die");
+        resetPos = transform.position;
+
     }
     
     // Start is called before the first frame update
@@ -178,6 +181,9 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         fsm.AddTransitionFromAny(
             new Transition("", "Die", t => (health <= 0))
         );
+        fsm.AddTriggerTransitionFromAny(
+            "Reset"
+            ,new Transition("", "Idle", t => true));
         
         fsm.SetStartState("Idle");
         fsm.Init();
@@ -188,6 +194,7 @@ public class DronBehaviour : MonoBehaviour,IDamageable
     // Update is called once per frame
     void Update()
     {
+        playerHead = Camera.main.transform;
         fsm.OnLogic();
         if(fsm.ActiveState.name == "Attack")
         {
@@ -328,13 +335,23 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         }
 
         Instantiate(dropObjects[Random.Range(0, dropObjects.Length)], transform.position, quaternion.identity);
-        Destroy(gameObject, 3f);
         yield return new WaitForSeconds(3f);
+        
+        gameObject.SetActive(false);
     }
 
     private IEnumerator CanBeAttacked()
     {
         yield return new WaitForSeconds(1.5f);
         canBeDamaged = true;
+    }
+
+    public void Reset()
+    {
+        gameObject.SetActive(true);
+        transform.position = resetPos;
+        fsm.Trigger("Reset");
+        StopAllCoroutines();
+        health = maxHealth;
     }
 }

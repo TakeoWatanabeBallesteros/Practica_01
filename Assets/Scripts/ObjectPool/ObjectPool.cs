@@ -1,13 +1,20 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool
+public class ObjectPool : MonoBehaviour
 {
+    private static ObjectPool instance;
     private GameObject Parent;
     private PoolableObject Prefab;
     private int Size;
     private List<PoolableObject> AvailableObjectsPool;
-    private static Dictionary<PoolableObject, ObjectPool> ObjectPools = new Dictionary<PoolableObject, ObjectPool>();
+    private static Dictionary<PoolableObject, ObjectPool> ObjectPools;
+
+    private void Awake()
+    {
+            ObjectPools = new Dictionary<PoolableObject, ObjectPool>(); 
+    }
 
     private ObjectPool(PoolableObject Prefab, int Size)
     {
