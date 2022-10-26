@@ -366,6 +366,7 @@ public class PlayerController : MonoBehaviour
         other.GetComponent<DeadZone>()?.Die(GetComponent<HealthSystem>());
         other.GetComponent<Door>()?.Open();
         other.GetComponent<Checkpoint>()?.SetNewCheckpoint();
+        other.GetComponent<TransitionTrigger>()?.Transition();
     }
     private void OnTriggerExit(Collider other) 
     {
