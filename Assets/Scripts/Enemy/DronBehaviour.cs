@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FSM;
+using Unity.Mathematics;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
+
 public class DronBehaviour : MonoBehaviour,IDamageable
 {
     [SerializeField] private string currentState;
@@ -34,6 +37,7 @@ public class DronBehaviour : MonoBehaviour,IDamageable
     [SerializeField] private ParticleSystem sparks_1;
     [SerializeField] private ParticleSystem sparks_2;
     [SerializeField] private ParticleSystem explosion;
+    [SerializeField] private GameObject[] dropObjects;
     
     private float health;
     private StateMachine fsm;
@@ -317,12 +321,13 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         yield return new WaitForSeconds(0.5f);
         
         state.timer.Reset();
-        while (state.timer.Elapsed < 1.5f)
+        while (state.timer.Elapsed < 1f)
         {
-            enemyEyes.transform.position += Vector3.down*Time.deltaTime*.70f/1.5f;
+            enemyEyes.transform.position += Vector3.down*Time.deltaTime*.70f/1f;
             yield return null;
         }
 
+        Instantiate(dropObjects[Random.Range(0, dropObjects.Length)], transform.position, quaternion.identity);
         Destroy(gameObject, 3f);
         yield return new WaitForSeconds(3f);
     }
