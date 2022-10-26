@@ -13,6 +13,7 @@ public class ShieldPickable : MonoBehaviour,IPickable,IReset
 
         if(healthSystem.CanShield())
         {
+            Vignette.instance.ShieldVignette();
             healthSystem.Shield(shield);
             if(dontDestroy) gameObject.SetActive(false);
             else Destroy(this.gameObject);

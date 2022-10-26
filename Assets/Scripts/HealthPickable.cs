@@ -13,6 +13,7 @@ public class HealthPickable : MonoBehaviour,IPickable,IReset
 
         if(healthSystem.CanHeal())
         {
+            Vignette.instance.HealVignette();
             healthSystem.Heal(health);
             if(dontDestroy) gameObject.SetActive(false);
             else Destroy(this.gameObject);

@@ -10,6 +10,7 @@ public class AmmoPickable : MonoBehaviour, IPickable, IReset
     {
         if(WeaponSwitching.currentWeapon.CanGetAmmo())
         {
+            Vignette.instance.AmmoVignette();
             WeaponSwitching.currentWeapon.GetAmmo(ammo);
             if(dontDestroy) gameObject.SetActive(false);
             else Destroy(this.gameObject);

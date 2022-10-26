@@ -55,6 +55,7 @@ public class HealthSystem : MonoBehaviour, IReset, IDamageable
     {
         if(!isAlive) return;
         
+        float previousHealth = currentHealth;
         //Calcular Damage recivido en funcion de escudos
         float damageToShield = Mathf.Clamp(currentShield/0.75f,0,damage);
         currentShield -= damageToShield*0.75f;
@@ -63,7 +64,8 @@ public class HealthSystem : MonoBehaviour, IReset, IDamageable
         currentHealth = Mathf.Clamp(currentHealth-damageCounter,0,maxHealth);
 
         //Update UI
-        OnDamageTaked?.Invoke(currentHealth,currentHealth+damageCounter,currentShield,currentShield+damageToShield*0.75f);
+        OnDamageTaked?.Invoke(currentHealth,previousHealth,currentShield,currentShield+damageToShield*0.75f);
+        Vignette.instance.HitVignette();
 
         //Comprobación de posible final de partida
         isAlive = currentHealth > 0;
