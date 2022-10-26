@@ -102,7 +102,6 @@ public class WeaponBehavior : MonoBehaviour, IReset
         switchingWeapon = true;
         yield return new WaitForSeconds(0.35f);
         switchingWeapon = false;
-        Debug.Log("canShoot");
     }
 
     private bool CanShoot() => !weaponData.reloading && timeSinceLastShot > 1f / (weaponData.fireRate / 60f) && currentMagAmmo > 0 && !switchingWeapon;

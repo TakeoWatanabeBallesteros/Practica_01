@@ -16,7 +16,7 @@ public class PointsDoor : Door
     // Update is called once per frame
     void Update()
     {
-        if(shootingRangeManager.points > 10 && !canPass) return;
+        if(shootingRangeManager.points < 10 && !canPass) return;
 
         canPass = true;
     }
