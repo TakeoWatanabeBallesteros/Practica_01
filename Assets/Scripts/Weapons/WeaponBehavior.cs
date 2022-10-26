@@ -14,7 +14,7 @@ public class WeaponBehavior : MonoBehaviour, IReset
     [SerializeField] private RecoilBehavior recoilBehavior;
     [SerializeField] private Camera cam;
     [SerializeField] private Transform muzzle;
-    [SerializeField] private GameObject decal;
+    [SerializeField] private PoolableObject decal;
     [SerializeField] private Animator animator;
     [SerializeField] private float idleFov;
     [SerializeField] private float aimFov;

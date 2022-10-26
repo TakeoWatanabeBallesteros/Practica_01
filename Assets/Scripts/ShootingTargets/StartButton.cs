@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class StartButton : MonoBehaviour
 {
     private Outline outline;
-    Transform player;
+    [SerializeField] private Transform player;
     [SerializeField] private GameObject UI;
     
     private PlayerControls _controls;
@@ -20,7 +20,6 @@ public class StartButton : MonoBehaviour
     {
         _controls = PlayerInputs.Controls;
         outline = GetComponent<Outline>();
-        player = GameManager.GetGameManager().GetPlayer();
     }
 
     // Update is called once per frame

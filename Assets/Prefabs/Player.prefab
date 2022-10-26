@@ -437,7 +437,7 @@ MonoBehaviour:
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
   muzzle: {fileID: 7875549333168790849}
-  decal: {fileID: 7708636070130378430, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
+  decal: {fileID: 6180497456457762298, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
   animator: {fileID: 1730225460}
   idleFov: 60
   aimFov: 20
@@ -2358,7 +2358,7 @@ MonoBehaviour:
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 6506505764907237018}
   muzzle: {fileID: 410359829128668492}
-  decal: {fileID: 7708636070130378430, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
+  decal: {fileID: 6180497456457762298, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
   animator: {fileID: 2645595026901970042}
   idleFov: 60
   aimFov: 60
@@ -2861,7 +2861,7 @@ MonoBehaviour:
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
   muzzle: {fileID: 2038209153482417973}
-  decal: {fileID: 7708636070130378430, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
+  decal: {fileID: 6180497456457762298, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
   animator: {fileID: 734297422}
   idleFov: 60
   aimFov: 60
@@ -3444,7 +3444,7 @@ MonoBehaviour:
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
   muzzle: {fileID: 4300095578542030446}
-  decal: {fileID: 7708636070130378430, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
+  decal: {fileID: 6180497456457762298, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
   animator: {fileID: 4000325055107037902}
   idleFov: 60
   aimFov: 20
@@ -4255,7 +4255,7 @@ MonoBehaviour:
   recoilBehavior: {fileID: 6641445966654729968}
   cam: {fileID: 3557554918526811899}
   muzzle: {fileID: 4871137872540323497}
-  decal: {fileID: 7708636070130378430, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
+  decal: {fileID: 6180497456457762298, guid: ec58a64b77d5d6140a1cd24888162dae, type: 3}
   animator: {fileID: 3298713283752010455}
   idleFov: 60
   aimFov: 60
