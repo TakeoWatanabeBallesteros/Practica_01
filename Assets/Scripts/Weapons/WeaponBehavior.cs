@@ -35,6 +35,7 @@ public class WeaponBehavior : MonoBehaviour, IReset
     private bool switchingWeapon;
     private int AimingID;
     private int ShootingID;
+    private int ReloadingID;
     private int onlyOneShoot;
 
     public delegate void WeaponShoot(int currentMagAmmo, WeaponData dataWeapon);
@@ -48,6 +49,7 @@ public class WeaponBehavior : MonoBehaviour, IReset
         _controls = PlayerInputs.Controls;
         AimingID = Animator.StringToHash("Aim");
         ShootingID = Animator.StringToHash("Shooting");
+        ReloadingID = Animator.StringToHash("Reloading");
         currentAmmo = weaponData.maxAmmo;
         currentMagAmmo = weaponData.magSize;
     }
@@ -79,16 +81,17 @@ public class WeaponBehavior : MonoBehaviour, IReset
     }
 
     public void StartReload(InputAction.CallbackContext ctx) {
-        if (!weaponData.reloading && this.gameObject.activeSelf && currentAmmo > 0)
+        if (!weaponData.reloading && this.gameObject.activeSelf && currentAmmo > 0 && currentMagAmmo != weaponData.magSize)
             StartCoroutine(Reload());
     }
 
     private IEnumerator Reload()
     {
         weaponData.reloading = true;
-
+        animator.SetTrigger(ReloadingID);
+        
         yield return new WaitForSeconds(weaponData.reloadTime);
-
+        
         int bulletsToReload = Mathf.Clamp(weaponData.magSize - currentMagAmmo,0,currentAmmo);
         currentAmmo -= bulletsToReload;
         currentMagAmmo += bulletsToReload;
@@ -99,6 +102,10 @@ public class WeaponBehavior : MonoBehaviour, IReset
 
     public IEnumerator Switching()
     {
+        if (currentAmmo == 0)
+        {
+            StartCoroutine(Reload());
+        }
         switchingWeapon = true;
         yield return new WaitForSeconds(0.35f);
         switchingWeapon = false;
@@ -179,7 +186,7 @@ public class WeaponBehavior : MonoBehaviour, IReset
 
     private void Aim(InputAction.CallbackContext ctx)
     {
-        aiming = weaponData.type != TypeOfWeapon.Pistol && (weaponData.type != TypeOfWeapon.Sniper || CanShoot());
+        aiming = weaponData.type != TypeOfWeapon.Pistol && (weaponData.type != TypeOfWeapon.Sniper || CanShoot()) && !weaponData.reloading;
         animator.SetBool(AimingID, aiming);
     }
     private void StopAim(InputAction.CallbackContext ctx)
