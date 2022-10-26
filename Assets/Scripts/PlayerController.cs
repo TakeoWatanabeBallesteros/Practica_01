@@ -11,7 +11,10 @@ using Random = UnityEngine.Random;
 //TODO: Move audio to another script
 public class PlayerController : MonoBehaviour
 {
-    [Header("Player")]
+    [Header("Player")] 
+    [SerializeField] 
+    private Animator animator;
+    
     [Tooltip("Move speed of the character in m/s")]
     [SerializeField]
     private float moveSpeed = 2.0f;
@@ -73,12 +76,17 @@ public class PlayerController : MonoBehaviour
     private float _speed;
     private float _animationBlend;
     private float _verticalVelocity;
+    private bool isRunning = false;
 
     // timeout deltatime
     private float _jumpTimeoutDelta;
     private float _fallTimeoutDelta;
 
     private CharacterController _controller;
+    
+    // animations
+    private int WalkingID;
+    private int RunningID;
 
     //TODO: Salto más dínamico
     //TODO: Crouch
@@ -109,6 +117,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _controls = PlayerInputs.Controls;
+        WalkingID = Animator.StringToHash("Walking");
+        RunningID = Animator.StringToHash("Running");
     }
 
     void OnEnable() {
@@ -136,8 +146,8 @@ public class PlayerController : MonoBehaviour
         _controls.Player.Move.canceled += ctx => moveVector = Vector2.zero;
         
         // set target speed based on move speed, sprint speed and if sprint is pressed
-        _controls.Player.Sprint.performed += ctx => targetSpeed = sprintSpeed;
-        _controls.Player.Sprint.canceled += ctx => targetSpeed = moveSpeed;
+        _controls.Player.Sprint.performed += IsRunning;
+        _controls.Player.Sprint.canceled += IsRunning;
         
         _controls.Player.Jump.performed += Jump;
         //Controls.Player.Jump.canceled += ctx => OnJumpFinished();
@@ -151,8 +161,8 @@ public class PlayerController : MonoBehaviour
         _controls.Player.Move.canceled -= ctx => moveVector = Vector2.zero;
         
         // set target speed based on move speed, sprint speed and if sprint is pressed
-        _controls.Player.Sprint.performed -= ctx => targetSpeed = sprintSpeed;
-        _controls.Player.Sprint.canceled -= ctx => targetSpeed = moveSpeed;
+        _controls.Player.Sprint.performed -= IsRunning;
+        _controls.Player.Sprint.canceled -= IsRunning;
 
         _controls.Player.Jump.performed -= Jump;
         //Controls.Player.Jump.canceled -= ctx => OnJumpFinished();
@@ -220,8 +230,14 @@ public class PlayerController : MonoBehaviour
         // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
         // if there is input, and we check if we were pressing sprint (because the sprint event set the targetSpeed before this)
         // else set the target speed to 0
+        targetSpeed = isRunning ? sprintSpeed : moveSpeed;
+        
+        
         if (moveVector != Vector2.zero && targetSpeed <= moveSpeed) targetSpeed = moveSpeed;
         else if(moveVector == Vector2.zero && targetSpeed < sprintSpeed) targetSpeed = 0.0f;
+        
+        
+        animator.SetBool(WalkingID, targetSpeed > 0.0f);
 
         // a reference to the players current horizontal velocity
         float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -354,5 +370,11 @@ public class PlayerController : MonoBehaviour
     {
         other.GetComponent<Platform>()?.GetOffPlatform(transform);
         other.GetComponent<Door>()?.Close();
+    }
+
+    private void IsRunning(InputAction.CallbackContext ctx)
+    {
+        isRunning = !isRunning;
+        animator.SetBool(RunningID, isRunning);
     }
 }
