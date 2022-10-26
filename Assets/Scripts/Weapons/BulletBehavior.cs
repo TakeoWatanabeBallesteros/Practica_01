@@ -8,7 +8,7 @@ public class BulletBehavior : MonoBehaviour
     public float damage;
     public PoolableObject decal;
     public Vector3 destination;
-    public LayerMask layerMask;
+    [SerializeField] private LayerMask layerMask;
 
     private float distance;
     // Start is called before the first frame update

@@ -283,7 +283,6 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         b.destination = destination;
         b.damage = damage;
         b.velocity = bulletSpeed;
-        b.layerMask = ~LayerMask.NameToLayer("Enemy");
         muzzleFlash_1.Play();
         yield return new WaitForSeconds(0.8f);
         
@@ -293,7 +292,6 @@ public class DronBehaviour : MonoBehaviour,IDamageable
         v.destination = destination;
         v.damage = damage;
         v.velocity = bulletSpeed;
-        v.layerMask = ~LayerMask.NameToLayer("Enemy");
         muzzleFlash_2.Play();
         
         yield return new WaitForSeconds(0.8f);

@@ -1277,26 +1277,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1320472473}
-    - target: {fileID: 25434229911596732, guid: fa9438bcb54e66641be72456d6e827df, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.669
-      objectReference: {fileID: 0}
-    - target: {fileID: 25434229911596732, guid: fa9438bcb54e66641be72456d6e827df, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.351
-      objectReference: {fileID: 0}
     - target: {fileID: 323670814536324122, guid: fa9438bcb54e66641be72456d6e827df, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1320472473}
-    - target: {fileID: 1203559979958493128, guid: fa9438bcb54e66641be72456d6e827df, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.684
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203559979958493128, guid: fa9438bcb54e66641be72456d6e827df, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.355
-      objectReference: {fileID: 0}
     - target: {fileID: 7764139053175505464, guid: fa9438bcb54e66641be72456d6e827df, type: 3}
       propertyPath: m_Name
       value: Door_Key

@@ -125,7 +125,6 @@ public class WeaponBehavior : MonoBehaviour, IReset
             b.velocity = weaponData.velocity;
             b.decal = decal;
             b.destination = destination;
-            b.layerMask = _layerMask;
             TrailRenderer _trail = Instantiate(trail, muzzle.position, Quaternion.identity);
             StartCoroutine(SpawnTrail(_trail, hit));
             currentMagAmmo--;
