@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1628824273773353679}
   - component: {fileID: 1628824273773353673}
   - component: {fileID: 1628824273773353678}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HealthItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  dontDestroy: 0
 --- !u!1 &6618944355472864578
 GameObject:
   m_ObjectHideFlags: 0

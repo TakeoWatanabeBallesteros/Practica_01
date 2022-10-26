@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1517584781324772110}
   - component: {fileID: 1517584781324772111}
   - component: {fileID: 1517584781324772108}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ShieldItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shield: 20
+  dontDestroy: 0
 --- !u!1 &7340163597990147588
 GameObject:
   m_ObjectHideFlags: 0

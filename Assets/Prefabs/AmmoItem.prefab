@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 2419835887442901368}
   - component: {fileID: 2419835887442901375}
   - component: {fileID: 2419835887442901369}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AmmoItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: 20
+  dontDestroy: 0
 --- !u!1 &2419835888075204485
 GameObject:
   m_ObjectHideFlags: 0
