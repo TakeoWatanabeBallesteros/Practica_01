@@ -59,16 +59,23 @@ public class WeaponSwitching : MonoBehaviour, IReset
         for (int i = 0; i < transform.childCount; i++)
         {
             weapons[i] = transform.GetChild(i).GetComponent<WeaponBehavior>();
-            weaponsResets.Add((IReset)weapons[i]);
             yourWeapons[i] = 1;
         }
-        GameManager.GetGameManager().AddResetables(weaponsResets);
 
         selectedWeaponIndex = 0;
 
         currentWeapon = weapons[selectedWeaponIndex];
         OnWeaponSwitch?.Invoke(currentWeapon.currentMagAmmo, currentWeapon.currentAmmo, currentWeapon.GetData());
         StartCoroutine(currentWeapon.Switching());
+    }
+    public List<IReset> GetWeaponsReset()
+    {
+        List<IReset> temp = new List<IReset>();
+        foreach (var item in weapons)
+        {
+            temp.Add((IReset)item);
+        }
+        return temp;
     }
 
     private void Select(InputAction.CallbackContext ctx)

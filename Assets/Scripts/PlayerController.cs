@@ -173,8 +173,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         GameManager.GetGameManager().SetPlayer(transform);
-        m_YawRotationSpeed = PlayerPrefs.GetInt("Sense",1000);
-        m_PitchRotationSpeed = PlayerPrefs.GetInt("Sense",1000);
+        m_YawRotationSpeed = PlayerPrefs.GetInt("Sense",200);
+        m_PitchRotationSpeed = PlayerPrefs.GetInt("Sense",200);
         _controller = GetComponent<CharacterController>();
         
         yaw = transform.rotation.y;

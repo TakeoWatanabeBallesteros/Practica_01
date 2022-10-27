@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
             instance = new GameObject("GameManager").AddComponent<GameManager>();
             instance.InitializeData();
             instance.InitializeKeys();
-            instance.resetablesList = instance.InitializeResetables();
         }
 
         return instance;
@@ -75,6 +74,17 @@ public class GameManager : MonoBehaviour
         currentCheckpointPos = new Vector3(player.position.x,player.position.y,player.position.z);
         currentCheckpointRot = new Quaternion(player.rotation.x,player.rotation.y,player.rotation.z,player.rotation.w);
         checkpointPreference = 0;
+        resetablesList = new List<IReset>();
+        resetablesList = InitializeResetables();
+        AddWeapons();
+    }
+    void AddWeapons()
+    {
+        List<IReset> temp = FindObjectOfType<WeaponSwitching>().GetWeaponsReset();
+        foreach (var item in temp)
+        {
+            resetablesList.Add(item);
+        }
     }
     public void SetHealth(float health)
     {

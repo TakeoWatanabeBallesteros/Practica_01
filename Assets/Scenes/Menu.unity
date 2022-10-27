@@ -1757,7 +1757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensiblityAmount: {fileID: 850216583}
-  senseAmount: 100
+  senseAmount: 10
 --- !u!1 &1958612530
 GameObject:
   m_ObjectHideFlags: 0

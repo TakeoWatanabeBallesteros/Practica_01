@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour
     [SerializeField] TextMeshProUGUI sensiblityAmount;
     [SerializeField] int senseAmount;
     private void Start() {
-        sensiblityAmount.text = PlayerPrefs.GetInt("Sense",1000).ToString();
+        sensiblityAmount.text = PlayerPrefs.GetInt("Sense",200).ToString();
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
@@ -24,13 +24,13 @@ public class Menu : MonoBehaviour
     }
     public void AddSense()
     {
-        PlayerPrefs.SetInt("Sense",PlayerPrefs.GetInt("Sense",1000) + senseAmount);
-        sensiblityAmount.text = PlayerPrefs.GetInt("Sense",1000).ToString();
+        PlayerPrefs.SetInt("Sense",PlayerPrefs.GetInt("Sense",200) + senseAmount);
+        sensiblityAmount.text = PlayerPrefs.GetInt("Sense",200).ToString();
     }
     public void MinusSense()
     {
-        PlayerPrefs.SetInt("Sense",PlayerPrefs.GetInt("Sense",1000) - senseAmount);
-        sensiblityAmount.text = PlayerPrefs.GetInt("Sense",1000).ToString();
+        PlayerPrefs.SetInt("Sense",PlayerPrefs.GetInt("Sense",200) - senseAmount);
+        sensiblityAmount.text = PlayerPrefs.GetInt("Sense",200).ToString();
     }
 
 }
